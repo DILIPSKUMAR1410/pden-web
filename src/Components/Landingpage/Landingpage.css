@@ -9,6 +9,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
 }
 .logo{
     margin:1vw;
@@ -33,7 +34,7 @@
     height:8vh;
     border: 2px solid #3399ff;
     background-color: white;
-    margin-top:5vh;
+    /* margin-top:5vh; */
     color:#3399ff;
 }
 .row{
@@ -57,4 +58,8 @@ footer{
     display: flex;
     justify-content: center;
     position: absolute;
+}
+.nav a{
+    color:#3399ff;
+    margin-right:2vw;
 }

@@ -2,6 +2,8 @@ import React from 'react'
 import './JournalList.css'
 import Modal from './Modal/Modal'
 import Header from '../Header/Header'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons";
 import {
     UserSession,
     AppConfig
@@ -19,7 +21,7 @@ class Journallist extends React.Component{
         this.openmodal = this.openmodal.bind(this);
         this.closemodal = this.closemodal.bind(this);
         this.gotohome=this.gotohome.bind(this);
-
+        this.newjournal=this.newjournal.bind(this);
         this.state={
             sorted:false,
             sortdate:false,
@@ -132,6 +134,9 @@ class Journallist extends React.Component{
     gotohome(){
         this.props.history.push("/");
     }
+    newjournal(){
+        this.props.history.push("/journal");
+    }
 
     render(){
         return(
@@ -139,13 +144,17 @@ class Journallist extends React.Component{
                 <Header gohome={this.gotohome}/>
                 <div class="list">
                     <table>
-                        <th>Sl No.</th>
-                        <th onClick={this.sortbytitle}>Name of the Journal</th>
-                        <th onClick={this.sortbydate}>Date</th>
+                        <th>S No</th>
+                        <th onClick={this.sortbytitle}><span>Name of the Journal </span> 
+                         {this.state.sorttitle==1?<FontAwesomeIcon icon={faSortUp}/>:
+                         this.state.sorttitle==2?<FontAwesomeIcon icon={faSortDown}/>:null}</th>
+                        <th onClick={this.sortbydate}><span>Date</span>
+                        {this.state.sortdate?<FontAwesomeIcon icon={faSortDown}/>:<FontAwesomeIcon icon={faSortUp}/>}</th>
                         <tbody>
                             {this.state.sorted ?this.renderTableData():this.renderTableData()}
                         </tbody>
                     </table>
+                    <button onClick={this.newjournal}>New Journal</button>
                 </div>
                 {this.state.selected?<Modal Choice={this.state.selected} onClose={this.closemodal}/>:null}
             </div>

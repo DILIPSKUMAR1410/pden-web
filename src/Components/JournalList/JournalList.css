@@ -5,9 +5,21 @@
     min-height: 60vh;
     border:2px solid black;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    padding:1vw;
 }
 .list table, .list th, .list tr, .list td{
     border:none;
     padding: 1vw 2vw 0vw 1vw;
+}
+.list button{
+    padding:1vw;
+    border-radius: 0.5rem;
+    width: 10vw;
+    border: 2px solid #3399ff;
+    background-color: white;
+    margin-top:5vh;
+    color:#3399ff;
 }

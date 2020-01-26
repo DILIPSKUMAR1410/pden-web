@@ -1,17 +1,27 @@
 .modal{
-    width: 98vw;
+    min-width: 50vw;
+    max-width:80vw;
     margin:1vw;
-    padding:2vw;
+    padding-left:2vw;
+    padding-right:2vw;
+    padding-top:1vh;
+    padding-bottom:1vh;
+    position:absolute;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 
 .details{
-    padding:3vw;
+    padding-left:3vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 .heading{
-    width:60%;
+    width:85%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

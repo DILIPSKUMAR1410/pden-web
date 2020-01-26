@@ -5,7 +5,7 @@ render(){
     return(
         <div class="headerland1">
             <img onClick={this.props.gohome} src={require("../../Assets/Images/box.png")}/>
-            <p className="id">Sandy.id</p>
+                <p className="id">Sandy.id</p>
         </div>
     )
 }

@@ -7,6 +7,7 @@ import {
   const appConfig = new AppConfig()
   const userSession = new UserSession({ appConfig: appConfig })
 class Page extends React.Component{
+    
     handleSignin = (e) => {
         e.preventDefault();
         userSession.redirectToSignIn();
@@ -21,8 +22,9 @@ class Page extends React.Component{
       componentDidMount() {
         if (userSession.isSignInPending()) {
           userSession.handlePendingSignIn().then((userData) => {
-            this.props.history.push("/newjournal");
-            window.history.replaceState({}, document.title, "/newjournal")
+            // userSession.getFile("Journal.json", )
+            this.props.history.push("/");
+            window.history.replaceState({}, document.title, "/")
             // this.setState({ userData: userData})
           });
         }
@@ -37,7 +39,11 @@ render(){
                 </div>
                 {!userSession.isUserSignedIn()?
                 <button onClick={this.handleSignin}>Login using Blockstack</button>:
-                <button onClick={this.handleSignOut}>Logout</button>}
+                <div class="nav">
+                  <a href="/newjournal">New Journal</a>
+                  <a href="/myjournals">My Journals</a>
+                  <button onClick={this.handleSignOut}>Logout</button>
+                </div>}
             </div>
             <div class="row">
                 <div class="leftcol">

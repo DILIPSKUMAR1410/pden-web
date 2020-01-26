@@ -91,7 +91,7 @@ class Editor extends React.Component{
         <div className="menu" >
             <div className="menuleft" >
                 <div onClick={this.showmood} className={this.state.showemoji? "hideem":"showem"}>
-                    <p>What is your mood?</p>
+                    <p>What is your mood? <br/><em>Choose a smiley that best represents your frame of mind</em></p>
                     <p>{this.state.mood}</p>
                 </div>
                 <div class={this.state.showemoji? "showem":"hideem"}>
@@ -108,18 +108,18 @@ class Editor extends React.Component{
                     </div>
                 </div>
                 <br/>
-                <p>Pick your Color:</p>
+                <p>Pick the background of your journal entry:</p>
                 <input type="color" value={this.state.color} onInput={this.setColor}/>
             </div>
             <div className="menuright">
                 <p id="trigger" onClick={this.trigger}>Trigger</p>
-                <textarea id="tri" className={this.state.showtrigger? "showem" : "hideem"} onChange={this.trigger}/>
-                <p onClick={this.date}> Save Now</p>
+                <textarea id="tri" placeholder="Jot down the origin of this thought" className={this.state.showtrigger? "showem" : "hide"} onChange={this.trigger}/>
             </div>
         </div>
         <div style={Style} className="editor">
             <input placeholder="Title of the journal" onChange={this.setTitle}/>
             <SunEditor width="71vw" minHeight="55vh" onChange={this.setValue}/>
+            <button class="editorbutton" onClick={this.date}> Save Now</button>
         </div>
     </div>
   );

@@ -1,32 +1,38 @@
-
-.showem{
+.showem {
     display: block;
     font-size: 3vh;
+}
 
+.hideem {
+    display: none;
 }
-.hideem{
-    display:none;
+
+.hide {
+    visibility: hidden;
 }
-.emoji{
+
+.emoji {
     display: flex;
     flex-direction: row;
     font-size: 3vh;
 }
-.editor{
+
+.editor {
     /* margin-left:5vw; */
-    width:70vw;
-    padding:2vw;
+    width: 70vw;
+    padding: 2vw;
     /* height:55vh; */
 }
-.row1{
+
+.row1 {
     display: flex;
     flex-direction: row;
     margin-top: 6vh;
 }
 
-.menu{
-    width:20vw;
-    height:71vh;
+.menu {
+    width: 20vw;
+    height: 71vh;
     /* margin-left:10vw;
     margin-right:10vw;    */
     display: flex;
@@ -34,33 +40,58 @@
     justify-content: space-between;
     /* margin-bottom: 10vh; */
     flex-direction: column;
-    color:white;
-    background-color:#3399ff;
-    padding:2vw;
+    color: white;
+    background-color: #3399ff;
+    padding: 2vw;
 }
-.menuleft{
+
+.menuleft {
     /* height:22vh; */
     display: flex;
     flex-direction: column;
 }
-.menuright{
+
+.menuleft em {
+    font-size: 2vh;
+}
+
+.menuright {
     display: flex;
     flex-direction: column;
-    margin-top:2vh;
+    margin-top: 2vh;
 }
-.menuright p{
+
+.menuright p {
     margin-right: 2vw;
 }
-.menuright textarea{
-    height:15vh;
-    width:20vw;
+
+.menuright textarea {
+    height: 15vh;
+    width: 20vw;
+    font-size: 16px;
 }
-.editor input{
-    border:none;
+
+.editor input {
+    border: none;
     background-color: white;
-    margin:1vw 1vw 1vw 0vw;
-    width:15vw;
+    margin: 1vw 1vw 1vw 0vw;
+    width: 71vw;
+    font-size: 16px;
+    padding-top:0.5vw;
+    padding-bottom:0.5vw;
 }
-.editor input:hover{
+
+.editor input:hover {
     border-bottom: 2px solid #3399ff;
+}
+
+.editorbutton {
+    margin-top: 2vh;
+    padding: 1vw;
+    border-radius: 0.5rem;
+    /* height:8vh; */
+    border: 2px solid #3399ff;
+    background-color: white;
+    /* margin-top:5vh; */
+    color: #3399ff;
 }
