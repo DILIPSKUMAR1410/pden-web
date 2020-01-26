@@ -2,7 +2,7 @@ import React from 'react'
 import './Landingpage.css'
 import {
     UserSession,
-    AppConfig
+    AppConfig,
   } from 'blockstack';
   const appConfig = new AppConfig()
   const userSession = new UserSession({ appConfig: appConfig })
@@ -27,6 +27,10 @@ class Page extends React.Component{
             window.history.replaceState({}, document.title, "/")
             // this.setState({ userData: userData})
           });
+        }
+        if(userSession.isUserSignedIn())
+        {
+          console.log("HI");
         }
       }
 render(){
