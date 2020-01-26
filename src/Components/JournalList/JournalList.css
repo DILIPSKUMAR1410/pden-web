@@ -1,0 +1,13 @@
+.list{
+    width:60vw;
+    margin-left: 20vw;
+    margin-top: 5vh;
+    min-height: 60vh;
+    border:2px solid black;
+    display: flex;
+    justify-content: center;
+}
+.list table, .list th, .list tr, .list td{
+    border:none;
+    padding: 1vw 2vw 0vw 1vw;
+}

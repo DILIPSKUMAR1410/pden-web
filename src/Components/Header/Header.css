@@ -1,0 +1,20 @@
+.headerland1{
+    height:15vh;
+    width:98vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color:#3399ff;
+}
+.headerland1 img{
+    margin:2vw;
+    height:13vh;
+    width:auto;
+    display: inline-block;
+}
+.id{
+    font-size: 3vh;
+    margin-top: 6vh;
+    font-weight: lighter;
+}

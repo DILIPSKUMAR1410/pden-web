@@ -1,0 +1,40 @@
+.modal{
+    width: 98vw;
+    margin:1vw;
+    padding:2vw;
+}
+
+.details{
+    padding:3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.heading{
+    width:60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left:2vw;
+    font-size:3vh;
+}
+.text{
+    padding:3vw;
+}
+.rest{
+    padding:3vw;
+    font-weight: bold;
+}
+.rest button{
+    width:5vw;
+    height:3vw;
+    background-color:black;
+    color:white;
+}
+.rest p{
+    margin-bottom:5vh;
+}
+.rest button:hover{
+    background-color: white;
+    color: black;
+}
