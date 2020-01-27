@@ -33,6 +33,7 @@ class Editor extends React.Component{
         };
     }
     printValue(){
+        this.props.toggleLoad();
         var temp=[];
         if (localStorage.getItem("Journal") != null)
         {
@@ -43,8 +44,10 @@ class Editor extends React.Component{
         .putFile("Journal.json", JSON.stringify(temp), options)
         .then(() => {
             localStorage.setItem("Journal", JSON.stringify(temp));
+        }).finally(()=>{
+            this.props.toggleLoad();
             this.props.golist();
-        });
+        })
     }
     setTitle({target}){
         this.setState({title: target.value});
