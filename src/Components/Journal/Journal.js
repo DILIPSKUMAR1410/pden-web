@@ -29,8 +29,7 @@ class Journal extends React.Component{
         return(
             <div>
                 <Header  gohome={this.gotohome}/>
-                <Editor  golist={this.gotolist}  toggleLoad={toggleLoad.bind(this)}/>
-                {this.state.loading ? <div class="loadcontainer"><div class="loader" /></div> : null}
+                <Editor  golist={this.gotolist}  toggleLoad={toggleLoad.bind(this)} loading={this.state.loading}/>
             </div>
         )
     }

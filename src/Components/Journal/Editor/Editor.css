@@ -86,12 +86,31 @@
 }
 
 .editorbutton {
-    margin-top: 2vh;
     padding: 1vw;
     border-radius: 0.5rem;
     /* height:8vh; */
     border: 2px solid #3399ff;
     background-color: white;
-    /* margin-top:5vh; */
+    margin-top:3vh;
     color: #3399ff;
 }
+.load {
+    border: 1vh solid #f3f3f3; /* Light grey */
+    border-top: 1vh solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 4vh;
+    height: 4vh;
+    margin-top: 3vh;
+    animation: spin 1s linear infinite;
+    margin-left:2vh;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .loadcont{
+      display: inline-flex;
+      flex-direction: row;
+      align-content: center;
+  }

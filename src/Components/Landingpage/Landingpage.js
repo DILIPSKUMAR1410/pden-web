@@ -10,7 +10,8 @@ class Page extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: false
+      loading: false,
+      journallist:true,
     }
   }
 
@@ -27,13 +28,14 @@ class Page extends React.Component {
   fetchdata=()=>{
     if (userSession.isUserSignedIn()) 
     {  
-    console.log("didmount");
-    this.setState({ loading: true });
+      // const option={encrypt : false};
+      // var temp=[];
+      // userSession.putFile("Journaldata.json",JSON.stringify(temp),option);  
     const options = { decrypt: false };
-    userSession.getFile('Journal.json', options)
+    userSession.getFile('Myjournal.json', options)
       .then((file) => {
-        var statuses = JSON.parse(file || '[]')
-        localStorage.setItem("Journal", JSON.stringify(statuses));
+        if(file==null)
+          this.setState({ journallist: false });       
       })
       .catch((error) => {
         console.log(error);
@@ -47,14 +49,12 @@ class Page extends React.Component {
   {   
     if (userSession.isSignInPending()) {
       userSession.handlePendingSignIn().then((userData) => {
-        console.log("pending");
         this.props.history.push("/");
         window.history.replaceState({}, document.title, "/");
         this.setState({ loading: true });
-      }).finally(()=>{
-        console.log("completed");
-        this.fetchdata();
       })
+    this.fetchdata();
+  
     }
   }
     
@@ -71,7 +71,7 @@ class Page extends React.Component {
                 <button onClick={this.handleSignin}>Login using Blockstack</button> :
                 <div class="nav">
                   <a href="/newjournal">New Journal</a>
-                  <a href="/myjournals">My Journals</a>
+                 {this.state.journallist? <a href="/myjournals">My Journals</a>:null}
                   <button onClick={this.handleSignOut}>Logout</button>
                 </div>}
             </div>
