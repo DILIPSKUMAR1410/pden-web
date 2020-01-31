@@ -12,9 +12,10 @@
     height:13vh;
     width:auto;
     display: inline-block;
+    cursor: pointer;
 }
 .id{
     font-size: 3vh;
     margin-top: 6vh;
-    font-weight: lighter;
+    font-weight: bold;
 }

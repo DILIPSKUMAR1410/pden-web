@@ -80,9 +80,8 @@ class Journallist extends React.Component {
             return (
                 <tr key={index}>
                     <td>{index + 1}</td>
-                    <td><p id={JSON.parse(a).title} onClick={this.openmodal}>{JSON.parse(a).title}</p></td>
+                    <td><p id={JSON.parse(a).title} className="journ" onClick={this.openmodal}>{JSON.parse(a).title}</p></td>
                     <td><p id={JSON.parse(a).title}>{JSON.parse(a).date}</p></td>
-                    <td><p id={index}>Share</p></td>
                 </tr>
             )
         });
@@ -150,10 +149,10 @@ class Journallist extends React.Component {
                 <div class="list">
                     <table>
                         <th>S No</th>
-                        <th onClick={this.sortbytitle}><span>Name of the Journal </span>
+                        <th onClick={this.sortbytitle}><span className="journ">Name of the Journal </span>
                             {this.state.sorttitle == 1 ? <FontAwesomeIcon icon={faSortUp} /> :
                                 this.state.sorttitle == 2 ? <FontAwesomeIcon icon={faSortDown} /> : null}</th>
-                        <th onClick={this.sortbydate}><span>Date</span>
+                        <th onClick={this.sortbydate}><span className="journ">Date</span>
                             {this.state.sortdate ? <FontAwesomeIcon icon={faSortDown} /> : <FontAwesomeIcon icon={faSortUp} />}</th>
                         <tbody>
                             {this.state.loadtable?this.state.sorted ? this.renderTableData() : this.renderTableData():null}

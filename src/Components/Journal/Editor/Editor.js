@@ -100,19 +100,19 @@ class Editor extends React.Component {
                     <div className="menuleft" >
                         <div onClick={this.showmood} className={this.state.showemoji ? "hideem" : "showem"}>
                             <p>What is your mood? <br /><em>Choose a smiley that best represents your frame of mind</em></p>
-                            <p>{this.state.mood}</p>
+                            <p className="em">{this.state.mood}</p>
                         </div>
                         <div class={this.state.showemoji ? "showem" : "hideem"}>
                             <p>What is your mood?</p>
                             <div class="emoji">
-                                <p><Emoji text=":smile:" onClick={this.selectem} /></p>
-                                <p><Emoji text=":cry:" onClick={this.selectem} /></p>
-                                <p><Emoji text=":angry:" onClick={this.selectem} /></p>
-                                <p><Emoji text="❤️" onClick={this.selectem} /></p>
-                                <p><Emoji text=":unamused:" onClick={this.selectem} /></p>
-                                <p><Emoji text=":confused:" onClick={this.selectem} /></p>
-                                <p><Emoji text=":open_mouth:" onClick={this.selectem} /></p>
-                                <p><Emoji text=":sunglasses:" onClick={this.selectem} /></p>
+                                <p className="em"><Emoji text=":smile:" onClick={this.selectem} /></p>
+                                <p className="em"><Emoji text=":cry:" onClick={this.selectem} /></p>
+                                <p className="em"><Emoji text=":angry:" onClick={this.selectem} /></p>
+                                <p className="em"><Emoji text="❤️" onClick={this.selectem} /></p>
+                                <p className="em"><Emoji text=":unamused:" onClick={this.selectem} /></p>
+                                <p className="em"><Emoji text=":confused:" onClick={this.selectem} /></p>
+                                <p className="em"><Emoji text=":open_mouth:" onClick={this.selectem} /></p>
+                                <p className="em"><Emoji text=":sunglasses:" onClick={this.selectem} /></p>
                             </div>
                         </div>
                         <br />

@@ -12,6 +12,7 @@
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+    font-size: large;
 }
 
 .details{
@@ -26,7 +27,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin-left:2vw;
-    font-size:3vh;
+    font-size:larger;
 }
 .text{
     padding:3vw;
@@ -40,6 +41,7 @@
     height:3vw;
     background-color:black;
     color:white;
+    cursor: pointer;
 }
 .rest p{
     margin-bottom:5vh;

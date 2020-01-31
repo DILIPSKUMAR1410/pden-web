@@ -53,8 +53,9 @@ class Page extends React.Component {
         window.history.replaceState({}, document.title, "/");
         this.setState({ loading: true });
       })
-    this.fetchdata();
-  
+      .finally(()=>{
+        this.fetchdata();
+      })  
     }
   }
     
