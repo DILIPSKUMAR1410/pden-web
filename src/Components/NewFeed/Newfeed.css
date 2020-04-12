@@ -1,0 +1,30 @@
+.newfeed {
+    width: 95%;
+    margin: 2.5%;
+    border: 2px solid black;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top:5%;
+    padding-bottom:5%;
+}
+
+.newfeed textarea {
+    /* width: 80%;
+    min-height: 15vh; */
+    font-size: large;
+    margin-bottom: 3vh;
+    border:none;
+    border-bottom: 2px solid #03adfc;
+    border-left: 2px solid #03adfc;
+}
+.newfeed button{
+    margin-left:70%;
+    width:8vw;
+    background-color:#03adfc;
+    color:white;
+    border: 1px solid white;
+    border-radius: 0.3rem;
+    padding:0.3rem;
+}

@@ -1,19 +1,16 @@
 import React from 'react'
 import { BrowserRouter, Switch } from 'react-router-dom'
-import Myjournal from './Components/JournalList/Journallist'
-import Editor from './Components/Journal/Journal'
 import Landingpage from './Components/Landingpage/Landingpage'
-import New from './Components/NewJournal/Newjournal'
+import Home from './Components/Home/Home'
 import PublicRoute from './Route/Publicroute';
+import PrivateRoute from './Route/Privateroute';
 class App extends React.Component{
   render(){
     return(
       <BrowserRouter>
     <Switch>
       <PublicRoute  component={Landingpage} path="/" exact />
-      <PublicRoute  component={New} path={`${process.env.PUBLIC_URL}/newjournal`} exact />
-      <PublicRoute  component={Editor} path={`${process.env.PUBLIC_URL}/journal`} exact />
-      <PublicRoute  component={Myjournal} path={`${process.env.PUBLIC_URL}/myjournals`} exact />
+      <PrivateRoute  component={Home} path={`${process.env.PUBLIC_URL}/feed`} exact />
     </Switch>
   </BrowserRouter>
     );

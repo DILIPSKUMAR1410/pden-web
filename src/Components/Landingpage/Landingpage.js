@@ -22,29 +22,10 @@ class Page extends React.Component {
 
   handleSignOut(e) {
     e.preventDefault();
-    localStorage. removeItem("Journal");
+    localStorage. removeItem("Demo");
     userSession.signUserOut(window.location.origin);
   }
-  fetchdata=()=>{
-    if (userSession.isUserSignedIn()) 
-    {  
-      // const option={encrypt : false};
-      // var temp=[];
-      // userSession.putFile("Journaldata.json",JSON.stringify(temp),option);  
-    const options = { decrypt: false };
-    userSession.getFile('Myjournal.json', options)
-      .then((file) => {
-        if(file==null)
-          this.setState({ journallist: false });       
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-      .finally(() => {
-        this.setState({ loading: false });       
-      });  
-    }
-  }
+ 
   componentDidMount() 
   {   
     if (userSession.isSignInPending()) {
@@ -54,7 +35,6 @@ class Page extends React.Component {
         this.setState({ loading: true });
       })
       .finally(()=>{
-        this.fetchdata();
       })  
     }
   }
@@ -66,24 +46,16 @@ class Page extends React.Component {
             <div class="headerland">
               <div class="logo">
                 <img src={require("../../Assets/Images/box.png")} />
-                <p>SecureBox</p>
+                <p>Twitter kind of app</p>
               </div>
               {!userSession.isUserSignedIn() ?
                 <button onClick={this.handleSignin}>Login using Blockstack</button> :
                 <div class="nav">
-                  <a href="/newjournal">New Journal</a>
-                 {this.state.journallist? <a href="/myjournals">My Journals</a>:null}
+                  <a href="/feed">Home</a>
                   <button onClick={this.handleSignOut}>Logout</button>
                 </div>}
             </div>
-            <div class="row">
-              <div class="leftcol">
-                <p><strong>SecureBox</strong> is your privacy focussed journal.</p>
-                <p>Pour out your thoughts and store them on the decentralized web.</p>
-                <p>Experience the power of Simplicity </p>
-              </div>
-            </div>
-            <footer><p>Copyright@securebox2019</p></footer>
+            <footer><p>Copyright@me2019</p></footer>
           </div>
           {this.state.loading ? <div class="loadcontainer"><div class="loader" /></div> : null}
         </div>

@@ -1,0 +1,33 @@
+
+.feed{
+    display: flex;
+    flex-direction: column;
+}
+.feedcard{
+    width:95%;
+    max-width:95%;
+    margin:2.5%;
+    border: 2px solid black;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding-top:0.5rem;
+}
+.User{
+    font-size: larger;
+    padding:1rem;
+    color:#03adfc;
+}
+.Content{
+    padding:0.3rem;
+    font-weight: bold;
+    margin-left: 2vw;
+}
+.reaction{
+    padding:1rem;
+    display: flex;
+    margin-top: 5vh;
+}
+.reaction span{
+    margin-right: 1rem;
+}

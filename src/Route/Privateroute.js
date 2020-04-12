@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route,  Redirect } from 'react-router-dom';
 import {
   UserSession,
   AppConfig,
@@ -9,7 +9,9 @@ const userSession = new UserSession({ appConfig: appConfig })
 const PublicRoute = ({ component: Component, ...rest }) => {
   return (
     <Route {...rest} render={props => (
-      <Component {...props} />
+      userSession.isUserSignedIn()?
+      <Component {...props} />:
+      <Redirect to="/" />
     )} />
   );
 };
