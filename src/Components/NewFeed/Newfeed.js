@@ -49,7 +49,7 @@ class Newfeed extends React.Component {
     render() {
         return (
             <div class="newfeed">
-                <textarea rows="5" cols="60" onChange={e => this.post(e)} maxlength='100' />
+                <textarea rows="5" cols="50" onChange={e => this.post(e)} maxlength='100' />
                 <button type="submit" onClick={this.upload}>Ready to Post</button>
             </div>
         )
