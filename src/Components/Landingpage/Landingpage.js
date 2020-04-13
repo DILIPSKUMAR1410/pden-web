@@ -35,6 +35,7 @@ class Page extends React.Component {
         this.setState({ loading: true });
       })
       .finally(()=>{
+        this.setState({ loading: false });
       })  
     }
   }

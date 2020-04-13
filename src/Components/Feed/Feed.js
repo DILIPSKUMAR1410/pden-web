@@ -19,11 +19,12 @@ class Feed extends React.Component{
         const options = { decrypt: false }
         userSession.getFile('Demo.json', options)
           .then((file) => {
+            this.props.load();
             var temp = JSON.parse(file || '[]')
             localStorage.setItem("Demo", JSON.stringify(temp));
           })
           .finally(() => {
-            // this.setState({ loading: false })
+            this.props.load();
             this.setState({ loadtable: !this.state.loadtable });
           })
       }
