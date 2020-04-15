@@ -1,19 +1,28 @@
-.hrow{
+.hrow {
     display: flex;
 }
-.hcol1{
-    width:25vw;
-    height:100%;
+
+.homecontainer {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #8719b3;
 }
-.hcol2{
+
+.hcol1 {
+    width: 25%;
+    height: 100%;
+}
+
+.hcol2 {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    width:50vw;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
+    width: 50%;
+    border-radius: 1rem;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    background-color: #edbfff;
 }
-.hcol3{
-    width:25vw;
-    height:100%;
+
+.hcol3 {
+    height: 100%;
 }

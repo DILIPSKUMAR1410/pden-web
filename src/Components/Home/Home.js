@@ -1,5 +1,6 @@
 import React from 'react'
 import './Home.css'
+import Header from '../Header/Header'
 import Feed from '../Feed/Feed'
 import Newfeed from '../NewFeed/Newfeed'
 class Home extends React.Component {
@@ -12,9 +13,13 @@ constructor(props){
 setload=()=>{
     this.setState({loading:!this.state.loading});
 }
+onclicklogo=()=>{
+    this.props.history.push("/")   
+}
     render() {
         return (
-            <div>
+            <div className="homecontainer">
+                <Header goHome={this.onclicklogo}/>
             <div className="hrow">
                 <div className="hcol1"></div>
                 <div className="hcol2">

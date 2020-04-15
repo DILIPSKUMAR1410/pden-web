@@ -1,33 +1,40 @@
-
-.feed{
+.feed {
     display: flex;
     flex-direction: column;
 }
-.feedcard{
-    width:95%;
-    max-width:95%;
-    margin:2.5%;
+
+.feedcard {
+    width: 95%;
+    max-width: 95%;
+    margin: 2.5%;
     border: 2px solid black;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    padding-top:0.5rem;
+    padding-top: 0.5rem;
+    background-color: white;
+    -webkit-box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.5);
+    box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.5);
 }
-.User{
+
+.User {
     font-size: larger;
-    padding:1rem;
-    color:#03adfc;
+    padding: 1rem;
+    color: #8719b3;
 }
-.Content{
-    padding:0.3rem;
+
+.Content {
+    padding: 0.3rem;
     font-weight: bold;
     margin-left: 2vw;
 }
-.reaction{
-    padding:1rem;
+
+.reaction {
+    padding: 1rem;
     display: flex;
     margin-top: 5vh;
 }
-.reaction span{
+
+.reaction span {
     margin-right: 1rem;
 }

@@ -1,21 +1,24 @@
-.headerland1{
-    height:15vh;
-    width:98vw;
+.headerland1 {
+    height: 15vh;
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
-    color:#3399ff;
+    color: white;
+    border-bottom: 2px solid white;
 }
-.headerland1 img{
-    margin:2vw;
-    height:13vh;
-    width:auto;
-    display: inline-block;
-    cursor: pointer;
-}
-.id{
+
+.id {
     font-size: 3vh;
     margin-top: 6vh;
+    margin-right: 1rem;
     font-weight: bold;
+}
+
+.logoh {
+    font-size: 10vh;
+    margin: 2vw;
+    cursor: pointer;
 }

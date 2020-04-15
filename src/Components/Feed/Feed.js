@@ -27,6 +27,7 @@ class Feed extends React.Component{
             this.props.load();
             this.setState({ loadtable: !this.state.loadtable });
           })
+          console.log(userSession.loadUserData());
       }
       renderTableData=()=> {
         var journaldetails = [];
