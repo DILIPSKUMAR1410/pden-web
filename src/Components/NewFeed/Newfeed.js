@@ -15,9 +15,11 @@ class Newfeed extends React.Component {
             post: '',
         }
     }
+    //creating a tweet
     post = e => {
         this.setState({ post: e.target.value });
     }
+    //uploading the post
     upload = () => {
         if (this.state.post) {
             const options1 = { decrypt: false };
