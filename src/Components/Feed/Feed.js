@@ -11,7 +11,7 @@ const userSession = new UserSession({ appConfig: appConfig })
 class Feed extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { loadtable: false };
+        this.state = { loadfeed: false };
     }
     //Fetching and Storing the tweets in localstorage
     componentDidMount() {
@@ -24,22 +24,22 @@ class Feed extends React.Component {
             })
             .finally(() => {
                 this.props.load();
-                this.setState({ loadtable: !this.state.loadtable });
+                this.setState({ loadfeed: !this.state.loadfeed });
             })
     }
     //Rendering th tweets or feed
-    renderTableData = () => {
-        var journaldetails = [];
+    renderFeedData = () => {
+        var Feed = [];
         if (localStorage.getItem("Demo") && localStorage.getItem("Demo")!='[]') {
-            journaldetails = JSON.parse(localStorage.getItem("Demo"));
-            return journaldetails.map((a, index) => {
+            Feed = JSON.parse(localStorage.getItem("Demo"));
+            return Feed.map((tweet, index) => {
                 var v = '';
-                for (var i = 0; JSON.parse(a).user[i] != '.'; i++)
-                    v = v + JSON.parse(a).user[i];
+                for (var i = 0; JSON.parse(tweet).user[i] != '.'; i++)
+                    v = v + JSON.parse(tweet).user[i];
                 return (
                     <div className="feedcard">
                         <div className="User">{v}</div>
-                        <div className="Content">{JSON.parse(a).post}</div>
+                        <div className="Content">{JSON.parse(tweet).post}</div>
                         <div className="reaction">
                             <span><FontAwesomeIcon icon={faThumbsUp} /></span>
                             <span><FontAwesomeIcon icon={faReply} /> </span>
@@ -55,7 +55,7 @@ class Feed extends React.Component {
     render() {
         return (
             <div className="feed">
-                {this.state.loadtable ? this.renderTableData() : this.renderTableData()}
+                {this.props.loadfeed ? this.renderFeedData() : this.renderFeedData()}
             </div>
         )
     }
