@@ -26,32 +26,31 @@ class Feed extends React.Component {
                 this.props.load();
                 this.setState({ loadtable: !this.state.loadtable });
             })
-        console.log(userSession.loadUserData());
     }
     //Rendering th tweets or feed
     renderTableData = () => {
         var journaldetails = [];
         if (localStorage.getItem("Demo")) {
             journaldetails = JSON.parse(localStorage.getItem("Demo"));
-        return journaldetails.map((a, index) => {
-            var v = '';
-            for (var i = 0; JSON.parse(a).user[i] != '.'; i++)
-                v = v + JSON.parse(a).user[i];
-            return (
-                <div className="feedcard">
-                    <div className="User">{v}</div>
-                    <div className="Content">{JSON.parse(a).post}</div>
-                    <div className="reaction">
-                        <span><FontAwesomeIcon icon={faThumbsUp} /></span>
-                        <span><FontAwesomeIcon icon={faReply} /> </span>
+            return journaldetails.map((a, index) => {
+                var v = '';
+                for (var i = 0; JSON.parse(a).user[i] != '.'; i++)
+                    v = v + JSON.parse(a).user[i];
+                return (
+                    <div className="feedcard">
+                        <div className="User">{v}</div>
+                        <div className="Content">{JSON.parse(a).post}</div>
+                        <div className="reaction">
+                            <span><FontAwesomeIcon icon={faThumbsUp} /></span>
+                            <span><FontAwesomeIcon icon={faReply} /> </span>
+                        </div>
                     </div>
-                </div>
-            )
-        });
-    }
-    else return(
-        <div className="nofeed">No Feeds Yet!!</div>
-    )
+                )
+            });
+        }
+        else return (
+            <div className="nofeed">No Feeds Yet!!</div>
+        )
     }
     render() {
         return (
