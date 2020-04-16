@@ -30,7 +30,7 @@ class Feed extends React.Component {
     //Rendering th tweets or feed
     renderTableData = () => {
         var journaldetails = [];
-        if (localStorage.getItem("Demo")) {
+        if (localStorage.getItem("Demo")!=[]) {
             journaldetails = JSON.parse(localStorage.getItem("Demo"));
             return journaldetails.map((a, index) => {
                 var v = '';
