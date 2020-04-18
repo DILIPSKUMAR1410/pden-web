@@ -1,9 +1,11 @@
 import React from 'react'
-import './Feed.css'
+import './Home.css'
 import Header from './Header/Header'
-import Feedcontent from './Feedcontent/Feedcontent'
-import Newfeed from './NewFeed/Newfeed'
+import Feedcontent from './Feed/Feedcontent/Feedcontent'
+import Newfeed from './Feed/NewFeed/Newfeed'
 import Sidemenu from './Sidemenu/Sidemenu'
+import Mybook from './Mybook/Mybook'
+import Shelf from './Shelf/Shelf'
 class Feed extends React.Component {
     constructor(props) {
         super(props);
@@ -24,14 +26,20 @@ class Feed extends React.Component {
     render() {
         return (
             <div className="homecontainer" onClick={this.reset}>
-                <Header menuon={this.state.menuon} callMenu={this.callMenu}/>
+                <Header {...this.props} menuon={this.state.menuon} callMenu={this.callMenu}/>
                 <div className="hrow">
                     <div className="hcol1">
-                        <Sidemenu />
+                        <Sidemenu {...this.props}/>
                     </div>
                     <div className="hcol2">
+                        {this.props.component==="Feed"?
+                        <div>
                         <Newfeed load={this.setload} />
                         <Feedcontent load={this.setload} />
+                        </div>:
+                        this.props.component==="Mybook"?
+                        <Mybook/>:<Shelf/>
+                        }
                     </div>
                 </div>
                 {this.state.loading ? <div class="loadcontainer"><div class="loader" /></div> : null}

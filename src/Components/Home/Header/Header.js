@@ -20,7 +20,9 @@ class Header extends React.Component {
     render() {
         return (
             <div class="headerland1">
-                <p className="logoh">Feed</p>
+                {this.props.component==="Feed"?<p className="logoh">Feed</p>:
+                this.props.component==="Mybook"?<p className="logoh">My Book</p>:
+                <p className="logoh">Shelf</p>}
                 <div className="id">
                     <p>{userSession.loadUserData().username}</p>
                     <div className="hmenu" onClick={this.props.callMenu}></div>

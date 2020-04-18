@@ -36,9 +36,9 @@ class Feed extends React.Component {
                         <div className="User"><span className={userSession.loadUserData().username===JSON.parse(tweet).user? "yellow":"normal"}>@{JSON.parse(tweet).user}</span>{JSON.parse(tweet).date}</div>
                         <div className="Content">{JSON.parse(tweet).post}</div>
                         <div className="reaction" onContextMenu={e=>e.preventDefault()}>
-                            <span><img src={require('../../../Assets/Icons/comments.png')}/></span>
-                            <span><img src={require('../../../Assets/Icons/spread.png')}/></span>
-                            <span><img src={require('../../../Assets/Icons/bookmark.png')}/></span>
+                            <span><img src={require('../../../../Assets/Icons/comments.png')}/></span>
+                            <span><img src={require('../../../../Assets/Icons/spread.png')}/></span>
+                            <span><img src={require('../../../../Assets/Icons/bookmark.png')}/></span>
                         </div>
                     </div>
                 )
