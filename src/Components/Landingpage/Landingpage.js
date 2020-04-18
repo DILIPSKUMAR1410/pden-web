@@ -21,7 +21,7 @@ class Page extends React.Component {
 
   handleSignOut(e) {
     e.preventDefault();
-    localStorage.removeItem("Demo");
+    localStorage.removeItem("Demofeed");
     userSession.signUserOut(window.location.origin);
   }
 

@@ -1,13 +1,14 @@
 .newfeed {
-    width: 95%;
+    width: 80%;
     margin: 2.5%;
     border: 2px solid black;
     border-radius: 1rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding-top:5%;
-    padding-bottom:5%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top:2.5%;
+    padding-bottom:2.5%;
     -webkit-box-shadow: 6px 6px 14px rgba(0,0,0,0.5);
     box-shadow: 6px 6px 14px rgba(0,0,0,0.5);
     background-color: white;
@@ -19,13 +20,15 @@
     font-size: large;
     margin-bottom: 3vh;
     border:none;
-    border-bottom: 2px solid #8719b3;
-    border-left: 2px solid #8719b3;
+    width:60%;
+    border-bottom: 2px solid #7700b3;
+    border-left: 2px solid #7700b3;
+    margin-left: 3vw;
 }
 .newfeed button{
-    margin-left:70%;
+    margin-right: 3vw;
     width:8vw;
-    background-color:#8719b3;
+    background-color:#7700b3;
     color:white;
     border: 1px solid white;
     border-radius: 0.3rem;

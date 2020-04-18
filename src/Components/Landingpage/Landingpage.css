@@ -1,7 +1,7 @@
 .land {
     width: 100%;
     min-height: 100vh;
-    background-color: #8719b3;
+    background-color: #7700b3;
     color: white;
 }
 
@@ -42,7 +42,7 @@
     border: 2px solid white;
     color: white;
     /* margin-top:5vh; */
-    background-color: #8719b3;
+    background-color: #7700b3;
     cursor: pointer;
 }
 
@@ -79,7 +79,7 @@ footer {
 .loader {
     border: 16px solid #f3f3f3;
     /* Light grey */
-    border-top: 16px solid #8719b3;
+    border-top: 16px solid #7700b3;
     /* Blue */
     border-radius: 50%;
     width: 60px;

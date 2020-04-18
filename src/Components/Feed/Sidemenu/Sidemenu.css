@@ -1,0 +1,15 @@
+.sidemenu{
+    position: fixed;
+    bottom:0;
+    left:0;
+    width:25vw;
+    height:70vh;
+    background-color: rgba(248, 220, 255, 1);
+    padding-top: 10vh;
+}
+.sidemenu p{
+    cursor: pointer;
+    color:#7700b3;
+    font-size: 3.5vh;
+    margin-left: 2vw;
+}

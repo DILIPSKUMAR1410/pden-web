@@ -1,61 +1,40 @@
 import React from 'react'
 import './Feed.css'
-import {
-    UserSession,
-    AppConfig
-} from 'blockstack';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faReply } from "@fortawesome/free-solid-svg-icons";
-const appConfig = new AppConfig()
-const userSession = new UserSession({ appConfig: appConfig })
+import Header from './Header/Header'
+import Feedcontent from './Feedcontent/Feedcontent'
+import Newfeed from './NewFeed/Newfeed'
+import Sidemenu from './Sidemenu/Sidemenu'
 class Feed extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { loadfeed: false };
-    }
-    //Fetching and Storing the tweets in localstorage
-    componentDidMount() {
-        const options = { decrypt: false }
-        userSession.getFile('Demo.json', options)
-            .then((file) => {
-                this.props.load();
-                var temp = JSON.parse(file || '[]')
-                localStorage.setItem("Demo", JSON.stringify(temp));
-            })
-            .finally(() => {
-                this.props.load();
-                this.setState({ loadfeed: !this.state.loadfeed });
-            })
-    }
-    //Rendering th tweets or feed
-    renderFeedData = () => {
-        var Feed = [];
-        if (localStorage.getItem("Demo") && localStorage.getItem("Demo")!='[]') {
-            Feed = JSON.parse(localStorage.getItem("Demo"));
-            return Feed.map((tweet, index) => {
-                var v = '';
-                for (var i = 0; JSON.parse(tweet).user[i] != '.'; i++)
-                    v = v + JSON.parse(tweet).user[i];
-                return (
-                    <div className="feedcard">
-                        <div className="User">{v}</div>
-                        <div className="Content">{JSON.parse(tweet).post}</div>
-                        <div className="reaction">
-                            <span><FontAwesomeIcon icon={faThumbsUp} /></span>
-                            <span><FontAwesomeIcon icon={faReply} /> </span>
-                        </div>
-                    </div>
-                )
-            });
+        this.state = {
+            loading: false,
+            menuon:false
         }
-        else return (
-            <div className="nofeed">No Feeds Yet!!</div>
-        )
+    }
+    callMenu=()=>{
+        this.setState({menuon:!this.state.menuon});
+    }
+    setload = () => {
+        this.setState({ loading: !this.state.loading });
+    }
+    reset=()=>{
+        if(this.state.menuon)this.setState({menuon:false});
     }
     render() {
         return (
-            <div className="feed">
-                {this.props.loadfeed ? this.renderFeedData() : this.renderFeedData()}
+            <div className="homecontainer" onClick={this.reset}>
+                <Header menuon={this.state.menuon} callMenu={this.callMenu}/>
+                <div className="hrow">
+                    <div className="hcol1">
+                        <Sidemenu />
+                    </div>
+                    <div className="hcol2">
+                        <Newfeed load={this.setload} />
+                        <Feedcontent load={this.setload} />
+                    </div>
+                </div>
+                {this.state.loading ? <div class="loadcontainer"><div class="loader" /></div> : null}
             </div>
         )
     }

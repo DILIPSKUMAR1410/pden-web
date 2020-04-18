@@ -1,0 +1,60 @@
+.feed {
+    display: flex;
+    flex-direction: column;
+}
+
+.feedcard {
+    width: 80%;
+    margin: 2vh;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    -webkit-box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.5);
+    box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.5);
+}
+
+.nofeed {
+    align-self: center;
+    border: 1px solid black;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin: 5vh;
+    font-size: larger;
+    padding: 0.5rem;
+}
+
+.User {
+    font-size: larger;
+    padding: 0.5rem;
+    color: #7700b3;
+}
+
+.yellow {
+    color: #ffd000;
+    margin-right: 1rem;
+}
+
+.normal {
+    margin-right: 1rem;
+    color: #7700b3;
+}
+
+.Content {
+    padding: 0.2rem;
+    font-weight: bold;
+    margin-left: 2vw;
+}
+
+.reaction {
+    padding: 0.5rem;
+    display: flex;
+    margin-top: 2vh;
+}
+
+.reaction img {
+    margin-right: 0.5rem;
+    height: 4vh;
+    margin-left: 1rem;
+    cursor: pointer;
+}
