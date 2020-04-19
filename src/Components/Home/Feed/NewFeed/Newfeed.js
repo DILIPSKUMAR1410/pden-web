@@ -47,7 +47,7 @@ class Newfeed extends React.Component {
                     var temp2 = [];
                     temp2.push(JSON.stringify(tempobj));
                     console.log(temp2);
-                    temp.map((x, index) => {
+                    temp.map((x, index)=>{
                         temp2.push(x);
                     });
                     //we have fetched the data, now we have to push back

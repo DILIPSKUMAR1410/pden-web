@@ -7,10 +7,6 @@ import {
 const appConfig = new AppConfig()
 const userSession = new UserSession({ appConfig: appConfig })
 class Header extends React.Component {
-    constructor(props){
-        super(props);
-    }
-    
     handleSignOut=e=>{
         e.preventDefault();
         localStorage.removeItem("Demofeed");

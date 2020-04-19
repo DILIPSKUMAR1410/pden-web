@@ -1,12 +1,6 @@
 import React from 'react'
 import './Mybook.css'
-import {
-    UserSession,
-    AppConfig
-} from 'blockstack';
-const appConfig = new AppConfig()
-const userSession = new UserSession({ appConfig: appConfig })
-class Feed extends React.Component {
+class Mybook extends React.Component {
     constructor(props) {
         super(props);
         this.state = { loadfeed: false };
@@ -14,7 +8,7 @@ class Feed extends React.Component {
     //Rendering th tweets or feed
     renderFeedData = () => {
         var Feed = [];
-        if (localStorage.getItem("Demofeed") && localStorage.getItem("Demofeed")!='[]') {
+        if (localStorage.getItem("Demofeed") && localStorage.getItem("Demofeed")!=='[]') {
             Feed = JSON.parse(localStorage.getItem("Demofeed"));
             return Feed.map((tweet, index) => {
                 return (
@@ -22,7 +16,7 @@ class Feed extends React.Component {
                         <div className="User"><span>@{JSON.parse(tweet).user}</span>{JSON.parse(tweet).date}</div>
                         <div className="Content">{JSON.parse(tweet).post}</div>
                         <div className="reaction" onContextMenu={e=>e.preventDefault()}>
-                            <span><img src={require('../../../Assets/Icons/comments.png')}/></span>
+                            <span><img src={require('../../../Assets/Icons/comments.png')} alt="comment"/></span>
                         </div>
                     </div>
                 )
@@ -40,4 +34,4 @@ class Feed extends React.Component {
         )
     }
 }
-export default Feed;
+export default Mybook;

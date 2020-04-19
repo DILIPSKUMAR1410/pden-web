@@ -28,7 +28,7 @@ class Feed extends React.Component {
     //Rendering th tweets or feed
     renderFeedData = () => {
         var Feed = [];
-        if (localStorage.getItem("Demofeed") && localStorage.getItem("Demofeed")!='[]') {
+        if (localStorage.getItem("Demofeed") && localStorage.getItem("Demofeed")!=='[]') {
             Feed = JSON.parse(localStorage.getItem("Demofeed"));
             return Feed.map((tweet, index) => {
                 return (
@@ -36,9 +36,9 @@ class Feed extends React.Component {
                         <div className="User"><span className={userSession.loadUserData().username===JSON.parse(tweet).user? "yellow":"normal"}>@{JSON.parse(tweet).user}</span>{JSON.parse(tweet).date}</div>
                         <div className="Content">{JSON.parse(tweet).post}</div>
                         <div className="reaction" onContextMenu={e=>e.preventDefault()}>
-                            <span><img src={require('../../../../Assets/Icons/comments.png')}/></span>
-                            <span><img src={require('../../../../Assets/Icons/spread.png')}/></span>
-                            <span><img src={require('../../../../Assets/Icons/bookmark.png')}/></span>
+                            <span><img src={require('../../../../Assets/Icons/comments.png')} alt="comment"/></span>
+                            <span><img src={require('../../../../Assets/Icons/spread.png')} alt="spread"/></span>
+                            <span><img src={require('../../../../Assets/Icons/bookmark.png')} alt="bookmark"/></span>
                         </div>
                     </div>
                 )
