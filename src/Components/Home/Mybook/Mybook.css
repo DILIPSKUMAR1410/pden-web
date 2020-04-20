@@ -9,9 +9,7 @@
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    background-color: white;
-    -webkit-box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.5);
-    box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.5);
+    background-color: #d9d2e9ff;
 }
 
 .nofeed {

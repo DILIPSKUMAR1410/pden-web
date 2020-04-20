@@ -6,6 +6,8 @@ import Newfeed from './Feed/NewFeed/Newfeed'
 import Sidemenu from './Sidemenu/Sidemenu'
 import Mybook from './Mybook/Mybook'
 import Shelf from './Shelf/Shelf'
+import Invite from './Invite/Invite'
+import Help from './Help/Help'
 class Feed extends React.Component {
     constructor(props) {
         super(props);
@@ -38,7 +40,12 @@ class Feed extends React.Component {
                         <Feedcontent load={this.setload} />
                         </div>:
                         this.props.component==="Mybook"?
-                        <Mybook/>:<Shelf/>
+                        <Mybook/>:
+                        this.props.component==="Shelf"?
+                        <Shelf/>:
+                        this.props.component==="Invite"?
+                        <Invite/>:
+                        <Help/>
                         }
                     </div>
                 </div>

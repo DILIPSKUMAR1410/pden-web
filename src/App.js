@@ -12,6 +12,8 @@ class App extends React.Component{
       <PrivateRoute  component="Feed" path={`${process.env.PUBLIC_URL}/feed`} exact />
       <PrivateRoute  component="Mybook" path={`${process.env.PUBLIC_URL}/mybook`} exact />
       <PrivateRoute  component="Shelf" path={`${process.env.PUBLIC_URL}/shelf`} exact />
+      <PrivateRoute  component="Invite" path={`${process.env.PUBLIC_URL}/invite`} exact />
+      <PrivateRoute  component="Help" path={`${process.env.PUBLIC_URL}/help`} exact />
     </Switch>
   </BrowserRouter>
     );
