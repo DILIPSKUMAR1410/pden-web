@@ -33,6 +33,7 @@ class Feed extends React.Component {
     }
     toggleSearch = searchvalue => {
         this.setState({ search: true });
+        this.setState({selectperson:false});
         this.setState({ searchvalue: searchvalue });
     }
     onSelect = name => {

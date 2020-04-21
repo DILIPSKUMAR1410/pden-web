@@ -25,7 +25,7 @@ class Search extends React.Component {
             if (ID[i].search(this.props.searchvalue) === 0)
                 search.push(ID[i]);
         }
-        if (search!=[]) {
+        if (search.length>0) {
             return search.map((person, index) => {
                 return (
                     <div className="person" id={person} onClick={this.onSelected}>
