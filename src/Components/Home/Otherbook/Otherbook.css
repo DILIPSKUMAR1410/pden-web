@@ -1,0 +1,53 @@
+.feed {
+    display: flex;
+    flex-direction: column;
+    margin-top:5vh;
+}
+
+.feedcard {
+    width: 80%;
+    margin: 2vh;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #d9d2e9ff;
+}
+
+.nofeed {
+    align-self: center;
+    border: 1px solid black;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin: 5vh;
+    font-size: larger;
+    padding: 0.5rem;
+}
+
+.User {
+    font-size: larger;
+    padding: 0.5rem;
+    color: #7700b3;
+}
+
+.User span {
+    margin-right: 1rem;
+}
+
+.Content {
+    padding: 0.2rem;
+    font-weight: bold;
+    margin-left: 2vw;
+}
+
+.reaction {
+    padding: 0.5rem;
+    display: flex;
+    margin-top: 2vh;
+}
+
+.reaction img {
+    margin-right: 0.5rem;
+    height: 4vh;
+    margin-left: 1rem;
+    cursor: pointer;
+}

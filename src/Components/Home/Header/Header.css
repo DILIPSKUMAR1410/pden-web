@@ -12,6 +12,46 @@
     background-color: #7700b3;
 }
 
+#search {
+    background-color: #d9d2e9ff;
+    font-size: 3vh;
+    width: 18rem;
+    padding: 2vh 1vw 2vh 1vw;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.suggestion {
+    position: absolute;
+    background-color: #d9d2e9ff;
+    color: black;
+    width: 17rem;
+    padding: 0.5rem;
+    margin-left: 1rem;
+    border-radius: 0.5rem;
+    -webkit-box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.5);
+    box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.5);
+}
+
+.suggestion div {
+    width: 16rem;
+    /* border: 1px solid grey; */
+    border-radius: 0.2rem;
+    padding: 0.2rem;
+    margin-top: 0.25rem;
+    cursor: pointer;
+    margin-bottom: 0.25rem;
+}
+
+.suggestion div:hover {
+    -webkit-box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.3);
+    box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.suggestion span {
+    cursor: pointer;
+}
+
 .id {
     font-size: 3vh;
     margin-right: 1rem;
@@ -26,6 +66,15 @@
     background-color: white;
     border-radius: 50%;
     margin-left: 0.5rem;
+    cursor: pointer;
+}
+
+.searchimg {
+    height: 6vh;
+    width: 6vh;
+    background-color: #ffab40;
+    border-radius: 50%;
+    margin-left: 4rem;
     cursor: pointer;
 }
 
@@ -54,4 +103,34 @@
     font-size: 5vh;
     margin: 2vw;
     color: #ffab40;
+}
+.otherid {
+    font-size: 3vh;
+    margin-right: 1rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+}
+.otherid button{
+    color: #ffab40;
+    background-color: white;
+    border:none;
+    margin-top: 0.5rem;
+    border-radius: 0.2rem;
+    padding: 0.5rem;
+    font-size: 3vh;
+    cursor: pointer;
+    margin-left: 3rem;
+}
+#borrow{
+    color: #ffab40;
+    font-size: 2vh;
+    margin-top: 0.5rem;
+}
+.hidden{
+    display: none;
+}
+.borrow{
+    display: block;
 }
