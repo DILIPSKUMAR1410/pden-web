@@ -1,11 +1,15 @@
 import React from 'react'
 import './Landingpage.css'
-import {
-  UserSession,
-  AppConfig,
-} from 'blockstack';
-const appConfig = new AppConfig()
-const userSession = new UserSession({ appConfig: appConfig })
+import { UserSession, AppConfig } from 'blockstack';
+import { User, configure } from 'radiks';
+const userSession = new UserSession({
+  appConfig: new AppConfig(['store_write', 'publish_data'])
+})
+
+configure({
+  apiServer: 'http://localhost:1260',
+  userSession
+});
 class Page extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +21,7 @@ class Page extends React.Component {
   handleSignin = (e) => {
     e.preventDefault();
     userSession.redirectToSignIn();
+
   }
 
   handleSignOut(e) {
@@ -34,6 +39,7 @@ class Page extends React.Component {
       })
         .finally(() => {
           this.setState({ loading: false });
+          User.createWithCurrentUser();
         })
     }
   }
@@ -61,3 +67,5 @@ class Page extends React.Component {
   }
 }
 export default Page;
+
+

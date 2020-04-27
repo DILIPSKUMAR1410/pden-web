@@ -1,11 +1,8 @@
 import React from 'react'
 import './Feedcontent.css'
-import {
-    UserSession,
-    AppConfig
-} from 'blockstack';
-const appConfig = new AppConfig()
-const userSession = new UserSession({ appConfig: appConfig })
+import { User, getConfig } from 'radiks';
+import Tweet from '../../../Landingpage/New'
+const { userSession } = getConfig();
 class Feed extends React.Component {
     constructor(props) {
         super(props);
@@ -13,32 +10,31 @@ class Feed extends React.Component {
     }
     //Fetching and Storing the tweets in localstorage
     componentDidMount() {
-        const options = { decrypt: false }
         this.props.load();
-        userSession.getFile('Demofeed.json', options)
-            .then((file) => {
-                var temp = JSON.parse(file || '[]')
-                localStorage.setItem("Demofeed", JSON.stringify(temp));
-            })
+        Tweet.fetchOwnList().then(tweets => {
+            console.log(tweets);
+            localStorage.setItem("Demofeed", JSON.stringify(tweets));
+        })
             .finally(() => {
                 this.props.load();
                 this.setState({ loadfeed: !this.state.loadfeed });
-            })
+            });
     }
     //Rendering th tweets or feed
     renderFeedData = () => {
         var Feed = [];
-        if (localStorage.getItem("Demofeed") && localStorage.getItem("Demofeed")!=='[]') {
+        if (localStorage.getItem("Demofeed") && localStorage.getItem("Demofeed") !== '[]') {
             Feed = JSON.parse(localStorage.getItem("Demofeed"));
+            console.log(Feed);
             return Feed.map((tweet, index) => {
                 return (
                     <div className="feedcard">
-                        <div className="User"><span className={userSession.loadUserData().username===JSON.parse(tweet).user? "yellow":"normal"}>@{JSON.parse(tweet).user}</span>{JSON.parse(tweet).date}</div>
-                        <div className="Content">{JSON.parse(tweet).post}</div>
-                        <div className="reaction" onContextMenu={e=>e.preventDefault()}>
-                            <span><img src={require('../../../../Assets/Icons/comments.png')} alt="comment"/></span>
-                            <span><img src={require('../../../../Assets/Icons/spread.png')} alt="spread"/></span>
-                            <span><img src={require('../../../../Assets/Icons/bookmark.png')} alt="bookmark"/></span>
+                        <div className="User"><span className={userSession.loadUserData().username === tweet.attrs.user ? "yellow" : "normal"}>@{tweet.attrs.user}</span>{tweet.attrs.date}</div>
+                        <div className="Content">{tweet.attrs.tweet}</div>
+                        <div className="reaction" onContextMenu={e => e.preventDefault()}>
+                            <span><img src={require('../../../../Assets/Icons/comments.png')} alt="comment" /></span>
+                            <span><img src={require('../../../../Assets/Icons/spread.png')} alt="spread" /></span>
+                            <span><img src={require('../../../../Assets/Icons/bookmark.png')} alt="bookmark" /></span>
                         </div>
                     </div>
                 )
@@ -47,6 +43,7 @@ class Feed extends React.Component {
         else return (
             <div className="nofeed">No Feeds Yet!!</div>
         )
+
     }
     render() {
         return (
@@ -57,3 +54,4 @@ class Feed extends React.Component {
     }
 }
 export default Feed;
+
