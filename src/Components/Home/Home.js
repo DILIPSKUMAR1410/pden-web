@@ -59,7 +59,7 @@ class Feed extends React.Component {
                                     <Newfeed load={this.setload} />
                                     <Feedcontent load={this.setload} />
                                 </div> :
-                                this.props.component === "Mybook" ? <Mybook /> :
+                                this.props.component === "Mybook" ? <Mybook load={this.setload}/> :
                                     this.props.component === "Shelf" ? <Shelf /> :
                                         this.props.component === "Invite" ? <Invite /> :
                                             <Help />

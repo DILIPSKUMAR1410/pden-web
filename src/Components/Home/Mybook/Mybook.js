@@ -1,27 +1,28 @@
 import React from 'react'
 import './Mybook.css'
-import Todo from '../../Landingpage/New'
+import Tweet from '../../Landingpage/New'
 class Mybook extends React.Component {
     constructor(props) {
         super(props);
         this.state = { loadfeed: false };
     }
+    componentDidMount() {
+        this.props.load();
+        Tweet.fetchOwnList().then(tweets => {
+            console.log(tweets);
+            tweets=tweets.reverse();
+            localStorage.setItem("MyDemo", JSON.stringify(tweets));
+        })
+            .finally(() => {
+                this.props.load();
+                this.setState({ loadfeed: !this.state.loadfeed });
+            });
+    }
     //Rendering th tweets or feed
     renderFeedData = () => {
-        Todo.fetchOwnList().then(todo=>{console.log(todo);});
-
-        // Todo.findById("58ef730f7462-42d2-91df-148dd5fbf4d9").then(todo=>{
-        //     console.log(todo.attrs); 
-        //     const newAttributes = {
-        //         title: "Aswin",
-        //         completed: false
-        //       }
-        //       todo.update(newAttributes);
-        //         todo.save();
-        // })
         var Feed = [];
-        if (localStorage.getItem("Demofeed") && localStorage.getItem("Demofeed")!=='[]') {
-            Feed = JSON.parse(localStorage.getItem("Demofeed"));
+        if (localStorage.getItem("MyDemo") && localStorage.getItem("MyDemo")!=='[]') {
+            Feed = JSON.parse(localStorage.getItem("MyDemo"));
             return Feed.map((tweet, index) => {
                 return (
                     <div className="feedcard">

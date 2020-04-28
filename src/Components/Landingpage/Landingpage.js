@@ -38,8 +38,13 @@ class Page extends React.Component {
         this.setState({ loading: true });
       })
         .finally(() => {
-          this.setState({ loading: false });
-          User.createWithCurrentUser();
+          if (userSession.isUserSignedIn())
+            User.createWithCurrentUser().finally(res => {
+              this.props.history.push("/feed");
+              this.setState({ loading: false });
+            });
+          else
+            this.setState({ loading: false });
         })
     }
   }

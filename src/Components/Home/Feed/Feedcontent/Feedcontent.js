@@ -11,8 +11,9 @@ class Feed extends React.Component {
     //Fetching and Storing the tweets in localstorage
     componentDidMount() {
         this.props.load();
-        Tweet.fetchOwnList().then(tweets => {
+        Tweet.fetchList().then(tweets => {
             console.log(tweets);
+            tweets=tweets.reverse();
             localStorage.setItem("Demofeed", JSON.stringify(tweets));
         })
             .finally(() => {
