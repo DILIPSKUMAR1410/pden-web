@@ -4,19 +4,7 @@ import { UserSession, AppConfig } from "blockstack";
 import Searchbar from "../Searchbar/Searchbar";
 const appConfig = new AppConfig();
 const userSession = new UserSession({ appConfig: appConfig });
-var ID = [
-  "suresh.id.blockstack",
-  "aswin.id.blockstack",
-  "somebody.id.blockstack",
-  "somebodyelse.id.blockstack",
-  "Dilip.id.blockstack",
-  "Vishnu.id.blockstack",
-  "Senpai.id.blockstack",
-  "youknowwho.id.blockstack",
-  "trump.id.blockstack",
-  "harry.id.blockstack",
-  "putin.id.blockstack",
-];
+
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -35,31 +23,31 @@ class Header extends React.Component {
     window.location.reload(true);
   };
 
-  suggest = (e) => {
-    if (!this.state.suggestion) this.setState({ suggestion: true });
-    else if (e.target.value === "") this.setState({ suggestion: false });
-    var search = [];
-    var val = e.target.value;
-    val = val.replace(/[-[\]/{}()*+?\\^$|]/g, "");
-    for (var i = 0; i < ID.length; i++) {
-      if (ID[i].search(val) === 0) search.push(ID[i]);
-    }
-    this.setState({ suggestionlist: search, searchvalue: e.target.value });
-  };
+  // suggest = (e) => {
+  //   if (!this.state.suggestion) this.setState({ suggestion: true });
+  //   else if (e.target.value === "") this.setState({ suggestion: false });
+  //   var search = [];
+  //   var val = e.target.value;
+  //   val = val.replace(/[-[\]/{}()*+?\\^$|]/g, "");
+  //   for (var i = 0; i < ID.length; i++) {
+  //     if (ID[i].search(val) === 0) search.push(ID[i]);
+  //   }
+  //   this.setState({ suggestionlist: search, searchvalue: e.target.value });
+  // };
 
-  onSearch = (e) => {
-    if (e.keyCode === 13) {
-      if (this.state.searchvalue) {
-        var val = this.state.searchvalue;
-        val = val.replace(/[-[\]/{}()*+?\\^$|]/g, "");
-        console.log(val);
+  // onSearch = (e) => {
+  //   if (e.keyCode === 13) {
+  //     if (this.state.searchvalue) {
+  //       var val = this.state.searchvalue;
+  //       val = val.replace(/[-[\]/{}()*+?\\^$|]/g, "");
+  //       console.log(val);
 
-        window.location.href = "#search";
-        this.props.toggleSearch(val);
-        this.setState({ suggestion: false });
-      }
-    }
-  };
+  //       window.location.href = "#search";
+  //       this.props.toggleSearch(val);
+  //       this.setState({ suggestion: false });
+  //     }
+  //   }
+  // };
 
   onSelected = (e) => {
     this.setState({ suggestion: false });
@@ -67,15 +55,15 @@ class Header extends React.Component {
     this.props.onSelect(e.target.id);
   };
 
-  renderSuggestions = () => {
-    return this.state.suggestionlist.map((person) => {
-      return (
-        <div id={person} onClick={this.onSelected}>
-          {person}
-        </div>
-      );
-    });
-  };
+  // renderSuggestions = () => {
+  //   return this.state.suggestionlist.map((person) => {
+  //     return (
+  //       <div id={person} onClick={this.onSelected}>
+  //         {person}
+  //       </div>
+  //     );
+  //   });
+  // };
 
   borrow = () => {
     this.setState({ borrow: true });

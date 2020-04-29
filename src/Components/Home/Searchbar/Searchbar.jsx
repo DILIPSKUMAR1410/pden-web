@@ -36,6 +36,7 @@ class Searchbar extends Component {
       <input
         className="search"
         name="search"
+        placeholder="Search your friends here"
         onChange={this.onChange}
         onKeyPress={this.onSearch}
       />
