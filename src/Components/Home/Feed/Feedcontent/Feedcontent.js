@@ -38,12 +38,12 @@ class Feed extends React.Component {
             <div className="User">
               <span
                 className={
-                  userSession.loadUserData().username === tweet.attrs.user
+                  userSession.loadUserData().username === tweet.attrs.user.attrs.username
                     ? "yellow"
                     : "normal"
                 }
               >
-                @{tweet.attrs.user}
+                @{tweet.attrs.user.attrs.username}
               </span>
               {tweet.attrs.date}
             </div>

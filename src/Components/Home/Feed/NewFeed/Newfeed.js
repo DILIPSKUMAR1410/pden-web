@@ -22,8 +22,6 @@ class Newfeed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: userSession.loadUserData().username,
-      date: "",
       post: "",
     };
   }
@@ -35,16 +33,16 @@ class Newfeed extends React.Component {
   upload = () => {
     if (this.state.post) {
       this.props.load();
+      const user=JSON.parse(localStorage.getItem("Mydetails"));
       //Fetching date
       const dateobj = new Date();
       var date = monthNames[dateobj.getMonth()] + " " + dateobj.getDate();
       const tweet = new Tweet({
-        user: this.state.user,
+        user: user[0],
         tweet: this.state.post,
         date: date,
       });
-      console.log(tweet);
-      tweet.save().finally((res) => {
+      tweet.save().finally(() => {
         this.props.load();
         window.location.reload(true);
       });

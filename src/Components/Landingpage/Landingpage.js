@@ -2,6 +2,7 @@ import React from "react";
 import "./Landingpage.css";
 import { UserSession, AppConfig } from "blockstack";
 import { User, configure } from "radiks";
+import { Person } from '../../Models'
 const userSession = new UserSession({
   appConfig: new AppConfig(["store_write", "publish_data"]),
 });
@@ -34,18 +35,40 @@ class Page extends React.Component {
       userSession
         .handlePendingSignIn()
         .then((userData) => {
+          this.setState({ loading: true });
           this.props.history.push("/");
           window.history.replaceState({}, document.title, "/");
-          this.setState({ loading: true });
         })
         .finally(() => {
           if (userSession.isUserSignedIn())
-            User.createWithCurrentUser().finally((res) => {
-              this.props.history.push("/feed");
-              // Get user details here and store in localStorage
-              this.setState({ loading: false });
+            User.createWithCurrentUser().finally(() => {
+              Person.fetchOwnList().then((user) => {
+                if (user.length === 0) {
+                  const me = new Person({
+                    username: userSession.loadUserData().username,
+                    followers: [],
+                    following: []
+                  });
+                  me.save().finally(() => {
+                    localStorage.setItem("Mydetails", JSON.stringify(me));
+                  });
+                }
+                else {
+                  localStorage.setItem("Mydetails", JSON.stringify(user));
+                }
+              })
+                .finally(() => {
+                  Person.fetchList().then((users) => {
+                    localStorage.setItem("Users", JSON.stringify(users));
+                  })
+                    .finally(() => {
+                      this.props.history.push("/feed");
+                      this.setState({ loading: false });
+                    });
+                });
             });
-          else this.setState({ loading: false });
+          else
+            this.setState({ loading: false });
         });
     }
   }
@@ -60,11 +83,11 @@ class Page extends React.Component {
                 Login using Blockstack
               </button>
             ) : (
-              <div class="nav">
-                <a href="/feed">Home</a>
-                <button onClick={this.handleSignOut}>Logout</button>
-              </div>
-            )}
+                <div class="nav">
+                  <a href="/feed">Home</a>
+                  <button onClick={this.handleSignOut}>Logout</button>
+                </div>
+              )}
           </div>
           <div class="logo">
             <p>Pden</p>
