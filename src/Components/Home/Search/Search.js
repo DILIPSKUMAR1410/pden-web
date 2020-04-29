@@ -46,35 +46,21 @@ class Search extends React.Component {
     super(props);
     this.state = { loadpeople: false };
   }
-  //Rendering the tweets or feed
-  renderPeopleData = () => {
-    var search = [];
-    for (var i = 0; i < ID.length; i++) {
-      if (ID[i].search(this.props.searchvalue) === 0) search.push(ID[i]);
-    }
-    if (search.length > 0) {
-      return search.map((person, index) => {
-        return (
-          <div className="person" id={person} onClick={this.onSelected}>
-            {person}
-          </div>
-        );
-      });
-    } else return <div className="noperson">No Person Found!!</div>;
+
+  getUsers = (target) => {
+    // const currentUser = JSON.parse(localStorage.getItem('Mydetails'));
+    // const following =
+
+    const userList = JSON.parse(localStorage.getItem("Users"));
+    return userList
+      .filter(
+        (username) => username.toLowerCase().indexOf(target.toLowerCase()) != -1
+      )
+      .map((i) => <div className="search-result">{i}</div>);
   };
-  onSelected = (e) => {
-    this.setState({ suggestion: false });
-    document.getElementById("search").value = "";
-    this.props.onSelect(e.target.id);
-  };
+
   render() {
-    return (
-      <div className="shelf">
-        {this.props.loadpeople
-          ? this.renderPeopleData()
-          : this.renderPeopleData()}
-      </div>
-    );
+    return <div className="shelf">{this.getUsers(this.props.searchvalue)}</div>;
   }
 }
 export default Search;

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import { UserSession, AppConfig } from "blockstack";
-import Searchbar from "../Search/Searchbar";
+import Searchbar from "../Searchbar/Searchbar";
 const appConfig = new AppConfig();
 const userSession = new UserSession({ appConfig: appConfig });
 var ID = [
