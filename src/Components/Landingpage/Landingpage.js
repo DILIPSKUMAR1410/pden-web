@@ -1,28 +1,27 @@
-import React from 'react'
-import './Landingpage.css'
-import { UserSession, AppConfig } from 'blockstack';
-import { User, configure } from 'radiks';
+import React from "react";
+import "./Landingpage.css";
+import { UserSession, AppConfig } from "blockstack";
+import { User, configure } from "radiks";
 const userSession = new UserSession({
-  appConfig: new AppConfig(['store_write', 'publish_data'])
-})
+  appConfig: new AppConfig(["store_write", "publish_data"]),
+});
 
 configure({
-  apiServer: 'http://localhost:1260',
-  userSession
+  apiServer: "http://localhost:1260",
+  userSession,
 });
 class Page extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       loading: false,
-    }
+    };
   }
 
   handleSignin = (e) => {
     e.preventDefault();
     userSession.redirectToSignIn();
-
-  }
+  };
 
   handleSignOut(e) {
     e.preventDefault();
@@ -32,20 +31,22 @@ class Page extends React.Component {
 
   componentDidMount() {
     if (userSession.isSignInPending()) {
-      userSession.handlePendingSignIn().then((userData) => {
-        this.props.history.push("/");
-        window.history.replaceState({}, document.title, "/");
-        this.setState({ loading: true });
-      })
+      userSession
+        .handlePendingSignIn()
+        .then((userData) => {
+          this.props.history.push("/");
+          window.history.replaceState({}, document.title, "/");
+          this.setState({ loading: true });
+        })
         .finally(() => {
           if (userSession.isUserSignedIn())
-            User.createWithCurrentUser().finally(res => {
+            User.createWithCurrentUser().finally((res) => {
               this.props.history.push("/feed");
+              // Get user details here and store in localStorage
               this.setState({ loading: false });
             });
-          else
-            this.setState({ loading: false });
-        })
+          else this.setState({ loading: false });
+        });
     }
   }
 
@@ -54,23 +55,31 @@ class Page extends React.Component {
       <div>
         <div class="land">
           <div class="headerland">
-            {!userSession.isUserSignedIn() ?
-              <button onClick={this.handleSignin}>Login using Blockstack</button> :
+            {!userSession.isUserSignedIn() ? (
+              <button onClick={this.handleSignin}>
+                Login using Blockstack
+              </button>
+            ) : (
               <div class="nav">
                 <a href="/feed">Home</a>
                 <button onClick={this.handleSignOut}>Logout</button>
-              </div>}
+              </div>
+            )}
           </div>
           <div class="logo">
             <p>Pden</p>
           </div>
-          <footer><p>Copyright@pden2019</p></footer>
+          <footer>
+            <p>Copyright@pden2019</p>
+          </footer>
         </div>
-        {this.state.loading ? <div class="loadcontainer"><div class="loader" /></div> : null}
+        {this.state.loading ? (
+          <div class="loadcontainer">
+            <div class="loader" />
+          </div>
+        ) : null}
       </div>
     );
   }
 }
 export default Page;
-
-
