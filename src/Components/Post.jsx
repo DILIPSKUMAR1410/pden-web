@@ -10,7 +10,9 @@ class Post extends Component {
       <div className="post-container">
         <h3 className="post-text">{this.props.data.text}</h3>
         <span className="post-author">{this.props.data.author}</span>
-        <span className="post-date">{this.props.data.date.toDateString()}</span>
+        <span className="post-date">
+          {new Date(this.props.data.date).toDateString()}
+        </span>
         <button
           className="post-btn post-btn-discuss"
           onClick={this.props.showDiscuss}

@@ -1,0 +1,10 @@
+.search-results-container {
+  width: 40vw;
+  height: 90vh;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.search-title {
+  margin-bottom: 1rem;
+}

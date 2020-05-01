@@ -11,6 +11,11 @@ class Home extends Component {
     showDiscuss: false,
   };
 
+  onSearch = (val) => {
+    console.log(val);
+    window.location.href = `/search?q=${val}`;
+  };
+
   showDiscuss = (post) => {
     this.setState({
       showDiscuss: !this.state.showDiscuss,
@@ -20,7 +25,7 @@ class Home extends Component {
   render() {
     return (
       <div className="home-container">
-        <Sidebar currentPage="feed" />
+        <Sidebar currentPage="feed" onSearch={this.onSearch} />
         <Feed showDiscuss={this.showDiscuss} />
         <Discussion show={this.state.showDiscuss} />
       </div>

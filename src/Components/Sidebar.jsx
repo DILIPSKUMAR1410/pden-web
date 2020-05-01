@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import profilePlaceholder from "../Assets/Images/profile-placeholder.jpg";
+import Searchbar from "./Home/Searchbar/Searchbar";
 import "./Sidebar.css";
 
 // Props:
@@ -37,6 +38,7 @@ class Sidebar extends Component {
         <ul className="sidebar-menu">
           {this.getSidebarButtons(this.props.currentPage)}
         </ul>
+        <Searchbar onSearch={this.props.onSearch} />
       </div>
     );
   }

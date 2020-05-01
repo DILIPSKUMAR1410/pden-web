@@ -12,15 +12,9 @@ class Searchbar extends Component {
 
   onSearch = (e) => {
     if (e.charCode === 13) {
-      console.log(this.state.input);
-
       if (this.state.input) {
         var val = this.state.input.replace(/[-[\]/{}()*+?\\^$|]/g, "");
-        console.log(val);
-
-        window.location.href = "#search";
-        this.props.toggleSearch(val);
-        this.setState({ suggestion: false });
+        this.props.onSearch(val);
       }
     }
   };
@@ -36,7 +30,7 @@ class Searchbar extends Component {
       <input
         className="search"
         name="search"
-        placeholder="Search your friends here"
+        placeholder="Search"
         onChange={this.onChange}
         onKeyPress={this.onSearch}
       />
