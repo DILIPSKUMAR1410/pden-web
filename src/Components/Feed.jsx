@@ -15,26 +15,16 @@ class Feed extends Component {
     }
   }
   async componentDidMount() {
-    const thoughts = await Thought.fetchList({ sort: "-order" }); // Check
+    const thoughts = await Thought.fetchList();
     localStorage.setItem("thoughts", JSON.stringify(thoughts));
     this.setState({loadfeed:true});
   }
 
   getThoughts = () => {
-    // const data = JSON.parse(localStorage.getItem("thoughts"));
-    // if (!data) return;
-    // return (
-    //   <React.Fragment>
-    //     {data.forEach((i) => (
-    //       <Post data={i} />
-    //     ))}
-    //   </React.Fragment>
-    // );
     var thoughts = JSON.parse(localStorage.getItem("thoughts"));
     if(!thoughts) thoughts=[];
-    return thoughts.map((thought) => {
-      console.log(thought);
-      return (<Post data={thought.attrs} showDiscuss={this.props.showDiscuss} />);
+    return thoughts.reverse().map((thought) => {
+      return (<Post data={thought} showDiscuss={this.props.showDiscuss} />);
     });
   }
   render() {

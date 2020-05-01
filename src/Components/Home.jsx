@@ -9,11 +9,13 @@ import "./Home.css";
 class Home extends Component {
   state = {
     showDiscuss: false,
+    postid: ''
   };
 
   showDiscuss = (post) => {
     this.setState({
       showDiscuss: !this.state.showDiscuss,
+      postid: post
     });
   };
 
@@ -22,7 +24,7 @@ class Home extends Component {
       <div className="home-container">
         <Sidebar currentPage="feed" />
         <Feed showDiscuss={this.showDiscuss} />
-        <Discussion show={this.state.showDiscuss} />
+        {this.state.showDiscuss ? <Discussion id={this.state.postid} /> : null}
       </div>
     );
   }
