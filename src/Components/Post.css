@@ -1,0 +1,67 @@
+.post-container {
+  position: relative;
+  width: 100%;
+  border-radius: 0.8rem;
+  border: solid 1px rgb(165, 165, 165);
+  height: max-content;
+  margin: 1rem 0.5rem;
+  padding: 0.8rem 1rem;
+  color: #666666;
+}
+
+.post-text {
+  font-size: 1.5rem;
+}
+
+.post-author {
+  font-size: 0.8em;
+}
+
+.post-author::before {
+  content: "@";
+}
+.post-author::after {
+  content: " · ";
+}
+
+.post-date {
+  font-size: 0.8em;
+}
+
+.post-btn {
+  all: unset;
+  cursor: pointer;
+}
+
+.post-btn-discuss {
+  border-radius: 0.5rem;
+  font-size: 0.8em;
+  background-color: blue;
+  padding: 0.5em 1rem;
+  position: absolute;
+  right: 5%;
+  bottom: 2.4em;
+  color: white;
+}
+
+.post-btn-group {
+  width: 70%;
+  margin: 0.3rem auto 0;
+  border-radius: 4px;
+  border: solid 1px #444444;
+}
+
+.post-btn-spread,
+.post-btn-share {
+  width: 50%;
+  text-align: center;
+}
+
+.post-btn-spread {
+  background-color: blue;
+  color: #eeeeee;
+}
+.post-btn-share {
+  background-color: #eeeeee;
+  color: blue;
+}

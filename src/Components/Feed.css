@@ -1,0 +1,8 @@
+.feed-container {
+  width: 45vw;
+  height: 90vh;
+  /* margin: 0 1rem; */
+  padding: 1rem;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+}

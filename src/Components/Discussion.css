@@ -1,0 +1,30 @@
+.discussion-container {
+  position: relative;
+  height: 80vh;
+  width: 30vw;
+  border-radius: 0.8rem;
+  background-color: #eee;
+  overflow-y: auto;
+}
+
+.discussion-inp-container {
+  position: absolute;
+  bottom: 1%;
+  left: 1%;
+  width: 90%;
+
+  height: 1.8rem;
+}
+
+.discussion-inp {
+  all: unset;
+  /* background-color: #000; */
+  width: 80%;
+  display: inline-block;
+  height: 100%;
+  border: solid 1px rgb(113, 127, 252);
+  border-bottom: solid 1px blue;
+  margin-right: 1rem;
+  color: #666;
+  padding: 0.4rem 0.3rem;
+}

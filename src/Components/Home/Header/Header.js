@@ -99,7 +99,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div class="headerland1">
+      <div className="headerland1">
         {this.getHeaderTitle()}
         {/* <div className="searchcontainer">
           <input

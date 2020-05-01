@@ -33,7 +33,9 @@ class Newfeed extends React.Component {
   upload = () => {
     if (this.state.post) {
       this.props.load();
-      const user=JSON.parse(localStorage.getItem("Mydetails"));
+      const user = JSON.parse(localStorage.getItem("Mydetails"));
+      console.log(user);
+
       //Fetching date
       const dateobj = new Date();
       var date = monthNames[dateobj.getMonth()] + " " + dateobj.getDate();
@@ -55,7 +57,7 @@ class Newfeed extends React.Component {
           rows="5"
           cols="50"
           onChange={(e) => this.post(e)}
-          maxlength="256"
+          maxLength="256"
         />
         <button type="submit" onClick={this.upload}>
           Ready to Post
