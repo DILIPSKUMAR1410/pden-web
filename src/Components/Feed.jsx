@@ -2,15 +2,22 @@ import React, { Component } from "react";
 import Post from "./Post";
 import { getConfig } from "radiks";
 import { Thought } from "../Models";
-
+import Newfeed from "./Home/Feed/NewFeed/Newfeed";
 import "./Feed.css";
 
 const { userSession } = getConfig();
 
 class Feed extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loadfeed: false,
+    };
+  }
   async componentDidMount() {
     const thoughts = await Thought.fetchList({ sort: "-order" }); // Check
     localStorage.setItem("thoughts", JSON.stringify(thoughts));
+    this.setState({ loadfeed: true });
   }
 
   getThoughts = () => {
@@ -23,19 +30,22 @@ class Feed extends Component {
     //     ))}
     //   </React.Fragment>
     // );
-    const data = { author: "Leonardo", text: "placeholder", date: new Date() };
-    return (
-      <React.Fragment>
-        <Post data={data} showDiscuss={this.props.showDiscuss} />
-        <Post data={data} showDiscuss={this.props.showDiscuss} />
-        <Post data={data} showDiscuss={this.props.showDiscuss} />
-        <Post data={data} showDiscuss={this.props.showDiscuss} />
-      </React.Fragment>
-    );
+    var thoughts = JSON.parse(localStorage.getItem("thoughts"));
+    if (!thoughts) thoughts = [];
+    return thoughts.map((thought) => {
+      console.log(thought);
+      return <Post data={thought.attrs} showDiscuss={this.props.showDiscuss} />;
+    });
   };
-
   render() {
-    return <div className="feed-container">{this.getThoughts()}</div>;
+    return (
+      <div className="feed-container">
+        <Newfeed />
+        <React.Fragment>
+          {this.state.loadfeed ? this.getThoughts() : this.getThoughts()}
+        </React.Fragment>
+      </div>
+    );
   }
 }
 

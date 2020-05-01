@@ -9,7 +9,9 @@ class Post extends Component {
     return (
       <div className="post-container">
         <h3 className="post-text">{this.props.data.text}</h3>
-        <span className="post-author">{this.props.data.author}</span>
+        <span className="post-author">
+          {this.props.data.author.attrs.username}
+        </span>
         <span className="post-date">
           {new Date(this.props.data.date).toDateString()}
         </span>

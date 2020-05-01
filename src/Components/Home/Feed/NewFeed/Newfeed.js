@@ -1,23 +1,8 @@
 import React from "react";
 import "./Newfeed.css";
 import { getConfig } from "radiks";
-import { Tweet } from "../../../../Models";
-const options = { encrypt: false };
+import { Thought } from "../../../../Models";
 const { userSession } = getConfig();
-const monthNames = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
 class Newfeed extends React.Component {
   constructor(props) {
     super(props);
@@ -32,20 +17,15 @@ class Newfeed extends React.Component {
   //uploading the post
   upload = () => {
     if (this.state.post) {
-      this.props.load();
       const user = JSON.parse(localStorage.getItem("Mydetails"));
-      console.log(user);
-
       //Fetching date
-      const dateobj = new Date();
-      var date = monthNames[dateobj.getMonth()] + " " + dateobj.getDate();
-      const tweet = new Tweet({
-        user: user[0],
-        tweet: this.state.post,
+      const date = new Date();
+      const thought = new Thought({
+        author: user[0],
+        text: this.state.post,
         date: date,
       });
-      tweet.save().finally(() => {
-        this.props.load();
+      thought.save().finally(() => {
         window.location.reload(true);
       });
     }

@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import profilePlaceholder from "../Assets/Images/profile-placeholder.jpg";
 import Searchbar from "./Home/Searchbar/Searchbar";
 import "./Sidebar.css";
-
+import { getConfig } from "radiks";
+const { userSession } = getConfig();
 // Props:
 //  currentPage: Used to decide which all link to display in the sidebar. Valid options: ['feed', 'shelf', 'mybook', 'invite']
 
@@ -32,7 +33,9 @@ class Sidebar extends Component {
       <div className="sidebar">
         <div className="profile-pic-container">
           <img src={this.getProfilePic()} alt="" className="profile-pic" />
-          <span className="profile-name">Leonardo Vinci</span>
+          <span className="profile-name">
+            {userSession.loadUserData().username}
+          </span>
         </div>
 
         <ul className="sidebar-menu">
