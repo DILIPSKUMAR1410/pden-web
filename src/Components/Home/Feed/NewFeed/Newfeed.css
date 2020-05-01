@@ -1,5 +1,5 @@
 .newfeed {
-    width: 80%;
+    width: 100%;
     margin: 2%;
     border-radius: 1rem;
     display: flex;
@@ -17,16 +17,16 @@
     font-size: large;
     margin-bottom: 3vh;
     border:none;
-    width:60%;
-    border-bottom: 2px solid #7700b3;
-    border-left: 2px solid #7700b3;
+    width:80%;
+    border-bottom: 2px solid blue;
+    border-left: 2px solid blue;
     margin-left: 3vw;
     background-color: #d9d2e9ff;
 }
 .newfeed button{
-    margin-right: 3vw;
+    margin-left: 3vw;
     width:8vw;
-    background-color:#7700b3;
+    background-color:blue;
     color:white;
     border: 1px solid white;
     border-radius: 0.3rem;

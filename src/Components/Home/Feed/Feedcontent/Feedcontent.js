@@ -23,6 +23,7 @@ class Feed extends React.Component {
         this.setState({ loadfeed: !this.state.loadfeed });
       });
   }
+  
   //Rendering th tweets or feed
   renderFeedData = () => {
     var Feed = [];

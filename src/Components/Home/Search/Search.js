@@ -8,8 +8,6 @@ class Search extends React.Component {
   }
 
   getUsers = (target) => {
-    // const currentUser = JSON.parse(localStorage.getItem('Mydetails'));
-    // const following =
 
     const userList = JSON.parse(localStorage.getItem("Users"));
     return userList
