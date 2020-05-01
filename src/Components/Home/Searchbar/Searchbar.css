@@ -1,8 +1,9 @@
 .search {
   all: unset;
-  padding: 0.8rem 0.5rem;
-  background-color: #d5b7ee;
-  border: white 1px solid;
+  width: 50%;
+  height: 2em;
+  background-color: #eee;
+  border: #666 1px solid;
   border-radius: 15px;
-  color: purple;
+  color: blue;
 }
