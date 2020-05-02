@@ -41,7 +41,7 @@ class Sidebar extends Component {
         <ul className="sidebar-menu">
           {this.getSidebarButtons(this.props.currentPage)}
         </ul>
-        <Searchbar onSearch={this.props.onSearch} />
+        <Searchbar {...this.props} />
       </div>
     );
   }

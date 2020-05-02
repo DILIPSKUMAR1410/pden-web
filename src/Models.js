@@ -17,7 +17,7 @@ class Person extends Model {
 }
 
 class Thought extends Model {
-  static className = "Tweet";
+  static className = "Thought";
   static schema = {
     // all fields are encrypted by default
     author: {
@@ -32,7 +32,30 @@ class Thought extends Model {
       type: Date,
       decrypted: true,
     },
+
   };
 }
 
-export { Person, Thought };
+class Message extends Model {
+  static className = "Message";
+  static schema = {
+    postid: {
+      type: String,
+      decrypted: true,
+    },
+    author: {
+      type: Person,
+      decrypted: true,
+    },
+    text: {
+      type: String,
+      decrypted: true,
+    },
+    date: {
+      type: Date,
+      decrypted: true,
+    },
+  }
+}
+
+export { Person, Thought, Message };
