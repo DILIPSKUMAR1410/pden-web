@@ -14,7 +14,6 @@ class Home extends Component {
   };
 
   onSearch = (val) => {
-    console.log(val);
     window.location.href = `/search?q=${val}`;
   };
 

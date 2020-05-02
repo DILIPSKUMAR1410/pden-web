@@ -11,6 +11,10 @@ class Search extends Component {
     results: [],
   };
 
+  onSearch = (val) => {
+    window.location.href = `/search?q=${val}`;
+  };
+
   async componentDidMount() {
     const target = parse(this.props.location.search).q;
     try {
@@ -19,9 +23,8 @@ class Search extends Component {
       );
       var data = await response.json();
       const results = data.results;
-      const names = await results.map((i) => i.fullyQualifiedName);
       this.setState({
-        results: names,
+        results: results,
       });
     } catch (e) {
       console.error(e);
@@ -32,7 +35,7 @@ class Search extends Component {
   render() {
     return (
       <div className="home-container">
-        <Sidebar currentPage="" />
+        <Sidebar currentPage="" onSearch={this.onSearch} />
         <div className="search-results-container">
           <h2 className="search-title">Search Results</h2>
           <UserList list={this.state.results} />
