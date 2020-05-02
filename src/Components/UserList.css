@@ -1,8 +1,33 @@
 .user-list-item {
-  color: rgb(134, 134, 134);
-  height: 3em;
+  position: relative;
+  color: black;
+  height: 250px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  margin: 0.5rem;
 }
 
 .user-list-item > a {
-  color: rgb(134, 134, 134);
+  color: black;
+}
+
+.user-list-picture {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  max-width: 100%;
+  z-index: -1;
+}
+
+.user-list-social-icon {
+  max-width: 20px;
+  margin: 2px;
+}
+
+.user-list-details {
+  position: absolute;
+  left: 5px;
+  right: 0;
+  bottom: 5px;
 }
