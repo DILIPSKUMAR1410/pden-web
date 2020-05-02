@@ -17,6 +17,7 @@ class Newfeed extends React.Component {
   //uploading the post
   upload = () => {
     if (this.state.post) {
+      this.props.setload();
       const user = JSON.parse(localStorage.getItem("Mydetails"));
       //Fetching date
       const date = new Date();
@@ -26,7 +27,11 @@ class Newfeed extends React.Component {
         date: date,
       });
       thought.save().finally(() => {
-        window.location.reload(true);
+        Thought.fetchList().then(thoughts => {
+          this.props.setload();
+          this.props.updateFeed(thoughts.reverse());
+        });
+        document.getElementById("newfeed").value = "";
       });
     }
   };
@@ -34,6 +39,7 @@ class Newfeed extends React.Component {
     return (
       <div class="newfeed">
         <textarea
+          id="newfeed"
           rows="5"
           cols="50"
           onChange={(e) => this.post(e)}

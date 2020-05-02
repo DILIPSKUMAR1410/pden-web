@@ -9,7 +9,8 @@ import "./Home.css";
 class Home extends Component {
   state = {
     showDiscuss: false,
-    postid: ''
+    postid: '',
+    loading: false
   };
 
   onSearch = (val) => {
@@ -24,12 +25,21 @@ class Home extends Component {
     });
   };
 
+  setload = () => {
+    this.setState({ loading: !this.state.loading });
+  };
+  
   render() {
     return (
       <div className="home-container">
-        <Sidebar currentPage="feed" onSearch={this.onSearch} />
-        <Feed showDiscuss={this.showDiscuss} />
-        {this.state.showDiscuss ? <Discussion id={this.state.postid} /> : null}
+        <Sidebar currentPage="feed" onSearch={this.onSearch} setload={this.setload}/>
+        <Feed showDiscuss={this.showDiscuss} setload={this.setload}/>
+        {this.state.showDiscuss ? <Discussion id={this.state.postid} setload={this.setload}/> : null}
+        {this.state.loading ? (
+          <div class="loadcontainer">
+            <div class="loader" />
+          </div>
+        ) : null}
       </div>
     );
   }
