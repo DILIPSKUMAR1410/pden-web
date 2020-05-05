@@ -4,6 +4,7 @@ import profilePlaceholder from "../Assets/Images/profile-placeholder.jpg";
 import twitterIcon from "../Assets/Images/twitter.svg";
 import facebookIcon from "../Assets/Images/facebook.svg";
 import instagramIcon from "../Assets/Images/instagram.svg";
+import blockstackIcon from "../Assets/Images/blockstack.svg";
 import "./UserList.css";
 
 class UserList extends Component {
@@ -34,9 +35,25 @@ class UserList extends Component {
   getSocial = (user) => {
     const socialList = ["twitter", "facebook", "instagram"];
     const socialIcons = [twitterIcon, facebookIcon, instagramIcon];
-    if (!user.profile || !user.profile.account)
-      return <span className="user-list-social"></span>;
     let availableSocials = [];
+    // if (
+    //   user.profile &&
+    //   user.profile.apps &&
+    //   user.profile.apps["https://app_pden_xyz"]
+    // )
+    availableSocials.push(
+      <span className="blockstack-icon">
+        <span className="social-tooltip">{user.username}</span>
+        <img
+          src={
+            "https://www.vectorlogo.zone/logos/blockstack/blockstack-icon.svg"
+          }
+          className="user-list-social-icon"
+        />
+      </span>
+    );
+    if (!user.profile || !user.profile.account)
+      return <span className="user-list-social">{availableSocials}</span>;
     user.profile.account.forEach((i) => {
       if (socialList.includes(i.service)) {
         availableSocials.push(
@@ -49,6 +66,7 @@ class UserList extends Component {
         );
       }
     });
+
     return <span className="user-list-social">{availableSocials}</span>;
   };
 
@@ -70,7 +88,7 @@ class UserList extends Component {
   render() {
     return (
       <React.Fragment>
-        <StackGrid columnWidth={250}>
+        <StackGrid columnWidth={250} className="user-list">
           {this.renderList(this.props.list)}
         </StackGrid>
       </React.Fragment>

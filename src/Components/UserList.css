@@ -1,7 +1,11 @@
+.user-list {
+  position: relative;
+}
+
 .user-list-item {
   position: relative;
   color: black;
-  height: 250px;
+  height: 300px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
   margin: 0.5rem;
 }
@@ -11,12 +15,8 @@
 }
 
 .user-list-picture {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  max-width: 100%;
+  width: 100%;
+  height: 234px;
   z-index: -1;
 }
 
@@ -26,8 +26,25 @@
 }
 
 .user-list-details {
+  margin-left: 6px;
+}
+
+.blockstack-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.blockstack-icon > .social-tooltip {
   position: absolute;
-  left: 5px;
-  right: 0;
-  bottom: 5px;
+  background-color: #aaa;
+  padding: 0.2rem 0.2rem;
+  border-radius: 5px;
+  top: -2.4rem;
+  left: 0;
+  transform: translateX(-50%);
+  display: none;
+}
+
+.blockstack-icon:hover > .social-tooltip {
+  display: inline;
 }
