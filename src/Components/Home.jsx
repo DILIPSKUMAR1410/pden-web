@@ -2,13 +2,18 @@ import React, { Component } from "react";
 import Sidebar from "./Sidebar";
 import Feed from "./Feed";
 import Discussion from "./Discussion";
-
+import Spinner from "./Spinner";
 import "./Home.css";
 
 class Home extends Component {
   state = {
     showDiscuss: false,
     postid: "",
+    loading: false,
+  };
+
+  onSearch = (val) => {
+    window.location.href = `/search?q=${val}`;
   };
 
   showDiscuss = (post) => {
@@ -18,11 +23,18 @@ class Home extends Component {
     });
   };
 
+  setload = () => {
+    this.setState({ loading: !this.state.loading });
+  };
+
   render() {
     return (
       <div className="home-container">
-        <Feed showDiscuss={this.showDiscuss} />
-        {this.state.showDiscuss ? <Discussion id={this.state.postid} /> : null}
+        <Feed showDiscuss={this.showDiscuss} setload={this.setload} />
+        {this.state.showDiscuss ? (
+          <Discussion id={this.state.postid} setload={this.setload} />
+        ) : null}
+        {this.state.loading ? <Spinner /> : null}
       </div>
     );
   }

@@ -1,8 +1,14 @@
-.feed-container {
-  width: 45vw;
-  height: 90vh;
-  /* margin: 0 1rem; */
-  padding: 1rem;
+.feed{
   scroll-behavior: smooth;
   overflow-y: auto;
+  width:100%;
+  height: 70vh;
+  padding: 1rem;
+}
+.feed-container {
+  width: 45vw;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

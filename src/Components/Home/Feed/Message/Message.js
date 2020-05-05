@@ -17,6 +17,7 @@ class Newmessage extends React.Component {
   //uploading the post
   upload = () => {
     if (this.state.message) {
+      this.props.setload();
       const user = JSON.parse(localStorage.getItem("Mydetails"));
       //Fetching date
       const date = new Date();
@@ -27,14 +28,21 @@ class Newmessage extends React.Component {
         date: date,
       });
       message.save().finally(() => {
-        window.location.reload(true);
+        Message.fetchList({
+          postid: this.props.id
+        }).then(messages => {
+          this.props.setload();
+          this.props.updateDiscussion(messages);
+        });
       });
+      document.getElementById("newmsg").value = "";
     }
   };
   render() {
     return (
-      <div class="newfeed">
+      <div class="msgfeed">
         <textarea
+          id="newmsg"
           rows="3"
           cols="50"
           onChange={(e) => this.post(e)}
