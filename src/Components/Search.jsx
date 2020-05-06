@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import UserList from "./UserList";
-import Sidebar from "./Sidebar";
 import { parse } from "query-string";
 import fetch from "isomorphic-fetch";
 import Spinner from "./Spinner";

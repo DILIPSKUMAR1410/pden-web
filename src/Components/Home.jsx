@@ -12,10 +12,6 @@ class Home extends Component {
     loading: false,
   };
 
-  onSearch = (val) => {
-    window.location.href = `/search?q=${val}`;
-  };
-
   showDiscuss = (post) => {
     this.setState({
       showDiscuss: !this.state.showDiscuss,

@@ -12,13 +12,14 @@ class Feed extends Component {
     super(props);
     this.state = {
       loadfeed: false,
-      feed:[]
+      feed: [],
     };
   }
+
   async componentDidMount() {
     this.props.setload();
     const thoughts = await Thought.fetchList();
-    this.setState({feed: thoughts.reverse()});
+    this.setState({ feed: thoughts.reverse() });
     localStorage.setItem("thoughts", JSON.stringify(thoughts));
     this.setState({ loadfeed: true });
     this.props.setload();
@@ -27,22 +28,24 @@ class Feed extends Component {
   getThoughts = () => {
     // var thoughts = JSON.parse(localStorage.getItem("thoughts"));
     // if (!thoughts) thoughts = [];
-    var thoughts=this.state.feed;
+    var thoughts = this.state.feed;
     return thoughts.map((thought) => {
-      return (<Post data={thought} showDiscuss={this.props.showDiscuss} />);
+      return <Post data={thought} showDiscuss={this.props.showDiscuss} />;
     });
   };
 
-  updateFeed=(thoughts)=>{
-    this.setState({feed: thoughts});
+  updateFeed = (thoughts) => {
+    this.setState({ feed: thoughts });
     localStorage.setItem("thoughts", JSON.stringify(thoughts));
-  }
+  };
+
   render() {
     return (
       <div className="feed-container">
-        <Newfeed {...this.props} updateFeed={this.updateFeed}/>
+        <Newfeed {...this.props} updateFeed={this.updateFeed} />
         <div className="feed">
           <React.Fragment>
+            {/* ?_? */}
             {this.state.loadfeed ? this.getThoughts() : this.getThoughts()}
           </React.Fragment>
         </div>

@@ -1,21 +1,21 @@
 import React, { Component } from "react";
-import Newmessage from './Home/Feed/Message/Message'
+import Newmessage from "./Home/Feed/Message/Message";
 import "./Discussion.css";
 import DiscussionPost from "./DiscussionPost";
-import { Message } from '../Models'
+import { Message } from "../Models";
 class Discussion extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       loaddiscussion: false,
-      discussions: []
-    }
+      discussions: [],
+    };
   }
+
   async componentDidMount() {
     this.props.setload();
     const messages = await Message.fetchList({
-      postid: this.props.id
+      postid: this.props.id,
     });
     this.setState({ discussions: messages });
     localStorage.setItem("discussions", JSON.stringify(messages));
@@ -33,12 +33,13 @@ class Discussion extends Component {
 
   updateDiscussion = (messages) => {
     this.setState({ discussions: messages });
-  }
+  };
+
   render() {
     return (
       <div className="discussion-container">
         {this.state.loaddiscussion ? this.getDiscussions() : null}
-        <Newmessage {...this.props} updateDiscussion={this.updateDiscussion}/>
+        <Newmessage {...this.props} updateDiscussion={this.updateDiscussion} />
         {/* <div className="discussion-inp-container">
           <input type="text" className="discussion-inp" />
           <button className="discussion-post-btn">Post</button>
