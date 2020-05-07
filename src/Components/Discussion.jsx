@@ -14,6 +14,16 @@ class Discussion extends Component {
 
   async componentDidMount() {
     this.props.setload();
+
+    // Stream Listener, hopefully
+
+    const streamCallback = (task) => {
+      console.log(task);
+    };
+    Post.addStreamListener(streamCallback);
+
+    // Listener Logic ends.
+
     const messages = await Message.fetchList({
       postid: this.props.id,
     });

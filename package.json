@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^7.2.1",
     "blockstack": "^19.3.0",
     "emotion": "^10.0.27",
+    "express-ws": "^4.0.0",
     "isomorphic-fetch": "^2.2.1",
     "query-string": "^6.12.1",
     "radiks": "^0.2.2-beta.1",

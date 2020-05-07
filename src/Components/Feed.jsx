@@ -26,8 +26,6 @@ class Feed extends Component {
   }
 
   getThoughts = () => {
-    // var thoughts = JSON.parse(localStorage.getItem("thoughts"));
-    // if (!thoughts) thoughts = [];
     var thoughts = this.state.feed;
     return thoughts.map((thought) => {
       return <Post data={thought} showDiscuss={this.props.showDiscuss} />;
