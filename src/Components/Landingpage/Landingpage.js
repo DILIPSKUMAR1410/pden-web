@@ -8,7 +8,7 @@ const userSession = new UserSession({
 });
 
 configure({
-  apiServer: "http://localhost:1260",
+  apiServer: "http://localhost:5000",
   userSession,
 });
 class Page extends React.Component {

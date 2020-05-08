@@ -20,7 +20,7 @@ class Discussion extends Component {
     const streamCallback = (task) => {
       console.log(task);
     };
-    Post.addStreamListener(streamCallback);
+    Message.addStreamListener(streamCallback);
 
     // Listener Logic ends.
 
