@@ -5,7 +5,7 @@ import Home from "../Components/Home.jsx";
 
 const appConfig = new AppConfig();
 const userSession = new UserSession({ appConfig: appConfig });
-const PublicRoute = ({ component: Component, ...rest }) => {
+const Publicroute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
@@ -20,4 +20,4 @@ const PublicRoute = ({ component: Component, ...rest }) => {
   );
 };
 
-export default PublicRoute;
+export default Publicroute;
