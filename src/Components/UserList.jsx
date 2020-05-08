@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import StackGrid from "react-stack-grid";
 import profilePlaceholder from "../Assets/Images/profile-placeholder.jpg";
+import { Person } from "../Models";
 import twitterIcon from "../Assets/Images/twitter.svg";
 import facebookIcon from "../Assets/Images/facebook.svg";
 import instagramIcon from "../Assets/Images/instagram.svg";
@@ -73,7 +74,11 @@ class UserList extends Component {
   renderList = (list) => {
     return list.map((i) => {
       return (
-        <div className="user-list-item">
+        <div
+          id={i.username}
+          className="user-list-item"
+          onClick={() => this.showProfile(i.username)}
+        >
           {this.getProfilePic(i)}
           <div className="user-list-details">
             {this.getName(i)}
@@ -85,6 +90,17 @@ class UserList extends Component {
     });
   };
 
+  showProfile = (username) => {
+    Person.fetchList({
+      username: username,
+    }).then((user) => {
+      if (user.length > 0){
+        localStorage.setItem(username, JSON.stringify(user[0]));
+        window.location.href = `/user/${user[0].attrs.username}`;
+      }
+      else console.log("No pden account yet");
+    });
+  };
   render() {
     return (
       <React.Fragment>

@@ -18,11 +18,10 @@ class Newfeed extends React.Component {
   upload = () => {
     if (this.state.post) {
       this.props.setload();
-      const user = JSON.parse(localStorage.getItem("Mydetails"));
       //Fetching date
       const date = new Date();
       const thought = new Thought({
-        author: user[0],
+        author: userSession.loadUserData().username,
         text: this.state.post,
         date: date,
       });

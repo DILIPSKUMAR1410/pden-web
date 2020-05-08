@@ -21,7 +21,7 @@ class Thought extends Model {
   static schema = {
     // all fields are encrypted by default
     author: {
-      type: Person,
+      type: String,
       decrypted: true,
     },
     text: {
@@ -44,7 +44,7 @@ class Message extends Model {
       decrypted: true,
     },
     author: {
-      type: Person,
+      type: String,
       decrypted: true,
     },
     text: {

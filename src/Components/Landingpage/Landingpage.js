@@ -57,7 +57,7 @@ class Page extends React.Component {
                   });
                 }
                 else {
-                  localStorage.setItem("Mydetails", JSON.stringify(user));
+                  localStorage.setItem("Mydetails", JSON.stringify(user[0]));
                 }
               })
                 .finally(() => {

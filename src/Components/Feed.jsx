@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Post from "./Post";
 import { getConfig } from "radiks";
-import { Thought } from "../Models";
+import { Person,Thought } from "../Models";
 import Newfeed from "./Home/Feed/NewFeed/Newfeed";
 import "./Feed.css";
 
