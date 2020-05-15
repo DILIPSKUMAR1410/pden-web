@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import profilePlaceholder from "../Assets/Images/profile-placeholder.jpg";
-import Searchbar from "./Home/Searchbar/Searchbar";
+import Searchbar from "./Searchbar";
 import "./Sidebar.css";
 import { getConfig } from "radiks";
 const { userSession } = getConfig();

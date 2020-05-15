@@ -23,9 +23,14 @@ class Home extends Component {
     this.setState({ loading: !this.state.loading });
   };
 
+  onSearch = (val) => {
+    window.location.href = `/search?q=${val}`;
+  };
+
   render() {
     return (
       <div className="home-container">
+        <Sidebar currentPage="" onSearch={this.onSearch} />
         <Feed showDiscuss={this.showDiscuss} setload={this.setload} />
         {this.state.showDiscuss ? (
           <Discussion id={this.state.postid} setload={this.setload} />

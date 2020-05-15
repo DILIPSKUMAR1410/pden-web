@@ -1,4 +1,4 @@
-import { Model, User } from "radiks";
+import { Model } from "radiks";
 
 class Person extends Model {
   static className = "Person";
@@ -32,7 +32,6 @@ class Thought extends Model {
       type: Date,
       decrypted: true,
     },
-
   };
 }
 
@@ -55,7 +54,7 @@ class Message extends Model {
       type: Date,
       decrypted: true,
     },
-  }
+  };
 }
 
 export { Person, Thought, Message };

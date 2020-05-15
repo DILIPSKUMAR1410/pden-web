@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Newmessage from "./Home/Feed/Message/Message";
+import Newmessage from "./Message";
 import "./Discussion.css";
 import DiscussionPost from "./DiscussionPost";
 import { Message } from "../Models";

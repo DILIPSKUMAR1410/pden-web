@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import Post from "./Post";
-import { getConfig } from "radiks";
 import { Thought } from "../Models";
-import Newfeed from "./Home/Feed/NewFeed/Newfeed";
+import Newfeed from "./Newfeed";
 import "./Feed.css";
-
-const { userSession } = getConfig();
 
 class Feed extends Component {
   constructor(props) {

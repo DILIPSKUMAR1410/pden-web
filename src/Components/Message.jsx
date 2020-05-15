@@ -1,8 +1,7 @@
 import React from "react";
 import "./Message.css";
-import { getConfig } from "radiks";
-import { Message } from "../../../../Models";
-const { userSession } = getConfig();
+import { Message } from "../Models";
+
 class Newmessage extends React.Component {
   constructor(props) {
     super(props);
@@ -29,8 +28,8 @@ class Newmessage extends React.Component {
       });
       message.save().finally(() => {
         Message.fetchList({
-          postid: this.props.id
-        }).then(messages => {
+          postid: this.props.id,
+        }).then((messages) => {
           this.props.setload();
           this.props.updateDiscussion(messages);
         });

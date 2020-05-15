@@ -4,7 +4,7 @@ import profilePlaceholder from "../Assets/Images/profile-placeholder.jpg";
 import twitterIcon from "../Assets/Images/twitter.svg";
 import facebookIcon from "../Assets/Images/facebook.svg";
 import instagramIcon from "../Assets/Images/instagram.svg";
-import blockstackIcon from "../Assets/Images/blockstack.svg";
+// import blockstackIcon from "../Assets/Images/blockstack.svg";
 import "./UserList.css";
 
 class UserList extends Component {
@@ -48,6 +48,7 @@ class UserList extends Component {
           src={
             "https://www.vectorlogo.zone/logos/blockstack/blockstack-icon.svg"
           }
+          alt="blockstack"
           className="user-list-social-icon"
         />
       </span>
@@ -60,6 +61,7 @@ class UserList extends Component {
           <a href={i.proofUrl}>
             <img
               src={socialIcons[socialList.indexOf(i.service)]}
+              alt="blockstack"
               className="user-list-social-icon"
             />
           </a>

@@ -4,6 +4,7 @@ import { parse } from "query-string";
 import fetch from "isomorphic-fetch";
 import Spinner from "./Spinner";
 import "./Search.css";
+import Sidebar from "./Sidebar";
 
 class Search extends Component {
   state = {
@@ -39,6 +40,7 @@ class Search extends Component {
   render() {
     return (
       <div className="home-container">
+        <Sidebar onSearch={this.onSearch} currentPage="" />
         <div className="search-results-container">
           <h2 className="search-title">
             Search Results for "{parse(this.props.location.search).q}"

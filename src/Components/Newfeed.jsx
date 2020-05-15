@@ -1,8 +1,7 @@
 import React from "react";
 import "./Newfeed.css";
-import { getConfig } from "radiks";
-import { Thought } from "../../../../Models";
-const { userSession } = getConfig();
+import { Thought } from "../Models";
+
 class Newfeed extends React.Component {
   constructor(props) {
     super(props);
@@ -27,7 +26,7 @@ class Newfeed extends React.Component {
         date: date,
       });
       thought.save().finally(() => {
-        Thought.fetchList().then(thoughts => {
+        Thought.fetchList().then((thoughts) => {
           this.props.setload();
           this.props.updateFeed(thoughts.reverse());
         });
