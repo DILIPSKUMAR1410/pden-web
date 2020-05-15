@@ -1,7 +1,8 @@
 import React from "react";
 import "./Newfeed.css";
 import { Thought } from "../Models";
-
+import { getConfig } from "radiks";
+const userSession = getConfig();
 class Newfeed extends React.Component {
   constructor(props) {
     super(props);

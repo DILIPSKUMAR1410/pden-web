@@ -3,7 +3,7 @@ import Post from "./Post";
 import { Person, Thought } from "../Models";
 import Spinner from "./Spinner";
 import Discussion from "./Discussion";
-
+import Sidebar from "./Sidebar"
 class Profile extends Component {
   state = {
     username: this.props.match.params.uid,
@@ -40,13 +40,16 @@ class Profile extends Component {
       postid: post,
     });
   };
-
+  onSearch = (val) => {
+    window.location.href = `/search?q=${val}`;
+  };
   setload = () => {
     this.setState({ loading: !this.state.loading });
   };
   render() {
     return (
       <div className="home-container">
+        <Sidebar onSearch={this.onSearch}/>
         <div className="feed-container">
           <div className="feed">
             <React.Fragment>
