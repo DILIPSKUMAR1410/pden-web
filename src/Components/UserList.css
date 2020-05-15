@@ -8,6 +8,7 @@
   height: 300px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
   margin: 0.5rem;
+  cursor: pointer;
 }
 
 .user-list-item > a {

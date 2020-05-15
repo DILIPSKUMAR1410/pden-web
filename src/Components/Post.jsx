@@ -7,6 +7,7 @@ import "./Post.css";
 class Post extends Component {
   show = () => {
     this.props.showDiscuss(this.props.data._id);
+    console.log(this.props.data.attrs.author);
   };
 
   render() {
@@ -14,7 +15,7 @@ class Post extends Component {
       <div className="post-container">
         <h3 className="post-text">{this.props.data.attrs.text}</h3>
         <span className="post-author">
-          {this.props.data.attrs.author.attrs.username}
+          {this.props.data.attrs.author}
         </span>
         <span className="post-date">
           {new Date(this.props.data.attrs.date).toDateString()}

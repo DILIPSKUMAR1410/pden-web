@@ -22,7 +22,7 @@ class Newmessage extends React.Component {
       const date = new Date();
       const message = new Message({
         postid: this.props.id,
-        author: user[0],
+        author: userSession.loadUserData().username,
         text: this.state.message,
         date: date,
       });

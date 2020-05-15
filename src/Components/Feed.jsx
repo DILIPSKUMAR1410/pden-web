@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Post from "./Post";
 import { Thought } from "../Models";
 import Newfeed from "./Newfeed";
+import { Thought } from "../Models";
+import Newfeed from "./Home/Feed/NewFeed/Newfeed";
 import "./Feed.css";
 
 class Feed extends Component {
