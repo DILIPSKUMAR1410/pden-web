@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import Sidebar from "./Sidebar";
-import Feed from "./Feed";
-import Discussion from "./Discussion";
-import Spinner from "./Spinner";
+import { Spinner, Discussion, Feed, Sidebar } from "./";
 import "./Home.css";
 
 class Home extends Component {

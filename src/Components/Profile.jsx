@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import Post from "./Post";
 import { Person, Thought } from "../Models";
-import Spinner from "./Spinner";
-import Discussion from "./Discussion";
-import Sidebar from "./Sidebar"
+import { Sidebar, Discussion, Spinner, Post } from "./";
+
 class Profile extends Component {
   state = {
     username: this.props.match.params.uid,
@@ -16,8 +14,8 @@ class Profile extends Component {
   async componentDidMount() {
     this.setload();
     const thoughts = await Thought.fetchList({
-      author: this.state.username
-    })
+      author: this.state.username,
+    });
     this.setState({ feed: thoughts.reverse() });
     this.setState({ loadfeed: true });
     this.setload();
@@ -49,7 +47,7 @@ class Profile extends Component {
   render() {
     return (
       <div className="home-container">
-        <Sidebar onSearch={this.onSearch}/>
+        <Sidebar onSearch={this.onSearch} />
         <div className="feed-container">
           <div className="feed">
             <React.Fragment>
@@ -59,7 +57,7 @@ class Profile extends Component {
           </div>
         </div>
         {this.state.showDiscuss ? (
-          <Discussion id={this.state.postid} setload={this.setload}/>
+          <Discussion id={this.state.postid} setload={this.setload} />
         ) : null}
         {this.state.loading ? <Spinner /> : null}
       </div>

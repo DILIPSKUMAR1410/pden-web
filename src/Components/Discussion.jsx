@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Newmessage from "./Message";
 import "./Discussion.css";
-import DiscussionPost from "./DiscussionPost";
+import { DiscussionPost, Newmessage } from "./";
 import { Message } from "../Models";
+
 class Discussion extends Component {
   constructor(props) {
     super(props);
@@ -12,17 +12,14 @@ class Discussion extends Component {
     };
   }
 
+  streamCallback = (post) => {
+    console.log(post);
+  };
+
   async componentDidMount() {
     this.props.setload();
 
-    // Stream Listener, hopefully
-
-    // const streamCallback = (task) => {
-    //   console.log(task);
-    // };
-    // Post.addStreamListener(streamCallback);
-
-    // Listener Logic ends.
+    Message.addStreamListener(this.streamCallback);
 
     const messages = await Message.fetchList({
       postid: this.props.id,
@@ -31,6 +28,10 @@ class Discussion extends Component {
     localStorage.setItem("discussions", JSON.stringify(messages));
     this.setState({ loaddiscussion: true });
     this.props.setload();
+  }
+
+  componentWillUnmount() {
+    Message.removeStreamListener(this.streamCallback);
   }
 
   getDiscussions = () => {

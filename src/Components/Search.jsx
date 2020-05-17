@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import UserList from "./UserList";
 import { parse } from "query-string";
 import fetch from "isomorphic-fetch";
-import Spinner from "./Spinner";
+import { Spinner, Sidebar, UserList } from "./";
 import "./Search.css";
-import Sidebar from "./Sidebar";
 
 class Search extends Component {
   state = {

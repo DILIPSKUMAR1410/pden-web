@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
-import Landingpage from "./Components/Landingpage/Landingpage";
+import Landingpage from "./Components/Landingpage";
 import Search from "./Components/Search";
 import PublicRoute from "./Route/Publicroute";
 import PrivateRoute from "./Route/Privateroute";
