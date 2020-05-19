@@ -1,4 +1,4 @@
-.feed{
+.feedc{
   scroll-behavior: smooth;
   overflow-y: auto;
   width:100%;
@@ -7,7 +7,7 @@
 }
 .feed-container {
   width: 45vw;
-  height: 95vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;

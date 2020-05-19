@@ -12,24 +12,22 @@
 }
 
 .newfeed textarea {
-    /* width: 80%;
-    min-height: 15vh; */
     font-size: large;
     margin-bottom: 3vh;
     border:none;
-    width:80%;
+    width:70%;
     border-bottom: 2px solid blue;
     border-left: 2px solid blue;
-    margin-left: 3vw;
+    margin-left: 2vw;
     background-color: #d9d2e9ff;
 }
 .newfeed button{
-    margin-left: 3vw;
-    width:8vw;
     background-color:blue;
     color:white;
+    margin-right: 3vw;
     border: 1px solid white;
-    border-radius: 0.3rem;
-    padding:0.3rem;
+    border-radius: 50%;
+    width:2rem;
+    height:2rem;
     cursor: pointer;
 }

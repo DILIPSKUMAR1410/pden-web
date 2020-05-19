@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Person, Thought } from "../Models";
 import { Sidebar, Discussion, Spinner, Post } from "./";
-
+import Profiletab from "./Profiletab"
 class Profile extends Component {
   state = {
     username: this.props.match.params.uid,
@@ -49,7 +49,8 @@ class Profile extends Component {
       <div className="home-container">
         <Sidebar onSearch={this.onSearch} />
         <div className="feed-container">
-          <div className="feed">
+          <Profiletab/>
+          <div className="feedc">
             <React.Fragment>
               {/* ?_? */}
               {this.state.loadfeed ? this.getThoughts() : this.getThoughts()}

@@ -14,13 +14,7 @@ class Sidebar extends Component {
       name: userSession.loadUserData().username,
     };
   }
-  componentDidMount() {
-    if (window.location.pathname.includes("/user/")) {
-      var name = window.location.pathname.replace("/user/", "");
-      this.setState({ name: name });
-    }
-  }
-
+  
   getProfilePic = () => {
     const profilePic = false;
     if (!profilePic) return profilePlaceholder;
@@ -28,16 +22,17 @@ class Sidebar extends Component {
 
   getSidebarButtons = (currentPage) => {
     return [
-      ["feed", "Feed"],
-      ["shelf", "Shelf"],
-      ["mybook", "My Book"],
-      ["invite", "Invite Friends"],
+      ["feed", "F"],
+      ["shelf", "S"],
+      ["mybook", "B"],
+      ["invite", "I"],
     ]
       .filter((item) => item[0] !== currentPage)
       .map((item) => (
-        <a className="sidebar-menu-link" href="/feed/#" key={item[0]}>
-          <li className="sidebar-menu-item">{item[1]}</li>
-        </a>
+        <div className={item[0] + " sidebar-menu-link"}>
+          <a href="/feed/#" key={item[0]}>
+          </a>
+        </div>
       ));
   };
 
@@ -45,15 +40,15 @@ class Sidebar extends Component {
     if (userSession.isUserSignedIn())
       return (
         <div className="sidebar">
-          <div className="profile-pic-container">
-            <img src={this.getProfilePic()} alt="" className="profile-pic" />
+          <div className="pden-logo">Pden</div>
+          <div className="menu">
+            <Searchbar {...this.props} />
+            <div className="sidebar-menu">
+              {this.getSidebarButtons(this.props.currentPage)}
+            </div>
             <span className="profile-name">{this.state.name}</span>
+            <img src={this.getProfilePic()} alt="" className="profile-pic" />
           </div>
-
-          <ul className="sidebar-menu">
-            {this.getSidebarButtons(this.props.currentPage)}
-          </ul>
-          <Searchbar {...this.props} />
         </div>
       );
     else return <div></div>;

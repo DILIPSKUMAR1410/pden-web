@@ -2,7 +2,9 @@ import React from "react";
 import "./Newfeed.css";
 import { Thought } from "../Models";
 import { getConfig } from "radiks";
-const userSession = getConfig();
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+const { userSession } = getConfig();
 class Newfeed extends React.Component {
   constructor(props) {
     super(props);
@@ -45,7 +47,7 @@ class Newfeed extends React.Component {
           maxLength="256"
         />
         <button type="submit" onClick={this.upload}>
-          Ready to Post
+          <FontAwesomeIcon icon={faPlus} cursor={"pointer"} />
         </button>
       </div>
     );

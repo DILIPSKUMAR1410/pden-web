@@ -37,7 +37,7 @@ class Feed extends Component {
     return (
       <div className="feed-container">
         <Newfeed {...this.props} updateFeed={this.updateFeed} />
-        <div className="feed">
+        <div className="feedc">
           <React.Fragment>
             {/* ?_? */}
             {this.state.loadfeed ? this.getThoughts() : this.getThoughts()}

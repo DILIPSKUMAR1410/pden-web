@@ -2,7 +2,7 @@ import React from "react";
 import "./Message.css";
 import { Message } from "../Models";
 import { getConfig } from "radiks";
-const userSession = getConfig();
+const { userSession } = getConfig();
 class Newmessage extends React.Component {
   constructor(props) {
     super(props);

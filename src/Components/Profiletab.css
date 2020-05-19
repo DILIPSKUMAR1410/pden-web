@@ -1,0 +1,17 @@
+.user-profile {
+    width: 100%;
+    background-color: blue;
+    margin: 20px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 0.5rem;
+    padding: 10px 0;
+}
+
+.user-profile img {
+    width: 100px;
+    border-radius: 100%;
+    margin: 0 20px;
+}
