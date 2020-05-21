@@ -40,7 +40,7 @@ class Newmessage extends React.Component {
   };
   render() {
     return (
-      <div class="msgfeed">
+      <div className="msgfeed">
         <textarea
           id="newmsg"
           rows="3"

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { DiscussionPost, Newmessage } from "./";
-import { Message } from "../Models";
+import { Message, Thought } from "../Models";
 import "./Discussion.css";
 
 export default class Discussion extends Component {
@@ -8,29 +8,18 @@ export default class Discussion extends Component {
     isOpen: true,
     discussions: [],
     postid: null,
+    thought: ''
   };
 
-  componentDidMount() {
-    const discussions = [
-      {
-        attrs: {
-          author: "author",
-          text: "content",
-        },
-      },
-      {
-        attrs: {
-          author: "author",
-          text: "content",
-        },
-      },
-      {
-        attrs: {
-          author: "author",
-          text: "content",
-        },
-      },
-    ];
+  async componentDidMount() {
+    this.props.setload();
+    const discussions = await Message.fetchList({
+      postid: this.props.id
+    });
+    const thought = await Thought.findById(this.props.id);
+    this.setState({ thought: thought });
+    console.log(thought);
+    this.props.setload();
     this.setState({ discussions });
   }
 
@@ -45,9 +34,12 @@ export default class Discussion extends Component {
   toggle = () => {
     this.state.isOpen ? this.hide() : this.show();
   };
+
+  updateDiscussion = (messages) => {
+    this.setState({ discussions: messages });
+  };
+
   getDiscussions = () => {
-    // var discussions = JSON.parse(localStorage.getItem("discussions"));
-    // if (!discussions) discussions = [];
     return this.state.discussions.map((item) => {
       return <DiscussionPost data={item} />;
     });
@@ -60,10 +52,13 @@ export default class Discussion extends Component {
           <div onClick={this.toggle} className="discussion-title">
             Discuss
           </div>
-          <div className="thought-content">Thought content</div>
+          <div className="thought-content">
+            {this.state.thought ? this.state.thought.attrs.text : null}<br />
+            <small>{this.state.thought ? "@" + this.state.thought.attrs.author : null}</small>
+          </div>
           <div className="discussions">{this.getDiscussions()}</div>
           <div className="discussion-new">
-            <Newmessage />
+            <Newmessage {...this.props} updateDiscussion={this.updateDiscussion} />
           </div>
         </div>
       );

@@ -79,20 +79,20 @@ class Page extends React.Component {
   render() {
     return (
       <div>
-        <div class="land">
-          <div class="headerland">
+        <div className="land">
+          <div className="headerland">
             {!userSession.isUserSignedIn() ? (
               <button onClick={this.handleSignin}>
                 Login using Blockstack
               </button>
             ) : (
-              <div class="nav">
+              <div className="nav">
                 <a href="/feed">Home</a>
                 <button onClick={this.handleSignOut}>Logout</button>
               </div>
             )}
           </div>
-          <div class="logo">
+          <div className="logo">
             <p>Pden</p>
           </div>
           <footer>
@@ -100,8 +100,8 @@ class Page extends React.Component {
           </footer>
         </div>
         {this.state.loading ? (
-          <div class="loadcontainer">
-            <div class="loader" />
+          <div className="loadcontainer">
+            <div className="loader" />
           </div>
         ) : null}
       </div>

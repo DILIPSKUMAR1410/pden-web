@@ -38,7 +38,7 @@ class Newfeed extends React.Component {
   };
   render() {
     return (
-      <div class="newfeed">
+      <div className="newfeed">
         <textarea
           id="newfeed"
           rows="5"
