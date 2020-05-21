@@ -3,7 +3,7 @@ export { default as DiscussionPost } from "./DiscussionPost";
 export { default as Feed } from "./Feed";
 export { default as Home } from "./Home";
 export { default as Invite } from "./Invite";
-export { default as LandingPage } from "./Landingpage";
+export { default as Landingpage } from "./Landingpage";
 export { default as Newmessage } from "./Message";
 export { default as Newfeed } from "./Newfeed";
 export { default as Post } from "./Post";

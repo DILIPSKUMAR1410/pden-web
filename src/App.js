@@ -1,10 +1,8 @@
 import React from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
-import Landingpage from "./Components/Landingpage";
-import Search from "./Components/Search";
 import PublicRoute from "./Route/Publicroute";
 import PrivateRoute from "./Route/Privateroute";
-import Profile from "./Components/Profile";
+import { Landingpage, Search, Profile, Discussion } from "./Components";
 
 import "./App.css";
 
@@ -34,6 +32,7 @@ class App extends React.Component {
           <PublicRoute component={Landingpage} path="/" exact />
           <PublicRoute component={Search} path="/search" exact />
           <PublicRoute component={Profile} path="/user/:uid" />
+          <PublicRoute component={Discussion} path="/discuss" />
           <PrivateRoute
             component="Feed"
             path={`${process.env.PUBLIC_URL}/feed`}
