@@ -28,7 +28,7 @@
   padding: 0.4rem 0.3rem;
 } */
 
-.discussion-container {
+.discussion-tab {
   position: absolute;
   overflow-y: auto;
   right: 1rem;
@@ -38,6 +38,7 @@
   background-color: white;
   border: 1px solid #eee;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
 }
 
 .discussion-new {
@@ -47,7 +48,16 @@
   bottom: 0;
 }
 
+.discussion-container{
+  padding-top: 5vh;
+  height:60vh;
+  overflow-y: auto;
+}
+
 .discussion-title {
+  position: absolute;
+  width:100%;
+  top:0;
   background-color: blue;
   color: white;
   cursor: pointer;
@@ -61,6 +71,6 @@
   padding: 0.5rem;
 }
 
-.discussion-container.collapsed {
+.discussion-tab.collapsed {
   height: 2rem;
 }
