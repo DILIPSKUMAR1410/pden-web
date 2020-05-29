@@ -1,0 +1,13 @@
+export { default as first } from "./1st.jpeg";
+export { default as second } from "./2nd.jpeg";
+export { default as third } from "./3rd.jpeg";
+export { default as fourth } from "./4th.png";
+export { default as fifth } from "./5th.jpeg";
+export { default as sixth } from "./6th.jpeg";
+export { default as seventh } from "./7th.png";
+export { default as eighth } from "./8th.jpeg";
+export { default as medium } from "./footer-medium.png";
+export { default as slack } from "./footer-slack.png";
+export { default as telegram } from "./footer-telegram.png";
+export { default as pden } from "./pden.png";
+export { default as twitter } from "./twitter-icon.png";
