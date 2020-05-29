@@ -283,7 +283,9 @@ function GetStarted(props) {
           />
         );
       })}
-      <div className="yt-video"> YT VIDEO COMES HERE</div>
+      <div className="yt-video">
+        <iframe frameborder="0" src="https://www.youtube.com/embed/17KXXqg71-s" allowFullScreen></iframe>
+      </div>
       <div className="getting-started__list">
         <p className="getting-started__li bold">
           Pden is powered by <a href="https://blockstack.org">Blockstack's</a>{" "}

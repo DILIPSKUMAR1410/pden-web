@@ -104,7 +104,15 @@ a:hover {
 }
 
 .yt-video {
-  margin: 1rem 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 85vh;
+  margin-bottom: 12vh;;
+}
+
+.yt-video iframe {
+  width: 80%;
 }
 
 .getting-started__li {
@@ -153,14 +161,12 @@ a:hover {
   .hero__text {
     top: 14%;
   }
-
   .getting-started__item {
     flex-direction: column;
   }
   .getting-started__item--alt {
     flex-direction: column-reverse;
   }
-
   .getting-started__text {
     width: 95%;
     padding: 1rem;
