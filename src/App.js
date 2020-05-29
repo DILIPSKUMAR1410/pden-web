@@ -1,10 +1,10 @@
 import Landing from "./Components/Landing/Landing";
-import Privacy from "./Components/Landing/Privacy"
+import Privacy from "./Components/Landing/Privacy";
 import React from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
 import PublicRoute from "./Route/Publicroute";
 import PrivateRoute from "./Route/Privateroute";
-import { Landingpage, Search, Profile, Discussion } from "./Components";
+import { Search, Profile } from "./Components";
 
 import "./App.css";
 
@@ -33,7 +33,6 @@ class App extends React.Component {
         <Switch>
           <PublicRoute component={Landing} path="/" exact />
           <PublicRoute component={Privacy} path="/privacy-policy" exact />
-          {/* <PublicRoute component={Landingpage} path="/" exact /> */}
           <PublicRoute component={Search} path="/search" exact />
           <PublicRoute component={Profile} path="/user/:uid" />
           <PrivateRoute

@@ -3,7 +3,6 @@ import { useEffect } from "react";
 export default function useScript() {
   useEffect(() => {
     (function () {
-      "use strict";
       var canvas = document.getElementById("btrn1");
       if (canvas !== null) {
         var ctx = canvas.getContext("2d"),
@@ -48,18 +47,6 @@ export default function useScript() {
           console.log(particles);
         }
         createParticles();
-
-        function randomColor() {
-          return (
-            "rgb(" +
-            Math.floor(Math.random() * 256) +
-            "," +
-            Math.floor(Math.random() * 256) +
-            "," +
-            Math.floor(Math.random() * 256) +
-            ")"
-          );
-        }
 
         function grayScaleRandom() {
           var item = Math.round(Math.random() * 150);
