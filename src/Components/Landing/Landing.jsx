@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import {
   first,
   second,
@@ -40,10 +40,187 @@ function GetStartedItem({ text, image, alt }) {
 }
 
 function Hero(props) {
+  useEffect(() => {
+    (function () {
+      "use strict";
+      var canvas = document.getElementById("btrn1");
+      if (canvas !== null) {
+        var ctx = canvas.getContext("2d"),
+          w = (canvas.width = window.innerWidth),
+          h = (canvas.height = window.innerHeight),
+          options = {
+            particleRadius: 1,
+            addedRadius: 3,
+            defaultSpeed: 0.5,
+            addedSpeed: 0.7,
+            lineWidth: 3,
+            particlesAmount: 93,
+            backGroundColor: "#56356d",
+            color: "#e2e2e2",
+          };
+
+        var particles = [];
+        var mouseCoords = {
+          x: undefined,
+          y: undefined,
+        };
+
+        function Particle(x, y) {
+          this.radius =
+            options.particleRadius * options.addedRadius * Math.random();
+          this.x = this.radius + Math.random() * (w - this.radius * 2);
+          this.y = this.radius + Math.random() * (h - this.radius * 2);
+          this.speed =
+            options.defaultSpeed + Math.random() * options.addedSpeed;
+          this.color = grayScaleRandom();
+          this.directionAngle = Math.floor(Math.random() * 360);
+          this.direction = {
+            x: Math.cos(this.directionAngle),
+            y: Math.sin(this.directionAngle),
+          };
+        }
+
+        function createParticles() {
+          for (var i = 0; i < options.particlesAmount; i++) {
+            particles.push(new Particle());
+          }
+          console.log(particles);
+        }
+        createParticles();
+
+        function randomColor() {
+          return (
+            "rgb(" +
+            Math.floor(Math.random() * 256) +
+            "," +
+            Math.floor(Math.random() * 256) +
+            "," +
+            Math.floor(Math.random() * 256) +
+            ")"
+          );
+        }
+
+        function grayScaleRandom() {
+          var item = Math.round(Math.random() * 150);
+          return "rgb(" + item + "," + item + "," + item + ")";
+        }
+
+        function checkDistance(x1, y1, x2, y2) {
+          //Возвращает расстояние между точками.
+          return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2)); //Квадрат гипотинузы равен
+        }
+        Particle.prototype.draw = function () {
+          ctx.lineWidth = options.lineWidth;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+          ctx.closePath();
+          ctx.fillStyle = this.color;
+          ctx.fill();
+        };
+        Particle.prototype.update = function () {
+          this.checkCollision();
+          this.x += this.direction.x * this.speed;
+          this.y += this.direction.y * this.speed;
+          // координата - косинус угла, y - синус;
+          if (
+            checkDistance(this.x, this.y, mouseCoords.x, mouseCoords.y) < 100 &&
+            this.speed < 2
+          ) {
+            this.direction.x =
+              ((this.x - mouseCoords.x) /
+                checkDistance(this.x, this.y, mouseCoords.x, mouseCoords.y)) *
+              this.speed;
+            this.direction.y =
+              ((this.y - mouseCoords.y) /
+                checkDistance(this.x, this.y, mouseCoords.x, mouseCoords.y)) *
+              this.speed;
+            this.speed += 0.5;
+          } else if (this.speed > options.defaultSpeed) {
+            this.speed -= 0.1;
+          }
+
+          // if(checkDistance(this.x, this.y, mouseCoords.x, mouseCoords.y) < 100) {
+          //     this.radius < 50 ? this.radius += 1 : false ;
+          // } else if(this.radius > options.particleRadius) {
+          //     this.radius -=1;
+          // }
+        };
+        Particle.prototype.checkCollision = function () {
+          if (this.x + this.radius >= w || this.x <= this.radius) {
+            this.direction.x *= -1;
+          }
+          if (this.y + this.radius >= h || this.y <= this.radius) {
+            this.direction.y *= -1;
+          }
+          this.x = this.x > w - this.radius ? w - this.radius : this.x;
+          this.y = this.y > h - this.radius ? h - this.radius : this.y;
+          this.x = this.x < this.radius ? this.radius : this.x;
+          this.y = this.y < this.radius ? this.radius : this.y;
+        };
+        // =============================================
+        //                  WORKING LOOP
+        // =============================================
+        function loop() {
+          ctx.fillStyle = options.backGroundColor;
+          ctx.fillRect(0, 0, w, h);
+          for (var i = 0; i < particles.length; i++) {
+            particles[i].draw();
+            particles[i].update();
+          }
+          window.requestAnimationFrame(loop);
+        }
+
+        window.requestAnimationFrame(loop);
+        // =============================================
+        // =============================================
+        var anmId;
+
+        function log() {
+          anmId = window.requestAnimationFrame(log);
+        }
+        log();
+        canvas.addEventListener("mousemove", function (e) {
+          mouseCoords.x = e.pageX;
+          mouseCoords.y = e.pageY;
+        });
+
+        canvas.addEventListener("contextmenu", function (e) {
+          e.preventDefault();
+          window.cancelAnimationFrame(anmId);
+        });
+
+        window.addEventListener("resize", function () {
+          w = window.innerWidth;
+          h = window.innerHeight;
+          console.log(w, h);
+        });
+      }
+    })();
+  }, []);
   return (
-    <div style={{ height: "100vh" }}>
+    <div class="hero-container">
       <canvas id="btrn1"></canvas>
-      HeroText
+      <div className="topbar">
+        <span className="topbar__logo">pden</span>
+        <a
+          href="https://play.google.com/store/apps/details?id=com.dk.pden"
+          className="topbar__btn"
+        >
+          Download App(Beta)
+        </a>
+      </div>
+      <div className="hero__text">
+        <h2 className="hero__title">Be your better self</h2>
+        <div className="hero__content">
+          Pden, pronounced Pen, is a decentralized social networking app where
+          you can share your thoughts, explore thoughts of interesting people
+          and interact with like minded people in an environment free from
+          social media noise. Pden helps you be your better self while
+          interacting with others online. We are bringing mindfulness and
+          civility in online conversations by creating a space to facilitate
+          responses rather than evoking reactions.
+        </div>
+      </div>
     </div>
   );
 }
@@ -51,19 +228,23 @@ function Hero(props) {
 function GetStarted(props) {
   const texts = [
     {
+      title: "Book",
       content:
         "Your profile is your Book. Borrow books and you'll start getting 'Thoughts' of other users in your feed. A public short-form diary which you share with the world.-",
     },
     {
+      title: "Shelf",
       content:
         "List of books you have borrowed. We don't show the number of books you have borrowed. You have to browse through your shelf to see what books you have borrowed.",
     },
 
     {
+      title: "Thoughts",
       content:
         "Post thoughts you want to share with the world. It could be anything, your status, an update, an expression or some random musing.",
     },
     {
+      title: "Spread",
       content:
         "Forward 'Thoughts' you feel worth spreading to people who follow you. The number of Spread count and Users that spread the Thought are not revealed.",
     },
@@ -102,7 +283,7 @@ function GetStarted(props) {
           />
         );
       })}
-      <div className="yt-video">// YT VIDEO COMES HERE</div>
+      <div className="yt-video"> YT VIDEO COMES HERE</div>
       <div className="getting-started__list">
         <p className="getting-started__li bold">
           Pden is powered by <a href="https://blockstack.org">Blockstack's</a>{" "}
