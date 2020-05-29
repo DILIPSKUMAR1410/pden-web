@@ -12,6 +12,33 @@ import {
 } from "../../Assets/Images/landing_images";
 import { slack, twitter, telegram } from "../../Assets/Images/landing_images";
 import "./Landing.css";
+import { UserSession, AppConfig } from "blockstack";
+import { User, configure } from "radiks";
+import { Person } from "../../Models";
+import Spinner from "../Spinner"
+const userSession = new UserSession({
+  appConfig: new AppConfig(["store_write", "publish_data"]),
+});
+
+configure({
+  apiServer: "https://radiks.pden.xyz",
+  userSession,
+});
+
+function handleSignin(e) {
+  e.preventDefault();
+  userSession.redirectToSignIn();
+};
+
+function handleSignOut(e) {
+  e.preventDefault();
+  localStorage.removeItem("thoughts");
+  localStorage.removeItem("Users");
+  localStorage.removeItem("Mydetails");
+  localStorage.removeItem("discussions");
+  userSession.signUserOut(window.location.origin);
+}
+
 
 function GetStartedItem({ text, image, alt }) {
   const textComponent = (
@@ -46,16 +73,29 @@ function Hero(props) {
     <div class="hero-container">
       <canvas id="btrn1"></canvas>
       <div className="topbar">
-        <span className="topbar__logo">pden</span>
-        <a
-          href="https://play.google.com/store/apps/details?id=com.dk.pden"
-          className="topbar__btn"
-        >
-          Download App(Beta)
-        </a>
+        <span className="topbar_logo">Pden.</span>
+        <span>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.dk.pden"
+          >
+            <button className="topbar__btn">
+              Download App(Beta)
+          </button>
+          </a>
+          {!userSession.isUserSignedIn() ? (
+            <button className="topbar__btn" onClick={e => handleSignin(e)}>
+              Login using Blockstack
+            </button>
+          ) : (
+              <div className="nav">
+                <a href="/feed">Feed</a>
+                <button className="topbar__btn" onClick={e => handleSignOut(e)}>Logout</button>
+              </div>
+            )}
+        </span>
       </div>
       <div className="hero__text">
-        <h2 className="hero__title">Be your better self</h2>
+        <h1 className="hero__title">Be your better self</h1>
         <div className="hero__content">
           Pden, pronounced Pen, is a decentralized social networking app where
           you can share your thoughts, explore thoughts of interesting people
@@ -128,7 +168,9 @@ function GetStarted(props) {
           />
         );
       })}
-      <div className="yt-video"> YT VIDEO COMES HERE</div>
+      <div className="yt-video">
+        <iframe frameborder="0" src="https://www.youtube.com/embed/17KXXqg71-s" allowFullScreen></iframe>
+      </div>
       <div className="getting-started__list">
         <p className="getting-started__li bold">
           Pden is powered by <a href="https://blockstack.org">Blockstack's</a>{" "}
@@ -175,17 +217,74 @@ function Footer(props) {
           <img src={telegram} alt="" className="social__icon" />
         </a>
       </div>
+      <br />
+      <a href="/privacy-policy">Privacy Policy</a>
     </div>
   );
 }
 
+
 export default class Landing extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+    };
+  }
+
+  componentDidMount() {
+    if (userSession.isSignInPending()) {
+      userSession
+        .handlePendingSignIn()
+        .then((userData) => {
+          this.setState({ loading: true });
+          this.props.history.push("/");
+          window.history.replaceState({}, document.title, "/");
+        })
+        .finally(() => {
+          if (userSession.isUserSignedIn()) {
+            User.createWithCurrentUser()
+              .catch(error => {
+                console.log(error);
+              }).finally(() => {
+                Person.fetchOwnList()
+                  .then((user) => {
+                    if (user.length === 0) {
+                      const me = new Person({
+                        username: userSession.loadUserData().username,
+                        followers: [],
+                        following: [],
+                      });
+                      me.save().finally(() => {
+                        localStorage.setItem("Mydetails", JSON.stringify(me));
+                      });
+                    } else {
+                      localStorage.setItem("Mydetails", JSON.stringify(user[0]));
+                    }
+                  })
+                  .finally(() => {
+                    Person.fetchList()
+                      .then((users) => {
+                        localStorage.setItem("Users", JSON.stringify(users));
+                      })
+                      .finally(() => {
+                        this.props.history.push("/feed");
+                        this.setState({ loading: false });
+                      });
+                  });
+              });
+          }
+          else this.setState({ loading: false });
+        });
+    }
+  }
   render() {
     return (
       <div className="landing">
         <Hero />
         <GetStarted />
         <Footer />
+        {this.state.loading ? <Spinner /> : null}
       </div>
     );
   }

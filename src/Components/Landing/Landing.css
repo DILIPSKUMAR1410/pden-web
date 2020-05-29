@@ -31,28 +31,41 @@ a:hover {
   left: 0;
   right: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  height: 10vh;
+  /* height: 10vh; */
 }
 
-.topbar__logo {
-  font-size: 3em;
+.topbar span{
+  display: flex;
+}
+.topbar_logo {
+  font-size: 27px;
+  color: white;
+  font-weight: bold;
+  margin: 2vh 0 0 15vw ;
 }
 
 .topbar__btn {
+  padding: 10px 25px;
   padding: 1rem;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 12px 3vw;
   background-color: #e74e93;
-  border: 1px solid whitesmoke;
+  border: 2px double #3e1c56;
   border-radius: 50vh;
+  cursor: pointer;
 }
 
 .hero-container {
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
   position: relative;
   height: 100vh;
   width: 100vw;
   line-height: 1.5;
-  color: #eee;
+  color: #ffffff;
 }
 
 .hero__text {
@@ -64,12 +77,18 @@ a:hover {
 }
 
 .hero__title {
-  font-size: 2.1rem;
+  margin-top: 20px;
+  font-size: 40px;
   margin-bottom: 0.8rem;
 }
 
 .hero__content {
-  font-size: 1.1em;
+  width:75vw;
+  margin-left: 8vw;
+  display: flex;
+  margin-top:30px;
+  justify-content: center;
+  font-size: 1em;
 }
 
 /* GETTING STARTED */
@@ -104,7 +123,15 @@ a:hover {
 }
 
 .yt-video {
-  margin: 1rem 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 85vh;
+  margin-bottom: 12vh;
+}
+
+.yt-video iframe {
+  width: 80%;
 }
 
 .getting-started__li {
@@ -137,6 +164,11 @@ a:hover {
   max-height: 3rem;
 }
 
+.privacy{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  margin:1rem;
+}
+
 @media only screen and (max-width: 600px) {
   .topbar {
     height: 7vh;
@@ -153,14 +185,12 @@ a:hover {
   .hero__text {
     top: 14%;
   }
-
   .getting-started__item {
     flex-direction: column;
   }
   .getting-started__item--alt {
     flex-direction: column-reverse;
   }
-
   .getting-started__text {
     width: 95%;
     padding: 1rem;
