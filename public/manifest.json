@@ -7,7 +7,7 @@
       "type": "image/x-icon"
     }
   ],
-  "start_url": "https://pden.netlify.com",
+  "start_url": "https://pden.netlify.app",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
