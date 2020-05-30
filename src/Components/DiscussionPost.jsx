@@ -12,14 +12,14 @@ class DiscussionPost extends Component {
         <span className="discussion-post-author">
           {this.props.data.attrs.author}
         </span>
-        <div className="discussion-post-btn-group">
+        {/* <div className="discussion-post-btn-group">
           <button className="discussion-post-btn discussion-post-btn-spread">
             Sp
           </button>
           <button className="discussion-post-btn discussion-post-btn-share">
             Sh
           </button>
-        </div>
+        </div> */}
       </div>
     );
   }

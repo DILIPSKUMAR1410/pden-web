@@ -4,6 +4,7 @@ import { Thought } from "../Models";
 import { getConfig } from "radiks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { Form, TextArea } from 'semantic-ui-react'
 const { userSession } = getConfig();
 class Newfeed extends React.Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class Newfeed extends React.Component {
       post: "",
     };
   }
+  
   //creating a tweet
   post = (e) => {
     this.setState({ post: e.target.value });
@@ -39,13 +41,21 @@ class Newfeed extends React.Component {
   render() {
     return (
       <div className="newfeed">
-        <textarea
+        {/* <textarea
           id="newfeed"
           rows="5"
           cols="50"
           onChange={(e) => this.post(e)}
           maxLength="256"
-        />
+        /> */}
+        <Form className="feed-text">
+          <TextArea
+            placeholder='Share you thoughts here...'
+            id="newfeed"
+            onChange={(e) => this.post(e)}
+            maxLength="256"
+          />
+        </Form>
         <button type="submit" onClick={this.upload}>
           <FontAwesomeIcon icon={faPlus} cursor={"pointer"} />
         </button>

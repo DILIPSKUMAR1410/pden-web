@@ -4,8 +4,8 @@
   height: max-content;
   margin: 1rem auto;
   padding: 0.8rem 1rem;
-  color: #eee;
-  background-color: blue;
+  color: #ffab40;
+  background-color: #56366d;
 }
 
 .discussion-post-text {
@@ -40,9 +40,9 @@
 
 .discussion-post-btn-spread {
   background-color: #eee;
-  color: blue;
+  color: #56366d;
 }
 .discussion-post-btn-share {
   background-color: #eeeeee;
-  color: blue;
+  color: #56366d;
 }

@@ -5,7 +5,7 @@ import { BrowserRouter, Switch } from "react-router-dom";
 import PublicRoute from "./Route/Publicroute";
 import PrivateRoute from "./Route/Privateroute";
 import { Search, Profile } from "./Components";
-
+import 'semantic-ui-css/semantic.min.css'
 import "./App.css";
 
 class App extends React.Component {

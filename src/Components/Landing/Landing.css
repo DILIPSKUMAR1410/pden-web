@@ -2,13 +2,14 @@ body {
   overflow-x: hidden;
 }
 
-a {
+.landing a {
+  font-size: 16px;
   color: currentColor;
-  text-decoration: underline;
+  text-decoration: none;
   transition: color 200ms ease-in-out;
 }
 
-a:hover {
+.landing a:hover {
   color: aqua;
 }
 
@@ -56,6 +57,13 @@ a:hover {
   background-color: #e74e93;
   border: 2px double #3e1c56;
   border-radius: 50vh;
+  cursor: pointer;
+}
+.login-btn{
+  margin: 25px 4vw;
+}
+.login-btn a{
+  margin-right: 3vw;
   cursor: pointer;
 }
 
@@ -168,6 +176,8 @@ a:hover {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   margin:1rem;
 }
+
+
 
 @media only screen and (max-width: 600px) {
   .topbar {

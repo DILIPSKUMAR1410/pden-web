@@ -1,6 +1,9 @@
 .post-container {
   position: relative;
+  display: flex;
   width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
   border-radius: 0.8rem;
   border: solid 1px rgb(165, 165, 165);
   height: max-content;
@@ -20,6 +23,7 @@
 .post-author::before {
   content: "@";
 }
+
 .post-author::after {
   content: " · ";
 }
@@ -30,13 +34,18 @@
 
 .post-btn {
   all: unset;
+  border-radius: 0.3rem;
   cursor: pointer;
+}
+
+.post-btn:hover {
+  background-color: #56366d;
 }
 
 .post-btn-discuss {
   border-radius: 0.5rem;
   font-size: 0.8em;
-  background-color: blue;
+  background-color: #56366d;
   padding: 0.5em 1rem;
   position: absolute;
   right: 5%;
@@ -45,23 +54,31 @@
 }
 
 .post-btn-group {
-  width: 70%;
+  display: flex;
+  flex-direction: column;
+  /* width: 70%;
   margin: 0.3rem auto 0;
   border-radius: 4px;
-  border: solid 1px #444444;
+  border: solid 1px #444444; */
 }
 
-.post-btn-spread,
+/* .post-btn-spread,
 .post-btn-share {
   width: 50%;
   text-align: center;
 }
 
 .post-btn-spread {
-  background-color: blue;
+  background-color: #56366d;
   color: #eeeeee;
 }
 .post-btn-share {
   background-color: #eeeeee;
-  color: blue;
+  color: #56366d;
+} */
+
+.post-btn img {
+  margin:3px 3px 0px 3px;
+  height: 24px;
+  max-height: 100%;
 }

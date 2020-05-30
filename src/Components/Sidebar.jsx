@@ -14,7 +14,20 @@ class Sidebar extends Component {
       name: userSession.loadUserData().username,
     };
   }
-  
+
+  handleSignOut = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("thoughts");
+    localStorage.removeItem("Users");
+    localStorage.removeItem("Mydetails");
+    localStorage.removeItem("discussions");
+    userSession.signUserOut(window.location.origin);
+  }
+
+  goToLanding=()=>{
+    window.location.pathname="/";
+  }
+
   getProfilePic = () => {
     const profilePic = false;
     if (!profilePic) return profilePlaceholder;
@@ -40,14 +53,20 @@ class Sidebar extends Component {
     if (userSession.isUserSignedIn())
       return (
         <div className="sidebar">
-          <div className="pden-logo">Pden</div>
+          <div className="pden-logo" onClick={this.goToLanding}>Pden.</div>
           <div className="menu">
             <Searchbar {...this.props} />
             <div className="sidebar-menu">
               {this.getSidebarButtons(this.props.currentPage)}
             </div>
             <span className="profile-name">{this.state.name}</span>
-            <img src={this.getProfilePic()} alt="" className="profile-pic" />
+            <div onClick={() => this.props.toggleLogoutMenu()}>
+              <img src={this.getProfilePic()} alt="" className="profile-pic"/>
+              {this.props.logoutmenu ?
+                <div className="logout-menu">
+                  <span onClick={this.handleSignOut}>Logout</span>
+                </div> : null}
+            </div>
           </div>
         </div>
       );

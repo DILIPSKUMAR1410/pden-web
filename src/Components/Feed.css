@@ -1,14 +1,23 @@
 .feedc{
-  scroll-behavior: smooth;
-  overflow-y: auto;
-  width:100%;
-  height: 70vh;
+  width:45vw;
   padding: 1rem;
+  margin-left: 20vw;
+  width:45vw;
+}
+
+.feed-full{
+  width:100vw;
+  height: 70vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
 .feed-container {
-  width: 45vw;
+  width: 100%;
   height: 90vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+.feed-input{
+  margin-left: 22vw;
+  width:45vw;
 }

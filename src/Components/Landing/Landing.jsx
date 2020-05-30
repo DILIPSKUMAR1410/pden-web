@@ -83,14 +83,16 @@ function Hero(props) {
           </button>
           </a>
           {!userSession.isUserSignedIn() ? (
-            <button className="topbar__btn" onClick={e => handleSignin(e)}>
-              Login using Blockstack
-            </button>
+            <span className="login-btn">
+              <a onClick={e => handleSignin(e)}>
+                Login using Blockstack
+            </a>
+            </span>
           ) : (
-              <div className="nav">
+              <span className="login-btn">
                 <a href="/feed">Feed</a>
-                <button className="topbar__btn" onClick={e => handleSignOut(e)}>Logout</button>
-              </div>
+                <a onClick={e => handleSignOut(e)}>Logout</a>
+              </span>
             )}
         </span>
       </div>

@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .loader {
   border: 8px solid #f3f3f3;
   /* Light grey */
-  border-top: 8px solid blue;
+  border-top: 8px solid #56366d;
   /* Blue */
   border-radius: 50%;
   width: 45px;

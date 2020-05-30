@@ -22,7 +22,7 @@
   display: inline-block;
   height: 100%;
   border: solid 1px rgb(113, 127, 252);
-  border-bottom: solid 1px blue;
+  border-bottom: solid 1px #56366d;
   margin-right: 1rem;
   color: #666;
   padding: 0.4rem 0.3rem;
@@ -58,8 +58,8 @@
   position: absolute;
   width:100%;
   top:0;
-  background-color: blue;
-  color: white;
+  background-color: #56366d;
+  color: #ffab40;
   cursor: pointer;
   padding: 0.3rem;
 }

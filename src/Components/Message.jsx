@@ -2,6 +2,9 @@ import React from "react";
 import "./Message.css";
 import { Message } from "../Models";
 import { getConfig } from "radiks";
+import { Form, TextArea } from 'semantic-ui-react'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 const { userSession } = getConfig();
 class Newmessage extends React.Component {
   constructor(props) {
@@ -41,15 +44,17 @@ class Newmessage extends React.Component {
   render() {
     return (
       <div className="msgfeed">
-        <textarea
-          id="newmsg"
-          rows="3"
-          cols="50"
-          onChange={(e) => this.post(e)}
-          maxLength="256"
-        />
+        <Form className="msg-text">
+          <TextArea
+            placeholder='Type you Message here'
+            id="newmsg"
+            row={1}
+            onChange={(e) => this.post(e)}
+            maxLength="256"
+          />
+        </Form>
         <button type="submit" onClick={this.upload}>
-          Post
+        <FontAwesomeIcon icon={faPlus} cursor={"pointer"} />
         </button>
       </div>
     );

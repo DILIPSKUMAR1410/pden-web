@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Person, Thought } from "../Models";
 import { Sidebar, Discussion, Spinner, Post } from "./";
 import Profiletab from "./Profiletab"
+import "./Profile.css"
 class Profile extends Component {
   state = {
     username: this.props.match.params.uid,
@@ -9,7 +10,12 @@ class Profile extends Component {
     showDiscuss: false,
     postid: "",
     loading: false,
+    logoutmenu: false
   };
+
+  toggleLogoutMenu = () => {
+    this.setState({ logoutmenu: !this.state.logoutmenu });
+  }
 
   async componentDidMount() {
     this.setload();
@@ -47,14 +53,18 @@ class Profile extends Component {
   render() {
     return (
       <div className="home-container">
-        <Sidebar onSearch={this.onSearch} />
+        <Sidebar onSearch={this.onSearch} toggleLogoutMenu={this.toggleLogoutMenu} logoutmenu={this.state.logoutmenu} />
         <div className="feed-container">
-          <Profiletab/>
-          <div className="feedc">
-            <React.Fragment>
-              {/* ?_? */}
-              {this.state.loadfeed ? this.getThoughts() : this.getThoughts()}
-            </React.Fragment>
+          <div className="profile-tab-container">
+            <Profiletab />
+          </div>
+          <div className="feed-full">
+            <div className="feedc">
+              <React.Fragment>
+                {/* ?_? */}
+                {this.state.loadfeed ? this.getThoughts() : this.getThoughts()}
+              </React.Fragment>
+            </div>
           </div>
         </div>
         {this.state.showDiscuss ? (

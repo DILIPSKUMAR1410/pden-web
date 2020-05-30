@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import "./Post.css";
-
-// Props:
-//  showDiscuss: Function to show the discuss box
-
+import discuss from "../Assets/Icons/discussion.png"
+import share from "../Assets/Icons/share.png"
+import spread from "../Assets/Icons/spread.png"
 class Post extends Component {
   show = () => {
     this.props.showDiscuss(this.props.data._id);
@@ -13,20 +12,25 @@ class Post extends Component {
   render() {
     return (
       <div className="post-container">
-        <h3 className="post-text">{this.props.data.attrs.text}</h3>
-        <span className="post-author">
-          {this.props.data.attrs.author}
-        </span>
-        <span className="post-date">
-          {new Date(this.props.data.attrs.date).toDateString()}
-        </span>
-        <button className="post-btn post-btn-discuss" onClick={this.show}>
-          {" "}
-          ->{" "}
-        </button>
+        <div>
+          <h3 className="post-text">{this.props.data.attrs.text}</h3>
+          <span className="post-author">
+            {this.props.data.attrs.author}
+          </span>
+          <span className="post-date">
+            {new Date(this.props.data.attrs.date).toDateString()}
+          </span>
+        </div>
         <div className="post-btn-group">
-          <button className="post-btn post-btn-spread">Sp</button>
-          <button className="post-btn post-btn-share">Sh</button>
+          <button className="post-btn" onClick={this.show}>
+            <img src={discuss} />
+          </button>
+          <button className="post-btn">
+            <img src={spread} />
+          </button>
+          <button className="post-btn">
+            <img src={share} />
+          </button>
         </div>
       </div>
     );

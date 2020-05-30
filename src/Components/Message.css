@@ -6,28 +6,28 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding-top:2.5%;
-    padding-bottom:1.5%;
-    background-color: #d9d2e9ff;
+    padding-top: 2.5%;
+    padding-bottom: 1.5%;
+    border: 2px solid #56366d;
 }
 
-.msgfeed textarea {
-    font-size: large;
-    margin-bottom: 3vh;
-    border:none;
-    width:90%;
-    border-bottom: 2px solid blue;
-    border-left: 2px solid blue;
-    margin-left: 5%;
-    background-color: #d9d2e9ff;
+.msg-text {
+    width: 80%;
+    margin-left: 0.2rem;
 }
-.msgfeed button{
-    margin-left: 5%;
-    width:8vw;
-    background-color:blue;
-    color:white;
+
+.msgfeed button {
+    margin-right: 2%;
+    /* width:8vw; */
+    background-color: #56366d;
+    color: white;
     border: 1px solid white;
-    border-radius: 0.3rem;
-    padding:0.3rem;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
     cursor: pointer;
+}
+
+.msgfeed button:hover {
+    background-color: #ffab40;
 }

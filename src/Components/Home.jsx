@@ -7,7 +7,12 @@ class Home extends Component {
     showDiscuss: false,
     postid: "",
     loading: false,
+    logoutmenu: false,
   };
+
+  toggleLogoutMenu = () => {
+    this.setState({ logoutmenu: !this.state.logoutmenu });
+  }
 
   showDiscuss = (post) => {
     this.setState({
@@ -27,12 +32,14 @@ class Home extends Component {
   render() {
     return (
       <div className="home-container">
-        <Sidebar currentPage="" onSearch={this.onSearch} />
-        <Feed showDiscuss={this.showDiscuss} setload={this.setload} />
-        {this.state.showDiscuss ? (
-          <Discussion id={this.state.postid} setload={this.setload} />
-        ) : null}
-        {this.state.loading ? <Spinner /> : null}
+        <Sidebar currentPage="" onSearch={this.onSearch} toggleLogoutMenu={this.toggleLogoutMenu} logoutmenu={this.state.logoutmenu} />
+        <div onClick={() => this.setState({ logoutmenu: false })}>
+          <Feed showDiscuss={this.showDiscuss} setload={this.setload} />
+          {this.state.showDiscuss ? (
+            <Discussion id={this.state.postid} setload={this.setload} />
+          ) : null}
+          {this.state.loading ? <Spinner /> : null}
+        </div>
       </div>
     );
   }
