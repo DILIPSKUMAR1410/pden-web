@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./MyBook.css";
-import { Newfeed, Post } from "./";
+import { Newfeed, Post } from "..";
 
 export default class MyBook extends Component {
   getThoughts = () => {

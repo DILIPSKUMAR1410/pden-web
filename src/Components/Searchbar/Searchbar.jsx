@@ -14,7 +14,8 @@ class Searchbar extends Component {
     if (e.charCode === 13) {
       if (this.state.input) {
         var val = this.state.input.replace(/[-[\]/{}()*+?\\^$|]/g, "");
-        this.props.onSearch(val);
+        // this.props.onSearch(val);
+        window.location.href = `/search?q=${val}`;
       }
     }
   };

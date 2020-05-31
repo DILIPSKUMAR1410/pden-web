@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { parse } from "query-string";
 import fetch from "isomorphic-fetch";
-import { Spinner, Sidebar, UserList } from "./";
+import { Spinner, Sidebar, UserList } from "..";
 import "./Search.css";
 
 class Search extends Component {
@@ -10,9 +10,9 @@ class Search extends Component {
     loading: true,
   };
 
-  onSearch = (val) => {
-    window.location.href = `/search?q=${val}`;
-  };
+  // onSearch = (val) => {
+  //   window.location.href = `/search?q=${val}`;
+  // };
 
   async componentDidMount() {
     this.setState({
@@ -38,7 +38,7 @@ class Search extends Component {
   render() {
     return (
       <div className="home-container">
-        <Sidebar onSearch={this.onSearch} currentPage="" />
+        <Sidebar currentPage="" />
         <div className="search-results-container">
           <h2 className="search-title">
             Search Results for "{parse(this.props.location.search).q}"

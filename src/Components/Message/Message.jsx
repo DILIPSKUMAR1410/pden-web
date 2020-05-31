@@ -1,8 +1,8 @@
 import React from "react";
 import "./Message.css";
-import { Message } from "../Models";
+import { Message } from "../../Models";
 import { getConfig } from "radiks";
-import { Form, TextArea } from 'semantic-ui-react'
+import { Form, TextArea } from "semantic-ui-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 const { userSession } = getConfig();
@@ -46,7 +46,7 @@ class Newmessage extends React.Component {
       <div className="msgfeed">
         <Form className="msg-text">
           <TextArea
-            placeholder='Type you Message here'
+            placeholder="Type you Message here"
             id="newmsg"
             row={1}
             onChange={(e) => this.post(e)}
@@ -54,7 +54,7 @@ class Newmessage extends React.Component {
           />
         </Form>
         <button type="submit" onClick={this.upload}>
-        <FontAwesomeIcon icon={faPlus} cursor={"pointer"} />
+          <FontAwesomeIcon icon={faPlus} cursor={"pointer"} />
         </button>
       </div>
     );

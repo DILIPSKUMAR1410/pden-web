@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { DiscussionPost, Newmessage } from "./";
-import { Message, Thought } from "../Models";
+import { DiscussionPost, Newmessage } from "..";
+import { Message, Thought } from "../../Models";
 import "./Discussion.css";
 
 export default class Discussion extends Component {
@@ -8,13 +8,13 @@ export default class Discussion extends Component {
     isOpen: true,
     discussions: [],
     postid: null,
-    thought: ''
+    thought: "",
   };
 
   async componentDidMount() {
     this.props.setload();
     const discussions = await Message.fetchList({
-      postid: this.props.id
+      postid: this.props.id,
     });
     const thought = await Thought.findById(this.props.id);
     this.setState({ thought: thought });
@@ -54,12 +54,20 @@ export default class Discussion extends Component {
           </div>
           <div className="discussion-container">
             <div className="thought-content">
-              {this.state.thought ? this.state.thought.attrs.text : null}<br />
-              <small>{this.state.thought ? "@" + this.state.thought.attrs.author : null}</small>
+              {this.state.thought ? this.state.thought.attrs.text : null}
+              <br />
+              <small>
+                {this.state.thought
+                  ? "@" + this.state.thought.attrs.author
+                  : null}
+              </small>
             </div>
             <div className="discussions">{this.getDiscussions()}</div>
             <div className="discussion-new">
-              <Newmessage {...this.props} updateDiscussion={this.updateDiscussion} />
+              <Newmessage
+                {...this.props}
+                updateDiscussion={this.updateDiscussion}
+              />
             </div>
           </div>
         </div>

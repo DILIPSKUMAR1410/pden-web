@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Spinner, Discussion, Feed, Sidebar } from "./";
+import { Spinner, Discussion, Feed, Sidebar } from "..";
 import "./Home.css";
 
 class Home extends Component {
@@ -12,7 +12,7 @@ class Home extends Component {
 
   toggleLogoutMenu = () => {
     this.setState({ logoutmenu: !this.state.logoutmenu });
-  }
+  };
 
   showDiscuss = (post) => {
     this.setState({
@@ -32,7 +32,12 @@ class Home extends Component {
   render() {
     return (
       <div className="home-container">
-        <Sidebar currentPage="" onSearch={this.onSearch} toggleLogoutMenu={this.toggleLogoutMenu} logoutmenu={this.state.logoutmenu} />
+        <Sidebar
+          currentPage=""
+          // onSearch={this.onSearch}
+          toggleLogoutMenu={this.toggleLogoutMenu}
+          logoutmenu={this.state.logoutmenu}
+        />
         <div onClick={() => this.setState({ logoutmenu: false })}>
           <Feed showDiscuss={this.showDiscuss} setload={this.setload} />
           {this.state.showDiscuss ? (

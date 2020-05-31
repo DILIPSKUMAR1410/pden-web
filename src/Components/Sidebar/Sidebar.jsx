@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import profilePlaceholder from "../Assets/Images/profile-placeholder.jpg";
-import { Searchbar } from "./";
+import profilePlaceholder from "../../Assets/Images/profile-placeholder.jpg";
+import { Searchbar } from "..";
 import "./Sidebar.css";
 import { getConfig } from "radiks";
 const { userSession } = getConfig();
@@ -22,11 +22,11 @@ class Sidebar extends Component {
     localStorage.removeItem("Mydetails");
     localStorage.removeItem("discussions");
     userSession.signUserOut(window.location.origin);
-  }
+  };
 
-  goToLanding=()=>{
-    window.location.pathname="/";
-  }
+  goToLanding = () => {
+    window.location.pathname = "/";
+  };
 
   getProfilePic = () => {
     const profilePic = false;
@@ -43,8 +43,7 @@ class Sidebar extends Component {
       .filter((item) => item[0] !== currentPage)
       .map((item) => (
         <div className={item[0] + " sidebar-menu-link"}>
-          <a href="/feed/#" key={item[0]}>
-          </a>
+          <a href="/feed/#" key={item[0]}></a>
         </div>
       ));
   };
@@ -53,7 +52,9 @@ class Sidebar extends Component {
     if (userSession.isUserSignedIn())
       return (
         <div className="sidebar">
-          <div className="pden-logo" onClick={this.goToLanding}>Pden.</div>
+          <div className="pden-logo" onClick={this.goToLanding}>
+            Pden.
+          </div>
           <div className="menu">
             <Searchbar {...this.props} />
             <div className="sidebar-menu">
@@ -61,11 +62,12 @@ class Sidebar extends Component {
             </div>
             <span className="profile-name">{this.state.name}</span>
             <div onClick={() => this.props.toggleLogoutMenu()}>
-              <img src={this.getProfilePic()} alt="" className="profile-pic"/>
-              {this.props.logoutmenu ?
+              <img src={this.getProfilePic()} alt="" className="profile-pic" />
+              {this.props.logoutmenu ? (
                 <div className="logout-menu">
                   <span onClick={this.handleSignOut}>Logout</span>
-                </div> : null}
+                </div>
+              ) : null}
             </div>
           </div>
         </div>

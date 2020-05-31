@@ -1,10 +1,10 @@
 import React from "react";
 import "./Newfeed.css";
-import { Thought } from "../Models";
+import { Thought } from "../../Models";
 import { getConfig } from "radiks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { Form, TextArea } from 'semantic-ui-react'
+import { Form, TextArea } from "semantic-ui-react";
 const { userSession } = getConfig();
 class Newfeed extends React.Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class Newfeed extends React.Component {
       post: "",
     };
   }
-  
+
   //creating a tweet
   post = (e) => {
     this.setState({ post: e.target.value });
@@ -50,7 +50,7 @@ class Newfeed extends React.Component {
         /> */}
         <Form className="feed-text">
           <TextArea
-            placeholder='Share you thoughts here...'
+            placeholder="Share you thoughts here..."
             id="newfeed"
             onChange={(e) => this.post(e)}
             maxLength="256"

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import StackGrid from "react-stack-grid";
-import profilePlaceholder from "../Assets/Images/profile-placeholder.jpg";
-import { Person } from "../Models";
-import twitterIcon from "../Assets/Images/twitter.svg";
-import facebookIcon from "../Assets/Images/facebook.svg";
-import instagramIcon from "../Assets/Images/instagram.svg";
+import profilePlaceholder from "../../Assets/Images/profile-placeholder.jpg";
+import { Person } from "../../Models";
+import twitterIcon from "../../Assets/Images/twitter.svg";
+import facebookIcon from "../../Assets/Images/facebook.svg";
+import instagramIcon from "../../Assets/Images/instagram.svg";
 // import blockstackIcon from "../Assets/Images/blockstack.svg";
 import "./UserList.css";
 
