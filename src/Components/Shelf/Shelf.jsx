@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { UserList, Sidebar } from "..";
-import {Person} from "../../Models"
+import { Person } from "../../Models";
 import "./Shelf.css";
 import { faFontAwesomeLogoFull } from "@fortawesome/free-solid-svg-icons";
 
 export default class Shelf extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-      following:[]
-    }
+    this.state = {
+      following: [],
+    };
   }
-  async componentDidMount(){
+  async componentDidMount() {
     const person = await Person.fetchOwnList();
     this.setState({ following: person[0].attrs.following });
   }
@@ -19,7 +19,10 @@ export default class Shelf extends Component {
   render() {
     return (
       <>
-        <UserList list={this.state.following} />
+        <div className="shelf-container">
+          <h2 className="title">My Shelf</h2>
+          <UserList list={this.state.following} />
+        </div>
       </>
     );
   }
