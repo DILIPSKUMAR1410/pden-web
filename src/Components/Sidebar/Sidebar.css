@@ -21,7 +21,7 @@
   cursor: pointer;
 }
 
-.profile-name{
+.profile-name {
   color: #ffab40
 }
 
@@ -50,19 +50,19 @@
   background-color: #ffab40;
 }
 
-.logout-menu{
-  right:0;
+.logout-menu {
+  right: 0;
   margin-top: 10px;
   margin-right: 30px;
   padding: 5px 0px 5px 10px;
   position: absolute;
   background: white;
-  border:2px solid #56366d;
+  border: 2px solid #56366d;
   border-radius: 5px;
   border-top-right-radius: 0px;
 }
 
-.logout-menu span{
+.logout-menu span {
   color: #666666;
   cursor: pointer;
   font-size: 16px;
@@ -70,7 +70,7 @@
 }
 
 .pden-logo {
-  cursor:pointer;
+  cursor: pointer;
   height: 8vh;
   width: 8vh;
   margin-left: 5px;
@@ -79,6 +79,10 @@
   justify-content: center;
   align-items: center;
   color: #ffab40;
+}
+
+a {
+  cursor: pointer;
 }
 
 .feed a:after {

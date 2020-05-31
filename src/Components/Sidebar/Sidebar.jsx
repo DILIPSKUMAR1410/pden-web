@@ -43,7 +43,7 @@ class Sidebar extends Component {
       .filter((item) => item[0] !== currentPage)
       .map((item) => (
         <div className={item[0] + " sidebar-menu-link"}>
-          <a href="/feed/#" key={item[0]}></a>
+          <a onClick={()=>this.props.changePage(item[0])} key={item[0]}></a>
         </div>
       ));
   };

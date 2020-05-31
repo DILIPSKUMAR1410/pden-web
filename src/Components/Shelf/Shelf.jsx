@@ -1,19 +1,28 @@
 import React, { Component } from "react";
 import { UserList, Sidebar } from "..";
+import {Person} from "../../Models"
 import "./Shelf.css";
 import { faFontAwesomeLogoFull } from "@fortawesome/free-solid-svg-icons";
 
 export default class Shelf extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      followers:[]
+    }
+  }
+  async componentDidMount(){
+    const person = await Person.fetchOwnList();
+    this.setState({ followers: person[0].attrs.followers });
+  }
   getFollowers() {
-    const followers = [];
-    return followers;
+    const following = [];
   }
 
   render() {
     return (
       <>
-        <Sidebar />
-        <UserList list={this.getFollowers()} />
+        <UserList list={this.state.followers} />
       </>
     );
   }
