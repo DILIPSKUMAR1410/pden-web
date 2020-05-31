@@ -5,6 +5,7 @@ import { Person } from "../../Models";
 import twitterIcon from "../../Assets/Images/twitter.svg";
 import facebookIcon from "../../Assets/Images/facebook.svg";
 import instagramIcon from "../../Assets/Images/instagram.svg";
+import verifiedIcon from "../../Assets/Images/verified.png";
 // import blockstackIcon from "../Assets/Images/blockstack.svg";
 import "./UserList.css";
 
@@ -33,15 +34,20 @@ class UserList extends Component {
     else return <span className="user-list-name"></span>;
   };
 
+  getIfPdenUser = (user) => {
+    if (
+      user.profile &&
+      user.profile.apps &&
+      user.profile.apps["https://pden_xyz"]
+    )
+      return true;
+    return false;
+  };
+
   getSocial = (user) => {
     const socialList = ["twitter", "facebook", "instagram"];
     const socialIcons = [twitterIcon, facebookIcon, instagramIcon];
     let availableSocials = [];
-    // if (
-    //   user.profile &&
-    //   user.profile.apps &&
-    //   user.profile.apps["https://app_pden_xyz"]
-    // )
     availableSocials.push(
       <span className="blockstack-icon">
         <span className="social-tooltip">{user.username}</span>
@@ -59,7 +65,7 @@ class UserList extends Component {
     user.profile.account.forEach((i) => {
       if (socialList.includes(i.service)) {
         availableSocials.push(
-          <a href={i.proofUrl}>
+          <a href={i.proofUrl} target="_blank">
             <img
               src={socialIcons[socialList.indexOf(i.service)]}
               alt="blockstack"
@@ -74,7 +80,22 @@ class UserList extends Component {
   };
 
   renderList = (list) => {
-    return list.map((i) => {
+    const pdenUsers = list.filter(
+      (user) =>
+        user.profile &&
+        user.profile.apps &&
+        user.profile.apps["https://pden_xyz"]
+    );
+    const nonPdenUsers = list.filter(
+      (user) =>
+        !(
+          user.profile &&
+          user.profile.apps &&
+          user.profile.apps["https://pden_xyz"]
+        )
+    );
+    const newlist = [...pdenUsers, ...nonPdenUsers];
+    return newlist.map((i) => {
       return (
         <div
           id={i.username}
@@ -84,6 +105,9 @@ class UserList extends Component {
           {this.getProfilePic(i)}
           <div className="user-list-details">
             {this.getName(i)}
+            {this.getIfPdenUser(i) && (
+              <img src={verifiedIcon} alt="pden" className="verified-icon" />
+            )}
             <br />
             {this.getSocial(i)}
           </div>

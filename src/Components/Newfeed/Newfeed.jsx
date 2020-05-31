@@ -3,7 +3,8 @@ import "./Newfeed.css";
 import { Thought } from "../../Models";
 import { getConfig } from "radiks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+// import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import sendIcon from "../../Assets/Images/send.png";
 import { Form, TextArea } from "semantic-ui-react";
 const { userSession } = getConfig();
 class Newfeed extends React.Component {
@@ -57,7 +58,9 @@ class Newfeed extends React.Component {
           />
         </Form>
         <button type="submit" onClick={this.upload}>
-          <FontAwesomeIcon icon={faPlus} cursor={"pointer"} />
+          <img src={sendIcon} alt="Send" />
+
+          {/* <FontAwesomeIcon icon={faPlus} cursor={"pointer"} /> */}
         </button>
       </div>
     );

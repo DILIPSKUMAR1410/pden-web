@@ -30,6 +30,11 @@
   margin-left: 6px;
 }
 
+.verified-icon {
+  height: 18px;
+  width: auto;
+}
+
 .blockstack-icon {
   position: relative;
   cursor: pointer;
