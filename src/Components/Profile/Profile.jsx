@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Person, Thought } from "../../Models";
 import { Sidebar, Discussion, Spinner, Post } from "..";
-import Profiletab from "../Profiletab";
+import Profiletab from "./Profiletab";
 import "./Profile.css";
 class Profile extends Component {
   state = {
@@ -50,6 +50,9 @@ class Profile extends Component {
   setload = () => {
     this.setState({ loading: !this.state.loading });
   };
+
+  follow = (name) => {};
+
   render() {
     return (
       <div className="home-container">
@@ -60,7 +63,7 @@ class Profile extends Component {
         />
         <div className="feed-container">
           <div className="profile-tab-container">
-            <Profiletab />
+            <Profiletab onFollow={this.follow} />
           </div>
           <div className="feed-full">
             <div className="feedc">
