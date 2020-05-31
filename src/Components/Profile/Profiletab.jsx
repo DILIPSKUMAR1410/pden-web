@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import profilePlaceholder from "../../Assets/Images/profile-placeholder.jpg";
 import "./Profiletab.css";
+import { getConfig } from 'radiks'
+const { userSession } = getConfig()
 class Profiletab extends Component {
   constructor(props) {
     super(props);
@@ -24,12 +26,15 @@ class Profiletab extends Component {
       <div className="user-profile">
         <img src={this.getProfilePic()} alt="" />
         <span>{this.state.name}</span>
-        <button
-          className="follow-btn"
-          onClick={this.props.onFollow(this.state.name)}
-        >
-          Follow
-        </button>
+        {this.state.name !== userSession.loadUserData().username ?
+          <button
+            className="follow-btn"
+            onClick={() => this.props.onFollow(this.state.name)}
+          >
+            {this.props.followed ?
+              "Unfollow" : "Follow"}
+          </button>
+          : null}
       </div>
     );
   }

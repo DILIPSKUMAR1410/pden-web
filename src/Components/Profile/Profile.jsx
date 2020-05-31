@@ -3,6 +3,8 @@ import { Person, Thought } from "../../Models";
 import { Sidebar, Discussion, Spinner, Post } from "..";
 import Profiletab from "./Profiletab";
 import "./Profile.css";
+import {getConfig} from 'radiks'
+const {userSession}= getConfig();
 class Profile extends Component {
   state = {
     username: this.props.match.params.uid,
@@ -11,6 +13,7 @@ class Profile extends Component {
     postid: "",
     loading: false,
     logoutmenu: false,
+    followed: false
   };
 
   toggleLogoutMenu = () => {
@@ -24,6 +27,13 @@ class Profile extends Component {
     });
     this.setState({ feed: thoughts.reverse() });
     this.setState({ loadfeed: true });
+    Person.fetchOwnList().then(person => {
+      console.log(person);
+      if (person[0].attrs.following.indexOf(this.props.match.params.uid) === -1)
+        this.setState({ followed: false });
+      else
+        this.setState({ followed: true });
+    })
     this.setload();
   }
 
@@ -51,7 +61,45 @@ class Profile extends Component {
     this.setState({ loading: !this.state.loading });
   };
 
-  follow = (name) => {};
+  changePage = (page) => {
+    this.props.history.push("/" + page);
+  }
+
+  follow = (name) => {
+    Person.fetchOwnList().then(person => {
+      var newfollowing = person[0].attrs.following;
+      if (!this.state.followed)
+        newfollowing.push(name);
+      else {
+        newfollowing.splice(newfollowing.indexOf(name));
+      }
+      Person.findById(person[0]._id).then(me => {
+        const value = {
+          following: newfollowing
+        }
+        me.update(value);
+        me.save();
+        this.setState({ followed: !this.state.followed });
+      })
+    }).finally(() => {
+        // Person.fetchList({ username: name }).then(person => {
+        //   var newfollower = person[0].attrs.followers;
+        //   if (!this.state.followed)
+        //     newfollower.push(userSession.loadUserData().username);
+        //   else {
+        //     newfollower.splice(newfollower.indexOf(userSession.loadUserData().username));
+        //   }
+        //   Person.findById(person[0]._id).then(he => {
+        //     const value = {
+        //       followers: newfollower
+        //     }
+        //     he.update(value);
+        //     he.save();
+        //   })
+        // })
+    })
+
+  };
 
   render() {
     return (
@@ -60,10 +108,11 @@ class Profile extends Component {
           onSearch={this.onSearch}
           toggleLogoutMenu={this.toggleLogoutMenu}
           logoutmenu={this.state.logoutmenu}
+          changePage={this.changePage}
         />
         <div className="feed-container">
           <div className="profile-tab-container">
-            <Profiletab onFollow={this.follow} />
+            <Profiletab onFollow={this.follow} followed={this.state.followed} />
           </div>
           <div className="feed-full">
             <div className="feedc">

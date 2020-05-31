@@ -7,10 +7,10 @@ const userSession = new UserSession({
   appConfig: new AppConfig(["store_write", "publish_data"]),
 });
 
-configure({
-  apiServer: "https://radiks.pden.xyz",
-  userSession,
-});
+// configure({
+//   apiServer: "https://radiks.pden.xyz",
+//   userSession,
+// });
 class Page extends React.Component {
   constructor(props) {
     super(props);

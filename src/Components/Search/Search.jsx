@@ -8,12 +8,21 @@ class Search extends Component {
   state = {
     results: [],
     loading: true,
+    logoutmenu: false,
   };
 
   // onSearch = (val) => {
   //   window.location.href = `/search?q=${val}`;
   // };
-
+  changePage = (page) => {
+    this.props.history.push("/" + page);
+  }
+  onSearch = (val) => {
+    window.location.href = `/search?q=${val}`;
+  };
+  toggleLogoutMenu = () => {
+    this.setState({ logoutmenu: !this.state.logoutmenu });
+  };
   async componentDidMount() {
     this.setState({
       loading: true,
@@ -38,7 +47,11 @@ class Search extends Component {
   render() {
     return (
       <div className="home-container">
-        <Sidebar currentPage="" />
+        <Sidebar onSearch={this.onSearch}
+          toggleLogoutMenu={this.toggleLogoutMenu}
+          logoutmenu={this.state.logoutmenu}
+          changePage={this.changePage}
+          />
         <div className="search-results-container">
           <h2 className="search-title">
             Search Results for "{parse(this.props.location.search).q}"
