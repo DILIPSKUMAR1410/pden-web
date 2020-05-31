@@ -21,7 +21,7 @@ const userSession = new UserSession({
 });
 
 configure({
-  apiServer: "http://localhost:1260",
+  apiServer: "https://radiks.pden.xyz",
   userSession,
 });
 
