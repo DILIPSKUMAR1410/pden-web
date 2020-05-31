@@ -1,34 +1,34 @@
 .newfeed {
-    width: 90%;
-    margin: 1%;
-    border-radius: 1rem;
-    border: 2px solid #56366d;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-top: 2.5%;
-    padding-bottom: 2.5%;
-    background-color: rgb(255, 255, 255);
+  width: 100%;
+  margin: 1%;
+  border-radius: 1rem;
+  border: 2px solid #56366d;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  background-color: rgb(255, 255, 255);
 }
 
 .feed-text {
-    margin-bottom: 3vh;
-    width: 70%;
-    margin-left: 2vw;
+  margin-bottom: 3vh;
+  width: 70%;
+  margin-left: 2vw;
 }
 
 .newfeed button {
-    background-color: #56366d;
-    color: white;
-    margin-right: 3vw;
-    border: 1px solid white;
-    border-radius: 50%;
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer;
+  background-color: #56366d;
+  color: white;
+  margin-right: 3vw;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
 }
 
 .newfeed button:hover {
-    background-color: #ffab40;
+  background-color: #ffab40;
 }
