@@ -9,9 +9,11 @@ class Person extends Model {
     },
     followers: {
       type: Array,
+      decrypted: true,
     },
     following: {
       type: Array,
+      decrypted: true,
     },
   };
 }

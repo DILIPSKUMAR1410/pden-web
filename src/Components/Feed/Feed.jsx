@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Thought } from "../../Models";
+import { Thought, Person } from "../../Models";
 import { Newfeed, Post } from "..";
 import "./Feed.css";
-
+import {getConfig} from 'radiks'
+const {userSession} =getConfig()
 class Feed extends Component {
   constructor(props) {
     super(props);
@@ -14,8 +15,12 @@ class Feed extends Component {
 
   async componentDidMount() {
     this.props.setload();
+    const me = await Person.fetchOwnList();
+    var following = me[0].attrs.following;
+    following.push( userSession.loadUserData().username);
     const thoughts = await Thought.fetchList();
-    this.setState({ feed: thoughts.reverse() });
+    var filtered_thoughts=thoughts.filter(item=> following.includes(item.attrs.author));
+    this.setState({ feed: filtered_thoughts.reverse() });
     localStorage.setItem("thoughts", JSON.stringify(thoughts));
     this.setState({ loadfeed: true });
     this.props.setload();
