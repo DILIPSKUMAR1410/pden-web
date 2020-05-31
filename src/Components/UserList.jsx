@@ -96,13 +96,13 @@ class UserList extends Component {
     Person.fetchList({
       username: username,
     }).then((user) => {
-      if (user.length > 0){
+      if (user.length > 0) {
         localStorage.setItem(username, JSON.stringify(user[0]));
         window.location.href = `/user/${user[0].attrs.username}`;
-      }
-      else console.log("No pden account yet");
+      } else console.log("No pden account yet");
     });
   };
+
   render() {
     return (
       <React.Fragment>
