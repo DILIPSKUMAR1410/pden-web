@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Spinner, Discussion, Feed, Sidebar } from "..";
+import { Spinner, Discussion, Feed, Sidebar, MyBook, Shelf } from "..";
 import "./Home.css";
 
 class Home extends Component {
@@ -29,17 +29,26 @@ class Home extends Component {
     window.location.href = `/search?q=${val}`;
   };
 
+  changePage = (page) => {
+    this.props.history.push("/" + page);
+  }
+
   render() {
     return (
       <div className="home-container">
         <Sidebar
           currentPage=""
-          // onSearch={this.onSearch}
+          onSearch={this.onSearch}
           toggleLogoutMenu={this.toggleLogoutMenu}
           logoutmenu={this.state.logoutmenu}
+          changePage={this.changePage}
         />
         <div onClick={() => this.setState({ logoutmenu: false })}>
-          <Feed showDiscuss={this.showDiscuss} setload={this.setload} />
+          {window.location.pathname.slice(1) == "feed" ?
+            <Feed showDiscuss={this.showDiscuss} setload={this.setload} /> :
+            window.location.pathname.slice(1) == "mybook" ?
+              <MyBook showDiscuss={this.showDiscuss} setload={this.setload} /> :
+              <Shelf />}
           {this.state.showDiscuss ? (
             <Discussion id={this.state.postid} setload={this.setload} />
           ) : null}

@@ -1,19 +1,27 @@
 import React, { Component } from "react";
 import "./MyBook.css";
+import { Thought } from "../../Models"
 import { Newfeed, Post } from "..";
 
 export default class MyBook extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loadfeed: false,
+      feed: [],
+    };
+  }
+
+  async componentDidMount() {
+    this.props.setload();
+    const thoughts = await Thought.fetchOwnList();
+    this.setState({ feed: thoughts.reverse() });
+    localStorage.setItem("thoughts", JSON.stringify(thoughts));
+    this.props.setload();
+  }
+
   getThoughts = () => {
-    const data = [
-      {
-        attrs: {
-          text: "Text",
-          author: "Author",
-          date: new Date(),
-        },
-      },
-    ];
-    return data.map((thought) => {
+    return this.state.feed.map((thought) => {
       return <Post data={thought} showDiscuss={this.props.showDiscuss} />;
     });
   };
