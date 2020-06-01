@@ -28,7 +28,6 @@ class Profile extends Component {
     this.setState({ feed: thoughts.reverse() });
     this.setState({ loadfeed: true });
     Person.fetchOwnList().then(person => {
-      console.log(person);
       if (person[0].attrs.following.indexOf(this.props.match.params.uid) === -1)
         this.setState({ followed: false });
       else
