@@ -31,10 +31,8 @@ class Newfeed extends React.Component {
         date: date,
       });
       thought.save().finally(() => {
-        Thought.fetchList().then((thoughts) => {
-          this.props.setload();
-          this.props.updateFeed(thoughts.reverse());
-        });
+        this.props.setload();
+        this.props.updateFeed(thought);
         document.getElementById("newfeed").value = "";
       });
     }

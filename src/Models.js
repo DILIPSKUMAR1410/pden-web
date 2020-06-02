@@ -59,4 +59,23 @@ class Message extends Model {
   };
 }
 
-export { Person, Thought, Message };
+class Spread extends Model {
+  static className = "Spread";
+  static schema = {
+    // all fields are encrypted by default
+    spreadauthor: {
+      type: String,
+      decrypted: true,
+    },
+    postid: {
+      type: String,
+      decrypted: true,
+    },
+    date: {
+      type: Date,
+      decrypted: true,
+    },
+  };
+}
+
+export { Person, Thought, Message, Spread };

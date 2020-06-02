@@ -48,6 +48,12 @@
   background-color: #56366d;
 }
 
+.post-btn-active {
+  all: unset;
+  border-radius: 0.3rem;
+  /* cursor: pointer; */
+}
+
 .post-btn-discuss {
   border-radius: 0.5rem;
   font-size: 0.8em;
@@ -83,7 +89,7 @@
   color: #56366d;
 } */
 
-.post-btn img {
+.post-container img {
   margin: 3px 3px 0px 3px;
   height: 24px;
   max-height: 100%;
