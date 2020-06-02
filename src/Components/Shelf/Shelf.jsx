@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { UserList, Sidebar } from "..";
 import { Person } from "../../Models";
+import {User} from "radiks"
 import "./Shelf.css";
 import { faFontAwesomeLogoFull } from "@fortawesome/free-solid-svg-icons";
 
@@ -13,7 +14,22 @@ export default class Shelf extends Component {
   }
   async componentDidMount() {
     const person = await Person.fetchOwnList();
-    this.setState({ following: person[0].attrs.following });
+    var temp=[];
+    person[0].attrs.following.map(username=>{
+      User.fetchList({ username: username }).then(userdetails=>{
+        temp.push(userdetails[0].attrs);
+      }).finally(()=>{
+        var count=person[0].attrs.following.length;
+        this.updateSave(temp,count);
+      })
+    })
+    // this.setState({ following: person[0].attrs.following });
+  }
+
+  updateSave=(temp, count)=>{
+    console.log(temp.length, count);
+    if(temp.length===count)
+      this.setState({following: temp});
   }
 
   render() {

@@ -29,8 +29,9 @@ class Sidebar extends Component {
   };
 
   getProfilePic = () => {
-    const profilePic = false;
-    if (!profilePic) return profilePlaceholder;
+    if(userSession.loadUserData().profile.image)
+    return userSession.loadUserData().profile.image[0].contentUrl
+    return profilePlaceholder;
   };
 
   getSidebarButtons = (currentPage) => {

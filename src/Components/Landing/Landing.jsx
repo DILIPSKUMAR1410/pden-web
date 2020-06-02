@@ -270,7 +270,7 @@ export default class Landing extends Component {
                         localStorage.setItem("Users", JSON.stringify(users));
                       })
                       .finally(() => {
-                        this.props.history.push("/feed");
+                        // this.props.history.push("/feed");
                         this.setState({ loading: false });
                       });
                   });
