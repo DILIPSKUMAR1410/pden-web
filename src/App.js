@@ -4,7 +4,7 @@ import React from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
 import PublicRoute from "./Route/Publicroute";
 import PrivateRoute from "./Route/Privateroute";
-import { Search, Profile} from "./Components";
+import { Search, Profile, Discussion } from "./Components";
 
 import "semantic-ui-css/semantic.min.css";
 import "./App.css";
@@ -36,6 +36,7 @@ class App extends React.Component {
           <PublicRoute component={Privacy} path="/privacy-policy" exact />
           <PublicRoute component={Search} path="/search" exact />
           <PublicRoute component={Profile} path="/user/:uid" />
+          <PublicRoute component={Discussion} path="/discuss" />
           <PrivateRoute
             component="feed"
             path={`${process.env.PUBLIC_URL}/feed`}

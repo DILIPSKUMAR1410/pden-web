@@ -1,33 +1,45 @@
 .msgfeed {
-    width: 90%;
-    margin: 5%;
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-top: 2.5%;
-    padding-bottom: 1.5%;
-    border: 2px solid #56366d;
+  width: 90%;
+  /* margin: 0 auto; */
+  left: 5%;
+  bottom: 20px;
+  position: absolute;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 2.5%;
+  padding-bottom: 1.5%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  padding: 0.5rem;
 }
 
 .msg-text {
-    width: 80%;
-    margin-left: 0.2rem;
+  width: 80%;
+  margin-left: 0.2rem;
 }
 
 .msgfeed button {
-    margin-right: 2%;
-    /* width:8vw; */
-    background-color: #56366d;
-    color: white;
-    border: 1px solid white;
-    border-radius: 50%;
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer;
+  margin-right: 2%;
+  /* width:8vw; */
+  background-color: #56366d;
+  color: white;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.send-icon {
+  height: 20px;
+  width: auto;
 }
 
 .msgfeed button:hover {
-    background-color: #ffab40;
+  background-color: #ffab40;
 }

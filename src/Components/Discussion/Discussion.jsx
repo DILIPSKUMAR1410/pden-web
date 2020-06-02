@@ -18,7 +18,8 @@ export default class Discussion extends Component {
     });
     const thought = await Thought.findById(this.props.id);
     this.setState({ thought: thought });
-    console.log(thought);
+    this.setState({ thought: { attrs: { text: "adjasd" } } });
+    // console.log(thought);
     this.props.setload();
     this.setState({ discussions });
   }
@@ -51,6 +52,9 @@ export default class Discussion extends Component {
         <div className="discussion-tab">
           <div onClick={this.toggle} className="discussion-title">
             Discuss
+            <button className="close-btn" onClick={this.props.showDiscuss()}>
+              x
+            </button>
           </div>
           <div className="discussion-container">
             <div className="thought-content">
@@ -63,12 +67,12 @@ export default class Discussion extends Component {
               </small>
             </div>
             <div className="discussions">{this.getDiscussions()}</div>
-            <div className="discussion-new">
-              <Newmessage
-                {...this.props}
-                updateDiscussion={this.updateDiscussion}
-              />
-            </div>
+          </div>
+          <div className="discussion-new">
+            <Newmessage
+              {...this.props}
+              updateDiscussion={this.updateDiscussion}
+            />
           </div>
         </div>
       );

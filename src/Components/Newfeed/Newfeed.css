@@ -1,6 +1,7 @@
 .newfeed {
   width: 100%;
   margin: 1%;
+  margin-top: 10%;
   border-radius: 1rem;
   /* border: 2px solid #56366d; */
   box-shadow: 0 0 10px rgba(86, 54, 109, 0.4);
