@@ -48,25 +48,33 @@
   bottom: 0;
 }
 
-.discussion-container{
-  padding-top: 5vh;
-  height:60vh;
+.discussion-container {
+  padding-top: 7vh;
+  height: 50vh;
   overflow-y: auto;
 }
 
 .discussion-title {
   position: absolute;
-  width:100%;
-  top:0;
+  width: 100%;
+  top: 0;
   background-color: #56366d;
   color: #ffab40;
   cursor: pointer;
   padding: 0.3rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.close-btn {
+  all: unset;
+  font-weight: bold;
+  margin-right: 5px;
 }
 
 .thought-content {
   margin: 0.5rem 1rem 0 1rem;
-  border: 1px solid #666;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
   border-radius: 5px;
   padding: 0.5rem;
 }
