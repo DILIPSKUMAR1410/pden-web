@@ -123,7 +123,7 @@ class Profile extends Component {
           </div>
         </div>
         {this.state.showDiscuss ? (
-          <Discussion id={this.state.postid} setload={this.setload} />
+          <Discussion id={this.state.postid} setload={this.setload} showDiscuss={this.showDiscuss}/>
         ) : null}
         {this.state.loading ? <Spinner /> : null}
       </div>
