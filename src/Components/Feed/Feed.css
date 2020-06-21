@@ -1,13 +1,13 @@
-.feedc{
-  width:45vw;
-  padding: 1rem;
+.feedc {
+  width: 45vw;
+  /* padding: 1rem; */
   margin-left: 20vw;
-  width:45vw;
+  width: 45vw;
 }
 
-.feed-full{
-  width:100vw;
-  height: 70vh;
+.feed-full {
+  width: 100vw;
+  /* height: 70vh; */
   overflow-y: auto;
   scroll-behavior: smooth;
 }
@@ -18,6 +18,9 @@
   flex-direction: column;
 }
 .feed-input{
-  margin-left: 20.5vw;
-  width:45vw;
+  position: relative;
+  /* margin-left: 22vw; */
+  width: 45vw;
+  padding-bottom: 2rem;
+  background-color: #fff;
 }

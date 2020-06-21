@@ -22,7 +22,7 @@ const userSession = new UserSession({
 });
 // const { doOpenAuth } = useConnect();
 configure({
-  apiServer: "http://localhost:5000",
+  apiServer: "https://radiks.pden.xyz",
   userSession,
 });
 

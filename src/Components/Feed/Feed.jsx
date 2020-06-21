@@ -58,13 +58,12 @@ class Feed extends Component {
   render() {
     return (
       <div className="feed-container">
-        <div className="feed-input">
-          <Newfeed {...this.props} updateFeed={this.updateFeed} />
-        </div>
         <div className="feed-full">
           <div className="feedc">
+            <div className="feed-input">
+              <Newfeed {...this.props} updateFeed={this.updateFeed} />
+            </div>
             <React.Fragment>
-              {/* ?_? */}
               {this.getThoughts()}
             </React.Fragment>
           </div>
