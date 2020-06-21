@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import useScript from "./useScript";
 import {
   first,
@@ -14,12 +14,13 @@ import { slack, twitter, telegram } from "../../Assets/Images/landing_images";
 import "./Landing.css";
 import { UserSession, AppConfig } from "blockstack";
 import { User, configure } from "radiks";
-import { Person } from "../../Models";
+// import { Person } from "../../Models";
 import Spinner from "../Spinner"
+import { useConnect } from '@blockstack/connect';
 const userSession = new UserSession({
   appConfig: new AppConfig(["store_write", "publish_data"]),
 });
-
+// const { doOpenAuth } = useConnect();
 configure({
   apiServer: "http://localhost:5000",
   userSession,
@@ -67,10 +68,20 @@ function GetStartedItem({ text, image, alt }) {
   }
 }
 
+const SignInButton = () => {
+  const { doOpenAuth } = useConnect();
+
+  return (
+    <a onClick={doOpenAuth}>
+      Sign In using Blockstack
+    </a>
+  )
+}
+
 function Hero(props) {
   useScript();
   return (
-    <div class="hero-container">
+    <div className="hero-container">
       <canvas id="btrn1"></canvas>
       <div className="topbar">
         <span className="topbar_logo">Pden.</span>
@@ -84,9 +95,7 @@ function Hero(props) {
           </a>
           {!userSession.isUserSignedIn() ? (
             <span className="login-btn">
-              <a onClick={e => handleSignin(e)}>
-                Login using Blockstack
-            </a>
+              <SignInButton />
             </span>
           ) : (
               <span className="login-btn">
@@ -171,7 +180,7 @@ function GetStarted(props) {
         );
       })}
       <div className="yt-video">
-        <iframe frameborder="0" src="https://www.youtube.com/embed/17KXXqg71-s" allowFullScreen></iframe>
+        <iframe frameBorder="0" src="https://www.youtube.com/embed/17KXXqg71-s" allowFullScreen></iframe>
       </div>
       <div className="getting-started__list">
         <p className="getting-started__li bold">
@@ -226,68 +235,55 @@ function Footer(props) {
 }
 
 
-export default class Landing extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-    };
-  }
-
-  componentDidMount() {
-    if (userSession.isSignInPending()) {
-      userSession
-        .handlePendingSignIn()
-        .then((userData) => {
-          this.setState({ loading: true });
-          this.props.history.push("/");
-          window.history.replaceState({}, document.title, "/");
-        })
-        .finally(() => {
-          if (userSession.isUserSignedIn()) {
-            User.createWithCurrentUser()
-              .catch(error => {
-                console.log(error);
-              }).finally(() => {
-                Person.fetchOwnList()
-                  .then((user) => {
-                    if (user.length === 0) {
-                      const me = new Person({
-                        username: userSession.loadUserData().username,
-                        followers: [],
-                        following: [],
-                      });
-                      me.save().finally(() => {
-                        localStorage.setItem("Mydetails", JSON.stringify(me));
-                      });
-                    } else {
-                      localStorage.setItem("Mydetails", JSON.stringify(user[0]));
-                    }
-                  })
-                  .finally(() => {
-                    Person.fetchList()
-                      .then((users) => {
-                        localStorage.setItem("Users", JSON.stringify(users));
-                      })
-                      .finally(() => {
-                        // this.props.history.push("/feed");
-                        this.setState({ loading: false });
-                      });
-                  });
-              });
-          }
-          else this.setState({ loading: false });
-        });
-    }
-  }
-  render() {
-    return (
-      <div className="landing">
-        <Hero />
-        <GetStarted />
-        <Footer />
-        {this.state.loading ? <Spinner /> : null}
-      </div>
-    );
-  }
+export default function Landing(props) {
+  // const [load, setLoad] = useState(false);
+  // if (userSession.isSignInPending()) {
+  //   userSession
+  //     .handlePendingSignIn()
+  //     .then((userData) => {
+  //       props.history.push("/");
+  //       window.history.replaceState({}, document.title, "/");
+  //     })
+  //     .finally(() => {
+  // if (userSession.isUserSignedIn()) {
+  //   setLoad(true);
+  //   User.createWithCurrentUser()
+  //     .catch(error => {
+  //       console.log(error);
+  //     }).finally(() => {
+  //       Person.fetchOwnList()
+  //         .then((user) => {
+  //           if (user.length === 0) {
+  //             const me = new Person({
+  //               username: userSession.loadUserData().username,
+  //               followers: [],
+  //               following: [],
+  //             });
+  //             me.save().finally(() => {
+  //               localStorage.setItem("Mydetails", JSON.stringify(me));
+  //             });
+  //           } else {
+  //             localStorage.setItem("Mydetails", JSON.stringify(user[0]));
+  //           }
+  //         })
+  //         .finally(() => {
+  //           Person.fetchList()
+  //             .then((users) => {
+  //               localStorage.setItem("Users", JSON.stringify(users));
+  //             })
+  //             .finally(() => {
+  //               setLoad(false);
+  //             });
+  //         });
+  //     });
+  // }
+  // });
+  return (
+    <div className="landing">
+      <Hero />
+      <GetStarted />
+      <Footer />
+      {/* {load ? <Spinner /> : null} */}
+    </div>
+  );
 }

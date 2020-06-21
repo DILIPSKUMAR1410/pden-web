@@ -1,35 +1,62 @@
 import Landing from "./Components/Landing/Landing";
 import Privacy from "./Components/Landing/Privacy";
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Switch } from "react-router-dom";
 import PublicRoute from "./Route/Publicroute";
 import PrivateRoute from "./Route/Privateroute";
-import { Search, Profile, Discussion } from "./Components";
-
+import { Search, Profile, Discussion, Spinner } from "./Components";
+import { User, configure } from "radiks";
+import { Person } from "./Models";
 import "semantic-ui-css/semantic.min.css";
 import "./App.css";
 
-class App extends React.Component {
-  state = {
-    currentPage: "feed",
+import { Connect } from '@blockstack/connect';
+function App() {
+  const [load, setLoad] = useState(false);
+  function afterLogin(userSession) {
+    if (userSession.isUserSignedIn()) {
+      User.createWithCurrentUser()
+        .then(() => {
+          setLoad(true);
+        })
+        .catch(error => {
+          console.log(error);
+        }).finally(() => {
+          Person.fetchOwnList()
+            .then((user) => {
+              if (user.length === 0) {
+                const me = new Person({
+                  username: userSession.loadUserData().username,
+                  followers: [],
+                  following: [],
+                });
+                me.save().finally(() => {
+                  localStorage.setItem("Mydetails", JSON.stringify(me));
+                  setLoad(true);
+                  window.location.pathname = "/feed";
+                });
+              } else {
+                localStorage.setItem("Mydetails", JSON.stringify(user[0]));
+                window.location.pathname = "/feed";
+                setLoad(true);
+              }
+            })
+        });
+    }
+  }
+  const authOptions = {
+    redirectTo: '/',
+    finished: ({ userSession }) => {
+      afterLogin(userSession);
+      // console.log(userSession.loadUserData());
+    },
+    appDetails: {
+      name: 'Pden',
+      icon: 'https://example.com/icon.png',
+    },
   };
-  // getCurrentPage = () => {
-  //   const url = window.location.pathname.slice(1);
-  //   if (
-  //     url === "feed" ||
-  //     url === "shelf" ||
-  //     url === "mybook" ||
-  //     url === "invite"
-  //   ) {
-  //     this.setState({ currentPage: url });
-  //     return;
-  //   }
-
-  //   this.setState({ currentPage: "" });
-  // };
-
-  render() {
-    return (
+  return (
+    <Connect authOptions={authOptions}>
       <BrowserRouter>
         <Switch>
           <PublicRoute component={Landing} path="/" exact />
@@ -64,8 +91,9 @@ class App extends React.Component {
           />
         </Switch>
       </BrowserRouter>
-    );
-  }
+      {load ? <Spinner /> : null}
+    </Connect>
+  );
 }
 
 export default App;
