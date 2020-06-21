@@ -2,9 +2,7 @@ import React from "react";
 import "./Newfeed.css";
 import { Thought } from "../../Models";
 import { getConfig } from "radiks";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import sendIcon from "../../Assets/Images/send.png";
+import sendIcon from "../../Assets/Icons/send.png";
 import { Form, TextArea } from "semantic-ui-react";
 const { userSession } = getConfig();
 class Newfeed extends React.Component {
@@ -29,6 +27,7 @@ class Newfeed extends React.Component {
         author: userSession.loadUserData().username,
         text: this.state.post,
         date: date,
+        messages: [],
       });
       thought.save().finally(() => {
         this.props.setload();
@@ -57,8 +56,6 @@ class Newfeed extends React.Component {
         </Form>
         <button type="submit" onClick={this.upload}>
           <img src={sendIcon} alt="Send" />
-
-          {/* <FontAwesomeIcon icon={faPlus} cursor={"pointer"} /> */}
         </button>
       </div>
     );

@@ -30,13 +30,16 @@
   width: 2rem;
   height: 2rem;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   /* display: flex; */
   /* justify-content: center; */
   /* align-items: center; */
 }
 
 .send-icon {
-  height: 20px;
+  height: 18px;
   width: auto;
 }
 

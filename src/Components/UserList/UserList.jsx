@@ -65,7 +65,7 @@ class UserList extends Component {
     user.profile.account.forEach((i) => {
       if (socialList.includes(i.service)) {
         availableSocials.push(
-          <a href={i.proofUrl} target="_blank">
+          <a href={i.proofUrl} target="_blank" rel="noopener noreferrer"> 
             <img
               src={socialIcons[socialList.indexOf(i.service)]}
               alt="blockstack"

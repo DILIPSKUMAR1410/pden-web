@@ -22,7 +22,7 @@ class Feed extends Component {
     var filtered_thoughts = thoughts.filter(item => following.includes(item.attrs.author));
     following.pop();
     const spreads = await Spread.fetchList();
-    var filtered_spreads = spreads.filter(item=>this.spreadFilter(item, filtered_thoughts, following));
+    var filtered_spreads = spreads.filter(item => this.spreadFilter(item, filtered_thoughts, following));
     var feed = filtered_thoughts.concat(filtered_spreads);
     feed.sort(function (a, b) {
       var keyA = new Date(a.attrs.date),
@@ -38,16 +38,16 @@ class Feed extends Component {
     this.props.setload();
   }
 
-  spreadFilter=(item, filtered_thoughts, following)=>{
-    if(following.includes(item.attrs.spreadauthor) && !(filtered_thoughts.some(thought => thought._id == item.attrs.postid)))
+  spreadFilter = (item, filtered_thoughts, following) => {
+    if (following.includes(item.attrs.spreadauthor) && !(filtered_thoughts.some(thought => thought._id === item.attrs.postid)))
       return true
     else
       return false
   }
 
   getThoughts = () => {
-    return this.state.feed.map((thought) => {
-      return <Post data={thought} showDiscuss={this.props.showDiscuss} />;
+    return this.state.feed.map((thought, index) => {
+      return <Post data={thought} showDiscuss={this.props.showDiscuss} key={index} />;
     });
   };
 

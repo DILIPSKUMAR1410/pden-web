@@ -34,6 +34,10 @@ class Thought extends Model {
       type: Date,
       decrypted: true,
     },
+    messages: {
+      type: Array,
+      decrypted: true
+    }
   };
 }
 

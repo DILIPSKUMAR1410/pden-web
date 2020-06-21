@@ -1,11 +1,9 @@
 import React from "react";
 import "./Message.css";
-import { Message } from "../../Models";
+import { Thought, Message } from "../../Models";
 import { getConfig } from "radiks";
-import sendIcon from "../../Assets/Images/send.png";
-import { Form, TextArea, Input } from "semantic-ui-react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import sendIcon from "../../Assets/Icons/send.png";
+import { Form } from "semantic-ui-react";
 const { userSession } = getConfig();
 class Newmessage extends React.Component {
   constructor(props) {
@@ -22,7 +20,6 @@ class Newmessage extends React.Component {
   upload = () => {
     if (this.state.message) {
       this.props.setload();
-      const user = JSON.parse(localStorage.getItem("Mydetails"));
       //Fetching date
       const date = new Date();
       const message = new Message({
@@ -31,14 +28,27 @@ class Newmessage extends React.Component {
         text: this.state.message,
         date: date,
       });
-      message.save().finally(() => {
-        Message.fetchList({
-          postid: this.props.id,
-        }).then((messages) => {
-          this.props.setload();
-          this.props.updateDiscussion(messages);
+      message.save()
+        .then(res => {
+          Thought.findById(this.props.id).then(post => {
+            if (post.attrs.author === userSession.loadUserData().username) {
+              var temp = post.attrs.messages;
+              temp.push(res._id)
+              const value = {
+                messages: temp
+              }
+              post.update(value);
+              post.save().finally(()=>{
+                this.props.setload();
+                this.props.updateDiscussion();
+              })
+            }
+            else{
+              this.props.setload();
+              this.props.updateDiscussion();
+            }
+          })
         });
-      });
       document.getElementById("newmsg").value = "";
     }
   };
@@ -55,7 +65,6 @@ class Newmessage extends React.Component {
           />
         </Form>
         <button type="submit" onClick={this.upload}>
-          {/* <FontAwesomeIcon icon={faPlus} cursor={"pointer"} /> */}
           <img src={sendIcon} className="send-icon" />
         </button>
       </div>

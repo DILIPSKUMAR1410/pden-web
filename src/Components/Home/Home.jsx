@@ -44,9 +44,9 @@ class Home extends Component {
           changePage={this.changePage}
         />
         <div onClick={() => this.setState({ logoutmenu: false })}>
-          {window.location.pathname.slice(1) == "feed" ?
+          {window.location.pathname.slice(1) === "feed" ?
             <Feed showDiscuss={this.showDiscuss} setload={this.setload} /> :
-            window.location.pathname.slice(1) == "mybook" ?
+            window.location.pathname.slice(1) === "mybook" ?
               <MyBook showDiscuss={this.showDiscuss} setload={this.setload} /> :
               <Shelf />}
           {this.state.showDiscuss ? (

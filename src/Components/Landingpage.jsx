@@ -1,7 +1,7 @@
 import React from "react";
 import "./Landingpage.css";
 import { UserSession, AppConfig } from "blockstack";
-import { User, configure } from "radiks";
+import { User } from "radiks";
 import { Person } from "../Models";
 const userSession = new UserSession({
   appConfig: new AppConfig(["store_write", "publish_data"]),

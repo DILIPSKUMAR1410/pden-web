@@ -6,6 +6,9 @@
   padding: 0.8rem 1rem;
   color: #ffab40;
   background-color: #56366d;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .discussion-post-text {
@@ -20,29 +23,18 @@
   content: "@";
 }
 
-.discussion-post-btn {
-  all: unset;
+
+.discussion-post-img {
+  width: 20px;
   cursor: pointer;
 }
 
 .discussion-post-btn-group {
-  width: 70%;
-  margin: 0.3rem auto 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
   border-radius: 4px;
-  border: solid 1px #eee;
 }
 
-.discussion-post-btn-spread,
-.discussion-post-btn-share {
-  width: 50%;
-  text-align: center;
-}
-
-.discussion-post-btn-spread {
-  background-color: #eee;
-  color: #56366d;
-}
-.discussion-post-btn-share {
-  background-color: #eeeeee;
-  color: #56366d;
-}

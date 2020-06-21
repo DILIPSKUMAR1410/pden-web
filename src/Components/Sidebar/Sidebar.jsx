@@ -29,8 +29,8 @@ class Sidebar extends Component {
   };
 
   getProfilePic = () => {
-    if(userSession.loadUserData().profile.image)
-    return userSession.loadUserData().profile.image[0].contentUrl
+    if (userSession.loadUserData().profile.image)
+      return userSession.loadUserData().profile.image[0].contentUrl
     return profilePlaceholder;
   };
 
@@ -42,9 +42,9 @@ class Sidebar extends Component {
       ["invite", "I"],
     ]
       .filter((item) => item[0] !== currentPage)
-      .map((item) => (
-        <div className={item[0] + " sidebar-menu-link"}>
-          <a onClick={()=>this.props.changePage(item[0])} key={item[0]}></a>
+      .map((item, index) => (
+        <div className={item[0] + " sidebar-menu-link"} key={index}>
+          <a onClick={() => this.props.changePage(item[0])} key={item[0]}>{""}</a>
         </div>
       ));
   };

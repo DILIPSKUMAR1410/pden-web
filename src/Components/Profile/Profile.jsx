@@ -3,8 +3,6 @@ import { Person, Thought } from "../../Models";
 import { Sidebar, Discussion, Spinner, Post } from "..";
 import Profiletab from "./Profiletab";
 import "./Profile.css";
-import {getConfig} from 'radiks'
-const {userSession}= getConfig();
 class Profile extends Component {
   state = {
     username: this.props.match.params.uid,
@@ -38,8 +36,8 @@ class Profile extends Component {
 
   getThoughts = () => {
     var thoughts = this.state.feed;
-    return thoughts.map((thought) => {
-      return <Post data={thought} showDiscuss={this.showDiscuss} />;
+    return thoughts.map((thought, index) => {
+      return <Post data={thought} showDiscuss={this.showDiscuss} key={index}/>;
     });
   };
 

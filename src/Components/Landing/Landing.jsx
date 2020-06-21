@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { Component } from "react";
 import useScript from "./useScript";
 import {
   first,
@@ -21,7 +21,7 @@ const userSession = new UserSession({
 });
 
 configure({
-  apiServer: "http://localhost:1260",
+  apiServer: "http://localhost:5000",
   userSession,
 });
 
@@ -48,7 +48,7 @@ function GetStartedItem({ text, image, alt }) {
     </div>
   );
   const imageComponent = (
-    <img src={image} className="getting-started__image"></img>
+    <img src={image} alt="" className="getting-started__image"></img>
   );
   if (alt) {
     return (

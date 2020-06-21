@@ -26,7 +26,7 @@ class Post extends Component {
       const spread = await Spread.fetchOwnList({
         postid: this.props.data.attrs.postid,
       });
-      if (this.props.data.attrs.author == userSession.loadUserData().username || spread.length > 0)
+      if (this.props.data.attrs.author === userSession.loadUserData().username || spread.length > 0)
         this.setState({ spread: true });
       this.setState({
         text: thought.attrs.text,
@@ -40,7 +40,7 @@ class Post extends Component {
       const spread = await Spread.fetchOwnList({
         postid: this.props.data._id
       });
-      if (this.props.data.attrs.author == userSession.loadUserData().username || spread.length > 0)
+      if (this.props.data.attrs.author === userSession.loadUserData().username || spread.length > 0)
         this.setState({ spread: true });
       this.setState({
         text: this.props.data.attrs.text,
@@ -51,12 +51,14 @@ class Post extends Component {
   }
 
   show = () => {
-    this.props.showDiscuss(this.props.data._id);
-    console.log(this.props.data.attrs.author);
+    if (this.props.data.attrs.postid)
+      this.props.showDiscuss(this.props.data.attrs.postid);
+    else
+      this.props.showDiscuss(this.props.data._id);
   };
 
   spread = () => {
-    if (!this.state.spread && this.state.owner != userSession.loadUserData().username) {
+    if (!this.state.spread && this.state.owner !== userSession.loadUserData().username) {
       const date = new Date();
       var id = this.props.data._id;
       if (this.props.data.attrs.postid)
