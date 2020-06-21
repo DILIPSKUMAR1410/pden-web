@@ -39,12 +39,13 @@ body {
 
 .topbar span{
   display: flex;
+  align-items: center;
 }
 .topbar_logo {
   font-size: 27px;
   color: white;
   font-weight: bold;
-  margin: 2vh 0 0 15vw ;
+  margin: 2vh 0 0 8vw ;
 }
 
 .topbar__btn {
@@ -177,24 +178,42 @@ body {
   margin:1rem;
 }
 
+@media only screen and (max-width: 700px) {
+  .topbar__btn{
+    font-size: 0.9rem;
+  }
+}
 
 
 @media only screen and (max-width: 600px) {
   .topbar {
-    height: 7vh;
-    justify-content: space-between;
-    padding: 0 0.5rem;
+    align-items: center;
   }
-  .topbar__logo {
+  .topbar_logo {
     font-size: 2em;
+    margin-left: 1rem;
   }
+
   .topbar__btn {
-    padding: 0.5rem;
-    font-size: 0.9em;
+    margin:10px 10px 0 5px;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.3rem;
+    width: 25vw;
+    min-width: 7rem;
   }
-  .hero__text {
-    top: 14%;
+
+  .login-btn{
+    margin: 0;
+    margin-top: 15px;
+    margin-left: 10px;
+    width: 25vw;
   }
+
+  .login-btn a{
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+  }
+
   .getting-started__item {
     flex-direction: column;
   }
