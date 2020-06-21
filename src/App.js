@@ -52,7 +52,7 @@ function App() {
     },
     appDetails: {
       name: 'Pden',
-      icon: 'https://example.com/icon.png',
+      icon: 'https://pden.xyz/logo.png',
     },
   };
   return (
