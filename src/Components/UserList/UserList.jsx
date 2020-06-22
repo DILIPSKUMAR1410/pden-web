@@ -31,7 +31,7 @@ class UserList extends Component {
   getName = (user) => {
     if (user.profile && user.profile.name)
       return <span className="user-list-name">{user.profile.name}</span>;
-    else return <span className="user-list-name"></span>;
+    else return <span className="user-list-name">{user.attrs.username}</span>;
   };
 
   getIfPdenUser = (user) => {
@@ -50,7 +50,7 @@ class UserList extends Component {
     let availableSocials = [];
     availableSocials.push(
       <span className="blockstack-icon">
-        <span className="social-tooltip">{user.username}</span>
+        <span className="social-tooltip">{user.attrs.username}</span>
         <img
           src={
             "https://www.vectorlogo.zone/logos/blockstack/blockstack-icon.svg"
@@ -65,7 +65,7 @@ class UserList extends Component {
     user.profile.account.forEach((i) => {
       if (socialList.includes(i.service)) {
         availableSocials.push(
-          <a href={i.proofUrl} target="_blank" rel="noopener noreferrer"> 
+          <a href={i.proofUrl} target="_blank" rel="noopener noreferrer">
             <img
               src={socialIcons[socialList.indexOf(i.service)]}
               alt="blockstack"
@@ -80,27 +80,27 @@ class UserList extends Component {
   };
 
   renderList = (list) => {
-    const pdenUsers = list.filter(
-      (user) =>
-        user.profile &&
-        user.profile.apps &&
-        user.profile.apps["https://pden_xyz"]
-    );
-    const nonPdenUsers = list.filter(
-      (user) =>
-        !(
-          user.profile &&
-          user.profile.apps &&
-          user.profile.apps["https://pden_xyz"]
-        )
-    );
-    const newlist = [...pdenUsers, ...nonPdenUsers];
+    // const pdenUsers = list.filter(
+    //   (user) =>
+    //     user.profile &&
+    //     user.profile.apps &&
+    //     user.profile.apps["https://pden_xyz"]
+    // );
+    // const nonPdenUsers = list.filter(
+    //   (user) =>
+    //     !(
+    //       user.profile &&
+    //       user.profile.apps &&
+    //       user.profile.apps["https://pden_xyz"]
+    //     )
+    // );
+    const newlist = list;
     return newlist.map((i) => {
       return (
         <div
           id={i.username}
           className="user-list-item"
-          onClick={() => this.showProfile(i.username)}
+          onClick={() => this.showProfile(i.attrs.username)}
         >
           {this.getProfilePic(i)}
           <div className="user-list-details">
@@ -117,14 +117,7 @@ class UserList extends Component {
   };
 
   showProfile = (username) => {
-    Person.fetchList({
-      username: username,
-    }).then((user) => {
-      if (user.length > 0) {
-        localStorage.setItem(username, JSON.stringify(user[0]));
-        window.location.href = `/user/${user[0].attrs.username}`;
-      } else console.log("No pden account yet");
-    });
+    window.location.href = `/user/${username}`;
   };
 
   render() {

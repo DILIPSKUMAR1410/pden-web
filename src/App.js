@@ -15,10 +15,8 @@ function App() {
   const [load, setLoad] = useState(false);
   function afterLogin(userSession) {
     if (userSession.isUserSignedIn()) {
+      setLoad(true);
       User.createWithCurrentUser()
-        .then(() => {
-          setLoad(true);
-        })
         .catch(error => {
           console.log(error);
         }).finally(() => {

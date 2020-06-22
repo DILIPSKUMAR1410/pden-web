@@ -15,7 +15,16 @@ class Feed extends Component {
 
   async componentDidMount() {
     this.props.setload();
-    const me = await Person.fetchOwnList();
+    var me = await Person.fetchOwnList();
+    if(me.length===0){
+        const person = new Person({
+          username: userSession.loadUserData().username,
+          followers: [],
+          following: [],
+        });
+        await person.save();
+        me=[person];
+    }
     var following = me[0].attrs.following;
     following.push(userSession.loadUserData().username);
     const thoughts = await Thought.fetchList();
@@ -52,7 +61,13 @@ class Feed extends Component {
   };
 
   updateFeed = (thought) => {
-    this.setState({ feed: [thought, ...this.state.feed] });
+    var feeds=[];
+    feeds.push(thought);
+    this.state.feed.map(feed=>{
+      feeds.push(feed);
+    })
+    this.setState({ feed: [] });
+    this.setState({ feed: feeds });
   };
 
   render() {

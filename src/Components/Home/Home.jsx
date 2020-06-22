@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Spinner, Discussion, Feed, Sidebar, MyBook, Shelf } from "..";
+import { Spinner, Discussion, Feed, Sidebar, MyBook, Shelf, Invite } from "..";
 import "./Home.css";
 
 class Home extends Component {
@@ -48,9 +48,11 @@ class Home extends Component {
             <Feed showDiscuss={this.showDiscuss} setload={this.setload} /> :
             window.location.pathname.slice(1) === "mybook" ?
               <MyBook showDiscuss={this.showDiscuss} setload={this.setload} /> :
-              <Shelf />}
+              window.location.pathname.slice(1) === "shelf" ?
+                <Shelf /> :
+                <Invite />}
           {this.state.showDiscuss ? (
-            <Discussion id={this.state.postid} setload={this.setload} showDiscuss={this.showDiscuss}/>
+            <Discussion id={this.state.postid} setload={this.setload} showDiscuss={this.showDiscuss} />
           ) : null}
           {this.state.loading ? <Spinner /> : null}
         </div>

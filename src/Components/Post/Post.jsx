@@ -48,6 +48,7 @@ class Post extends Component {
         date: new Date(this.props.data.attrs.date).toDateString(),
       });
     }
+
   }
 
   show = () => {
@@ -76,7 +77,7 @@ class Post extends Component {
 
   render() {
     return (
-      <div className="post-container">
+      <div className="post-container" id={this.props.data.attrs.postid ? this.props.data.attrs.postid : this.props.data.id}>
         <div>
           <h3 className="post-text">{this.state.text}</h3>
           <strong>

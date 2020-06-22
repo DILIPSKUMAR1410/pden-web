@@ -7,7 +7,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "https://pden.xyz",
+  "start_url": "http://localhost:3000",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"

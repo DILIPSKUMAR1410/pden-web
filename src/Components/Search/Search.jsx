@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { parse } from "query-string";
 import fetch from "isomorphic-fetch";
 import { Spinner, Sidebar, UserList } from "..";
+import { User } from 'radiks';
 import "./Search.css";
 
 class Search extends Component {
@@ -28,20 +29,25 @@ class Search extends Component {
       loading: true,
     });
     const target = parse(this.props.location.search).q;
-    try {
-      var response = await fetch(
-        `https://core.blockstack.org/v1/search?query=${target}`
-      );
-      var data = await response.json();
-      const results = data.results;
-      this.setState({
+    // try {
+    //   var response = await fetch(
+    //     `https://core.blockstack.org/v1/search?query=${target}`
+    //   );
+    //   var data = await response.json();
+    //   const results = data.results;
+    const data= await User.fetchList();
+    const results= data.filter(
+      (user)=>
+      user.attrs.username.includes(target)
+    );
+    this.setState({
         results: results,
         loading: false,
       });
-    } catch (e) {
-      console.error(e);
-      return <div>No Users Found!</div>;
-    }
+    // } catch (e) {
+    //   console.error(e);
+    //   return <div>No Users Found!</div>;
+    // }
   }
 
   render() {
@@ -51,16 +57,19 @@ class Search extends Component {
           toggleLogoutMenu={this.toggleLogoutMenu}
           logoutmenu={this.state.logoutmenu}
           changePage={this.changePage}
-          />
+        />
         <div className="search-results-container">
           <h2 className="search-title">
             Search Results for "{parse(this.props.location.search).q}"
           </h2>
+          {this.state.results.length===0?
+          <h3>No Users found!</h3>: null
+          }
           {this.state.loading ? (
             <Spinner />
           ) : (
-            <UserList list={this.state.results} />
-          )}
+              <UserList list={this.state.results} />
+            )}
         </div>
       </div>
     );

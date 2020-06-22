@@ -16,7 +16,7 @@ export default class Shelf extends Component {
     var temp = [];
     person[0].attrs.following.map((username) => {
       User.fetchList({ username: username }).then(userdetails => {
-        temp.push(userdetails[0].attrs);
+        temp.push(userdetails[0]);
       }).finally(() => {
         var count = person[0].attrs.following.length;
         this.updateSave(temp, count);
