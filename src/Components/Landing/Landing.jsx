@@ -14,16 +14,13 @@ import { slack, twitter, telegram } from "../../Assets/Images/landing_images";
 import "./Landing.css";
 import { UserSession, AppConfig } from "blockstack";
 import { User, configure } from "radiks";
-// import { Person } from "../../Models";
 import Spinner from "../Spinner"
 import { useConnect } from '@blockstack/connect';
 const userSession = new UserSession({
   appConfig: new AppConfig(["store_write", "publish_data"]),
 });
-// const { doOpenAuth } = useConnect();
 configure({
-  // apiServer: "https://radiks.pden.xyz",
-  apiServer: "http://localhost:5000",
+  apiServer: "https://radiks.pden.xyz",
   userSession,
 });
 
