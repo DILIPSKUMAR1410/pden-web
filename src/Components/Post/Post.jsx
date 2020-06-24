@@ -6,6 +6,22 @@ import share from "../../Assets/Icons/share.png";
 import spread from "../../Assets/Icons/spread.png";
 import alreadyspread from "../../Assets/Icons/already-spread.png";
 import { getConfig } from "radiks"
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  LinkedinShareButton,
+  RedditShareButton,
+  TelegramShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  EmailIcon,
+  FacebookIcon,
+  LinkedinIcon,
+  RedditIcon,
+  TelegramIcon,
+  TwitterIcon,
+  WhatsappIcon,
+} from "react-share";
 const { userSession } = getConfig()
 class Post extends Component {
   constructor(props) {
@@ -17,10 +33,34 @@ class Post extends Component {
       spreadauthor: '',
       date: '',
       spread_date: '',
+      share:false,
+      menuon:false
     }
+    this.fetchData = this.fetchData.bind(this);
   }
 
   async componentDidMount() {
+    this.fetchData();
+    document.addEventListener('click', this.toggleShare);
+  }
+
+  toggleShare=()=>{
+    // console.log(this.state.menuon, this.state)
+    if(this.state.share && this.state.menuon){
+      this.setState({share:false, menuon:false});
+    }
+    else if(this.state.menuon){
+      this.setState({share:true});
+    }
+  }
+
+  async componentWillReceiveProps(nextProps) {
+    if (this.props.data !== nextProps.data) {
+      this.fetchData();
+    }
+  }
+
+  async fetchData() {
     if (this.props.data.attrs.postid) {
       const thought = await Thought.findById(this.props.data.attrs.postid);
       const spread = await Spread.fetchOwnList({
@@ -48,7 +88,6 @@ class Post extends Component {
         date: new Date(this.props.data.attrs.date).toDateString(),
       });
     }
-
   }
 
   show = () => {
@@ -102,8 +141,54 @@ class Post extends Component {
           <button className={this.state.spread ? "post-btn-active" : "post-btn"} onClick={this.spread}>
             <img src={this.state.spread ? alreadyspread : spread} />
           </button>
-          <button className="post-btn">
-            <img src={share} />
+          {this.state.share?
+          <div className="share-menu">
+            <FacebookShareButton
+              quote={"See the thought \"" + this.state.text + "\" by " + this.state.owner}
+              url="pden.xyz"
+            >
+              <FacebookIcon size={25} round={true} />
+            </FacebookShareButton>
+            <LinkedinShareButton
+              title={"See the thought \"" + this.state.text + "\" by " + this.state.owner + "\n"}
+              url="pden.xyz"
+            >
+              <LinkedinIcon size={25} round={true} />
+            </LinkedinShareButton>
+            <RedditShareButton
+              title={"See the thought \"" + this.state.text + "\" by " + this.state.owner + "\n"}
+              url="pden.xyz"
+            >
+              <RedditIcon size={25} round={true} />
+            </RedditShareButton>
+            <TelegramShareButton
+              title={"See the thought \"" + this.state.text + "\" by " + this.state.owner + "\n"}
+              url="pden.xyz"
+            >
+              <TelegramIcon size={25} round={true} />
+            </TelegramShareButton>
+            <TwitterShareButton
+              title={"See the thought \"" + this.state.text + "\" by " + this.state.owner + "\n"}
+              url="pden.xyz"
+            >
+              <TwitterIcon size={25} round={true} />
+            </TwitterShareButton>
+            <WhatsappShareButton
+              title={"See the thought \"" + this.state.text + "\" by " + this.state.owner + "\n"}
+              url="pden.xyz"
+            >
+              <WhatsappIcon size={25} round={true} />
+            </WhatsappShareButton>
+            <EmailShareButton
+              subject="Pden Thought"
+              body={"See the thought \"" + this.state.text + "\" by " + this.state.owner + "\n"}
+              url="pden.xyz"
+            >
+              <EmailIcon size={25} round={true} />
+            </EmailShareButton>
+          </div>:null}
+          <button className="post-btn" >
+            <img src={share} onClick={()=>this.setState({menuon:true})}/>
           </button>
         </div>
       </div>

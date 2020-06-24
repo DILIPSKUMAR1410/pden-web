@@ -15,6 +15,30 @@ export default class Discussion extends Component {
 
   async componentDidMount() {
     this.updateDiscussion();
+    Message.addStreamListener(this.addToDiscussion);
+    Thought.addStreamListener(this.checkThought);
+  }
+
+  componentWillUnmount() {
+    Message.removeStreamListener(this.addToDiscussion);
+    Thought.removeStreamListener(this.checkThought);
+  }
+
+  checkThought = (thought) => {
+    if (thought._id === this.state.thought._id) {
+      this.updateDiscussion();
+    }
+  }
+
+  addToDiscussion = (message) => {
+    if (message.attrs.postid == this.props.id && !this.state.discussions.some(item => item._id === message._id)) {
+      if (userSession.loadUserData().username !== this.state.thought.attrs.author) {
+        if (this.state.thought.attrs.messages.includes(message._id) || message.attrs.author === userSession.loadUserData().username)
+          this.setState({ discussions: [...this.state.discussions, message] });
+      }
+      else
+        this.setState({ discussions: [...this.state.discussions, message] });
+    }
   }
 
   show = () => {
