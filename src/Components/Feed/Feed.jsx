@@ -10,22 +10,24 @@ class Feed extends Component {
     this.state = {
       loadfeed: false,
       feed: [],
+      following: []
     };
   }
 
   async componentDidMount() {
     this.props.setload();
     var me = await Person.fetchOwnList();
-    if(me.length===0){
-        const person = new Person({
-          username: userSession.loadUserData().username,
-          followers: [],
-          following: [],
-        });
-        await person.save();
-        me=[person];
+    if (me.length === 0) {
+      const person = new Person({
+        username: userSession.loadUserData().username,
+        followers: [],
+        following: [],
+      });
+      await person.save();
+      me = [person];
     }
     var following = me[0].attrs.following;
+    this.setState({ following: following });
     following.push(userSession.loadUserData().username);
     const thoughts = await Thought.fetchList();
     var filtered_thoughts = thoughts.filter(item => following.includes(item.attrs.author));
@@ -41,10 +43,28 @@ class Feed extends Component {
       if (keyA < keyB) return 1;
       return 0;
     });
-    // console.log(feed);
     this.setState({ feed: feed });
     this.setState({ loadfeed: true });
     this.props.setload();
+    Spread.addStreamListener(this.addToSpread);
+    Thought.addStreamListener(this.addToFeed);
+  }
+
+  componentWillUnmount() {
+    Thought.removeStreamListener(this.addToFeed);
+    Spread.removeStreamListener(this.addToSpread);
+  }
+
+  addToFeed = (thought) => {
+    if(this.state.following.includes(thought.attrs.author) && !(this.state.feed.some(feed => feed._id === thought._id))){
+      this.setState({feed: [thought, ...this.state.feed]});
+    }
+  }
+
+  addToSpread=( spread )=>{
+    if(this.spreadFilter(spread, this.state.feed, this.state.following)){
+      this.setState({feed: [spread, ...this.state.feed]});
+    }
   }
 
   spreadFilter = (item, filtered_thoughts, following) => {
@@ -61,13 +81,7 @@ class Feed extends Component {
   };
 
   updateFeed = (thought) => {
-    var feeds=[];
-    feeds.push(thought);
-    this.state.feed.map(feed=>{
-      feeds.push(feed);
-    })
-    this.setState({ feed: [] });
-    this.setState({ feed: feeds });
+    this.setState({ feed: [thought, ...this.state.feed] });
   };
 
   render() {

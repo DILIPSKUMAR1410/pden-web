@@ -45,7 +45,7 @@ class Newmessage extends React.Component {
             }
             else{
               this.props.setload();
-              this.props.updateDiscussion();
+              // this.props.updateDiscussion();
             }
           })
         });
