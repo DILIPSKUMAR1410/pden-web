@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Spinner, Discussion, Feed, Sidebar, MyBook, Shelf, Invite } from "..";
+import { Spinner, Discussion, Feed, Sidebar, MyBook, Shelf, Invite, Toast } from "..";
 import "./Home.css";
 
 class Home extends Component {
@@ -8,6 +8,7 @@ class Home extends Component {
     postid: "",
     loading: false,
     logoutmenu: false,
+    toast: '',
   };
 
   toggleLogoutMenu = () => {
@@ -33,6 +34,10 @@ class Home extends Component {
     this.props.history.push("/" + page);
   }
 
+  handleToast = (message) => {
+    this.setState({ toast: message });
+  }
+
   render() {
     return (
       <div className="home-container">
@@ -43,9 +48,12 @@ class Home extends Component {
           logoutmenu={this.state.logoutmenu}
           changePage={this.changePage}
         />
+        {this.state.toast ?
+          <Toast handleToast={() => this.setState({ toast: '' })} message={this.state.toast} />
+          : null}
         <div onClick={() => this.setState({ logoutmenu: false })}>
           {window.location.pathname.slice(1) === "feed" ?
-            <Feed showDiscuss={this.showDiscuss} setload={this.setload} /> :
+            <Feed showDiscuss={this.showDiscuss} setload={this.setload} handleToast={this.handleToast} /> :
             window.location.pathname.slice(1) === "mybook" ?
               <MyBook showDiscuss={this.showDiscuss} setload={this.setload} /> :
               window.location.pathname.slice(1) === "shelf" ?

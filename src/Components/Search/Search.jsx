@@ -29,6 +29,7 @@ class Search extends Component {
       loading: true,
     });
     const target = parse(this.props.location.search).q;
+    var searchValues=target.split(" ");
     // try {
     //   var response = await fetch(
     //     `https://core.blockstack.org/v1/search?query=${target}`
@@ -37,8 +38,9 @@ class Search extends Component {
     //   const results = data.results;
     const data= await User.fetchList();
     const results= data.filter(
-      (user)=>
-      user.attrs.username.includes(target)
+      (user)=> {
+        return searchValues.some(val=>user.attrs.username.includes(val))
+      }
     );
     this.setState({
         results: results,

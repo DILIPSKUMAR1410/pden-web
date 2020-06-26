@@ -1,0 +1,36 @@
+.toast-container {
+	display: block;
+	position: fixed;
+	top: 0;
+	border: 0.5px solid rgba(0,0,0,0.2);
+	background-color: white;
+	border-radius: 0.5rem;
+	overflow: hidden;
+	margin-top: 5rem;
+	margin-right: 1rem;
+	right: 0;
+	height: 2.5rem;
+	width: 17rem;
+	animation: toast 0.5s;
+	box-shadow: 2px 2px 2px black;
+	display: flex;
+	align-items: center;
+	z-index: 9999999999;
+	font-weight: bold;
+}
+
+
+.message-container {
+	margin-left: 1rem;
+	display: flex;
+	align-items: center;
+}
+
+@keyframes toast {
+	0% {
+		width: 0rem;
+	}
+	100% {
+		width: 17rem;
+	}
+}

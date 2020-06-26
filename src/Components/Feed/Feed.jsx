@@ -76,7 +76,7 @@ class Feed extends Component {
 
   getThoughts = () => {
     return this.state.feed.map((thought, index) => {
-      return <Post data={thought} showDiscuss={this.props.showDiscuss} key={index} />;
+      return <Post {...this.props} data={thought} showDiscuss={this.props.showDiscuss} key={index} />;
     });
   };
 

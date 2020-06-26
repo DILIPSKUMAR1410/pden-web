@@ -20,7 +20,7 @@ const userSession = new UserSession({
   appConfig: new AppConfig(["store_write", "publish_data"]),
 });
 configure({
-  apiServer: "https://radiks.pden.xyz",
+  apiServer: "http://localhost:5000",
   userSession,
 });
 
@@ -84,13 +84,13 @@ function Hero(props) {
       <div className="topbar">
         <span className="topbar_logo">Pden.</span>
         <span>
-          <a
+          {/* <a
             href="https://play.google.com/store/apps/details?id=com.dk.pden"
           >
             <button className="topbar__btn">
               Download App(Beta)
           </button>
-          </a>
+          </a> */}
           {!userSession.isUserSignedIn() ? (
             <span className="login-btn">
               <SignInButton />
@@ -177,9 +177,9 @@ function GetStarted(props) {
           />
         );
       })}
-      <div className="yt-video">
+      {/* <div className="yt-video">
         <iframe frameBorder="0" src="https://www.youtube.com/embed/17KXXqg71-s" allowFullScreen></iframe>
-      </div>
+      </div> */}
       <div className="getting-started__list">
         <p className="getting-started__li bold">
           Pden is powered by <a href="https://blockstack.org">Blockstack's</a>{" "}
