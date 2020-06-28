@@ -4,11 +4,19 @@
   height: max-content;
   margin: 1rem auto;
   padding: 0.8rem 1rem;
-  color: #ffab40;
-  background-color: #56366d;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.common{
+  color: #ffab40;
+  background-color: #56366d;
+}
+
+.author{
+  background-color: #ffab40;
+  color: #56366d;
 }
 
 .discussion-post-text {

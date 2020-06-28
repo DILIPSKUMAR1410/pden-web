@@ -29,7 +29,7 @@ class DiscussionPost extends Component {
   // }
   render() {
     return (
-      <div className="discussion-post-container">
+      <div className={this.props.data.attrs.author === userSession.loadUserData().username ? "discussion-post-container author" : "discussion-post-container common"}>
         <div>
           <h3 className="discussion-post-text">{this.props.data.attrs.text}</h3>
           <span className="discussion-post-author">
@@ -39,7 +39,7 @@ class DiscussionPost extends Component {
         {!this.props.thought.attrs.messages.includes(this.props.data._id) ?
           <div className="discussion-post-btn-group">
             {this.props.data.attrs.author !== userSession.loadUserData().username ?
-              <input type="checkbox" style={{ cursor: "pointer" }} onChange={()=>this.props.addToApprove(this.props.data._id)}/>
+              <input type="checkbox" style={{ cursor: "pointer" }} onChange={() => this.props.addToApprove(this.props.data._id)} />
               : null}
             <img className="discussion-post-img" title="Approval Pending" src={approval} alt="" />
           </div>

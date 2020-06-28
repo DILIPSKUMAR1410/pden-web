@@ -109,6 +109,7 @@ class Post extends Component {
         date: date,
       });
       spread.save().then(() => {
+        this.props.handleToast("Spread successfully!");
         this.setState({ spread: true });
       })
     }

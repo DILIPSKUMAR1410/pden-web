@@ -15,3 +15,5 @@ export { default as Spinner } from "./Spinner";
 export { default as UserList } from "./UserList/UserList";
 export { default as MyBook } from "./MyBook/MyBook";
 export { default as Shelf } from "./Shelf/Shelf";
+export { default as Toast } from "./Toast/Toast";
+
