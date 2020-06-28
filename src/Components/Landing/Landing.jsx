@@ -20,7 +20,7 @@ const userSession = new UserSession({
   appConfig: new AppConfig(["store_write", "publish_data"]),
 });
 configure({
-  apiServer: "http://localhost:5000",
+  apiServer: "https://radiks.pden.xyz",
   userSession,
 });
 
