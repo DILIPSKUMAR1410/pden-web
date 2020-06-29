@@ -180,7 +180,7 @@ function GetStarted(props) {
       {/* <div className="yt-video">
         <iframe frameBorder="0" src="https://www.youtube.com/embed/17KXXqg71-s" allowFullScreen></iframe>
       </div> */}
-      <div className="getting-started__list">
+      {/* <div className="getting-started__list">
         <p className="getting-started__li bold">
           Pden is powered by <a href="https://blockstack.org">Blockstack's</a>{" "}
           open source software and you'll require a Blockstack id to sign in to
@@ -200,7 +200,7 @@ function GetStarted(props) {
         <p className="getting-started__li">
           4. Sign in to Pden with your Blockstack ID and make your first post.
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }
